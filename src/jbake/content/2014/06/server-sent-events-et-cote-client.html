@@ -1,0 +1,8 @@
+title=Server Sent Events, et côté client?
+date=2014-06-05
+type=post
+tags=EventSource,javascript,Server-Sent-Events,SSE
+status=published
+id=server-sent-events-et-cote-client
+~~~~~~
+<p>Aujourd'hui, je vais vous parler de Server Sent Events côté client javascript.</p> <p>Nous allons reprendre le serveur qui envoyait l'heure toutes les secondes codé <a href="http://www.ybonnel.fr/2014/06/server-sent-events-avec-simpleweb4j.html">ici</a>.<p> <p>L'utilisation d'un flux Server Sent Event se fait par l'intermédiaire de l'objet "EventSource" qui prend comme paramètre dans le constructeur l'url du flux. Cet objet possède une fonction "addEventListener" qui prend en paramètres le type de listener (message pour la réception de nouvelles données) ainsi que la callback.</p><p>Si vous êtes comme moi et que vous utilisez angular.js un peu partout, vous savez comment il peut s'avérer complexe de s'intégrer dans son dual binding, mais la méthode $scope.$apply est là pour ça!</p> <p>Voici donc le résultat final :</p><script src="https://gist.github.com/ybonnel/e385ac59e4cf00ebd2f7.js"></script> <br/><p>Et voilà, c'est pas bien compliqué de faire du temps réel :)</p><p>Petit précision, EventSource n'est pas supporté par IE, mais il existe un contournement : <a href="https://github.com/Yaffle/EventSource/">github.com/Yaffle/EventSource</a></p>

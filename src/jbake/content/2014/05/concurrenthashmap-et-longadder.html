@@ -1,0 +1,8 @@
+title=ConcurrentHashMap et LongAdder
+date=2014-05-29
+type=post
+tags=java8
+status=published
+id=concurrenthashmap-et-longadder
+~~~~~~
+<p>Le sujet du jour est de réaliser un petit filtre de Servlet pour stocker le nombre d'appels pour chaque url.</p> <p>Pour réaliser cela, il suffit de lire la javadoc de <a href="http://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ConcurrentHashMap.html">ConcurrentHashMap</a> et plus particulièrement : <br/><i>A ConcurrentHashMap can be used as scalable frequency map (a form of histogram or multiset) by using LongAdder values and initializing via computeIfAbsent. For example, to add a count to a ConcurrentHashMap&lt;String,LongAdder&gt; freqs, you can use freqs.computeIfAbsent(k -> new LongAdder()).increment();</i></p> <p>L'implémentation est donc très simple : <script src="https://gist.github.com/ybonnel/e0054c49a29ae7953c32.js"></script></p> <p>L'affichage n'est pas plus compliqué : <script src="https://gist.github.com/ybonnel/80b1d3d2edbcd7272597.js"></script></p> <p>On a donc une gestion de stats thread safe et performante en une ligne de code :)</p>

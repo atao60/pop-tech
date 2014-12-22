@@ -1,0 +1,8 @@
+title=Server Sent Events avec Jetty
+date=2014-06-02
+type=post
+tags=EventSource,java8,Jetty,Server-Sent-Events,SSE
+status=published
+id=server-sent-events-avec-jetty
+~~~~~~
+<p>Je vais aujourd'hui vous présenter comment faire du <a href="http://dev.w3.org/html5/eventsource/">Server-Sent-Events</a> (EventSource) avec Jetty.</p> <h2>C'est quoi</h2><p>Si vous avez déjà lu w3c, passez au chapitre suivant :)</p><p>La technologie Server Sent Events (ou EventSource du nom de l'API javascripts) est une technologie permettant de faire du push du serveur vers le client en gardant une connexion ouverte.</p><p>Un des gros avantages selon moi de cette technologie est sa simplicité, c'est du texte sur HTTP. Chaque événement est préfixé de "data: ", et on met deux retours à la ligne pour séparer les événements (je simplifie un peu).</p><br/> <h2>Comment je fait coté serveur avec Jetty</h2><p>Le plus simple est encore de vous montrer le code :)</p><script src="https://gist.github.com/ybonnel/85850107b392ceac43c7.js"></script><br/> <p>Demain, je vous montrerai que c'est quand même beaucoup plus simple d'utiliser SimpleWeb4j pour le faire :)</p>

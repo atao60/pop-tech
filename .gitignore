@@ -1,0 +1,23 @@
+### Maven ###
+target/
+release.properties
+pom.xml.versionsBackup
+pom.xml.next
+pom.xml.tag
+pom.xml.releaseBackup
+dependency-reduced-pom.xml
+
+### misc ###
+archives/
+archive/
+*.bak
+*.xml___
+*.properties___
+
+### package files ###
+*.jar
+
+### Eclipse ###
+bin/
+Copy of*
+

@@ -1,0 +1,8 @@
+title=Un cache en java
+date=2014-05-26
+type=post
+tags=Java,java8,simple
+status=published
+id=un-cache-en-java
+~~~~~~
+<p>Après bientôt un an sans écrire d'article, je vais essayer de me remettre à écrire des trucs... Je ne garanti pas que ce soit intéressant :)</p><p>Le premiers de cette renaissance sera sur les caches simples en Java.</p>Je parle ici de cache non révocable (j'en ai eu besoin très récemment). Voici la classe permettant de faire ceci :  <script src="https://gist.github.com/ybonnel/795a9f1ef0e08c9a585f.js"></script> <p>Vous l'aurez compris, cet article cherche a vous présenter la méthode <a href="http://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ConcurrentHashMap.html#computeIfAbsent-K-java.util.function.Function-">ConcurrentHashMap.computeIfAbsent</a>, cette méthode est apparue en Java 8.</p><p>Cette dernière permet donc de remplir notre Map si la clé est absente, et ce de manière Thread safe!</p> <p>J'espère pouvoir publier le prochain article dans moins d'un an, à bientôt donc :)<p>
