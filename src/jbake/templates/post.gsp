@@ -4,7 +4,7 @@
 	
 	<div class="page-header">
         <div class="row">
-            <div class="col-xs-4 col-md-2"><img src="${content.rootpath}img/JustAnOtherDevBlog.png"></div>
+            <div class="col-xs-4 col-md-2"><img src="${content.rootpath}img/poptech.png"></div>
             <div class="col-xs-12 col-md-8"><h1>${content.title}</h1></div>
         </div>
 	</div>
@@ -25,7 +25,7 @@
         <meta itemprop="name" content="${content.title}"/>
 
         <div itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="name" content="Yan Bonnel"/>
+            <meta itemprop="name" content="Atao"/>
         </div>
         <meta itemprop="inLanguage" content="fr-FR"/>
         <meta itemprop="url" content="${config.site_host}/${content.uri}"/>
@@ -42,9 +42,9 @@
         %>
         </p>
 
-        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.ybonnel.fr/${content.uri}" data-via="ybonnel" data-text="${content.title}" data-lang="fr">Tweeter</a>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.popsuite.net/${content.uri}" data-via="atao" data-text="${content.title}" data-lang="fr">Tweeter</a>
         <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-        <div class="g-plusone" data-size="medium" data-href="http://www.ybonnel.fr/${content.uri}"></div>
+        <div class="g-plusone" data-size="medium" data-href="http://www.popsuite.net/${content.uri}"></div>
 
         <div itemprop="blogPost">
         <p>${content.body}</p>
@@ -52,7 +52,7 @@
 
         <div id="disqus_thread"></div>
         <script type="text/javascript">
-            var disqus_shortname = 'ybonnel';
+            var disqus_shortname = 'atao';
             var disqus_identifier = '${content.id}';
             (function() {
                 var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -64,12 +64,14 @@
 
     <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
         <div class="sidebar-module sidebar-module-inset">
-            <h4>Yan Bonnel</h4>
-            <p>Geek. Technos de prédilections : Java, Android, Git.</p>
+            <h4>Atao</h4>
+            <p>Geek. Technos de prédilections : Java, Maven, Eclipse.</p>
+            <!--
             <ul>
                 <li><a href="https://twitter.com/ybonnel">@ybonnel</a></li>
                 <li><a href="https://plus.google.com/110565525210888845228?rel=author">+yanbonnel</a></li>
             </ul>
+            -->
         </div>
 
         <div class="sidebar-module">

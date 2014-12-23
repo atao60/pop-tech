@@ -3,7 +3,7 @@
 	<%include "menu.gsp"%>
 	
 	<div class="page-header">
-		<h1>JustAnOtherDevBlog - Archive</h1>
+		<h1>Pop Tech - Archive</h1>
 	</div>
 	
 	<!--<ul>-->
