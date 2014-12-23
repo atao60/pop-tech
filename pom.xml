@@ -3,26 +3,59 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>pop-tech</groupId>
-    <artifactId>blog</artifactId>
-    <packaging>jar</packaging>
+    <groupId>popsuite-blog</groupId>
+    <artifactId>pop-tech</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
         <jbake.inputDirectory>${project.basedir}/src/jbake</jbake.inputDirectory>
+
+        <maven.install.skip>true</maven.install.skip>
+<!-- 
         <maven.deploy.skip>true</maven.deploy.skip>
-    </properties>
+        <maven.test.skip>true</maven.test.skip>
+        <jar.skipIfEmpty>true</jar.skipIfEmpty>
+ -->
+ 
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <jdkVersion>1.8</jdkVersion>
+        <maven.compiler.source>${jdkVersion}</maven.compiler.source>
+        <maven.compiler.target>${jdkVersion}</maven.compiler.target>
+        <maven.compiler.fork>true</maven.compiler.fork>
+        <maven.compiler.compilerVersion>${jdkVersion}</maven.compiler.compilerVersion>
+        <maven.compiler.verbose>true</maven.compiler.verbose>
+        <maven.compiler.optimize>true</maven.compiler.optimize>
+        <maven.compiler.debug>true</maven.compiler.debug>
+
+        <repository.domain>github.com</repository.domain>
+        <repository.user>atao60</repository.user>
+        <repository.name>pop-tech</repository.name>
+        <site.path>${repository.domain}/${repository.user}/${repository.name}</site.path>
+
+        <scm.publish.maven.version>1.1</scm.publish.maven.version>
+        <scm.publish.scmBranch>gh-pages</scm.publish.scmBranch>
+        <scm.publish.pubScmUrl>
+            scm:git:git@${repository.domain}:${repository.user}/${repository.name}.git
+        </scm.publish.pubScmUrl>
+     </properties>
 
     <url>https://github.com/atao60/pop-tech</url>
 
     <build>
-        <finalName>pop-tech</finalName>
+        <finalName>${repository.name}</finalName>
 
         <plugins>
+        
             <plugin>
                 <groupId>br.com.ingenieux</groupId>
                 <artifactId>jbake-maven-plugin</artifactId>
                 <version>0.0.8</version>
+                <configuration>
+                    <port>8083</port>
+                </configuration>
                 <executions>
                     <execution>
                         <id>default-generate</id>
@@ -71,44 +104,61 @@
                 </dependencies>
             </plugin>
 
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-scm-publish-plugin</artifactId>
+                    <version>${scm.publish.maven.version}</version>
+                    <inherited>true</inherited>
+                    <configuration>
+                        <checkinComment>
+                            Publishing blog site for ${project.artifactId}:${project.version}
+                        </checkinComment>
+                        <skipDeletedFiles>true</skipDeletedFiles>
+                        <content>${project.build.directory}/${project.build.finalName}</content>
+                        <!-- pubScmUrl default value can't be used here 
+                            as distributionManagement.site.url value is chosen 
+                            to dealt with multi module staging -->
+                        <pubScmUrl>${scm.publish.pubScmUrl}</pubScmUrl>
+                        <scmBranch>${scm.publish.scmBranch}</scmBranch>
+                    </configuration>
+                </plugin>
+
+<!-- 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
-                <configuration>
-                    <!-- http://maven.apache.org/plugins/maven-compiler-plugin/ -->
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
+                <version>3.2</version>
             </plugin>
-
+ -->
+ <!-- 
             <plugin>
-                <!-- Deploy the web site -->
+                <! - - Deploy the web site - - >
                 <groupId>com.github.github</groupId>
                 <artifactId>site-maven-plugin</artifactId>
-                <version>0.9</version>
+                <version>0.10</version>
                 <executions>
                     <execution>
                         <goals>
                             <goal>site</goal>
                         </goals>
-                        <!-- select the Maven phase in which the plugin will be executed -->
+                        <! - - select the Maven phase in which the plugin will be executed - - >
                         <phase>deploy</phase>
                         <configuration>
-                            <!-- Plugin configuration ges here -->
+                            <! - - Plugin configuration ges here - - >
 
                             <server>github</server>
-
-                            <!-- The commit message -->
+ 
+                            <! - - The commit message - - >
                             <message>New version of blog</message>
-                            <!-- The location where the site is uploaded -->
+                            <! - - The location where the site is available - - >
                             <outputDirectory>${project.build.directory}/${project.build.finalName}</outputDirectory>
-                            <!-- Use merge or override the content -->
+                            <! - - Use merge or override the content - - >
                             <merge>true</merge>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
+ -->            
         </plugins>
     </build>
 
