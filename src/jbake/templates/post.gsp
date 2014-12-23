@@ -52,7 +52,7 @@
 
         <div id="disqus_thread"></div>
         <script type="text/javascript">
-            var disqus_shortname = 'atao';
+            var disqus_shortname = 'poptech';
             var disqus_identifier = '${content.id}';
             (function() {
                 var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
