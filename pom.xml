@@ -42,7 +42,7 @@
         </scm.publish.pubScmUrl>
      </properties>
 
-    <url>https://github.com/atao60/pop-tech</url>
+    <url>https://${repository.domain}/{repository.user}/${repository.name}</url>
 
     <build>
         <finalName>${repository.name}</finalName>
