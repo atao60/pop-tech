@@ -62,7 +62,7 @@
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
             <div class="sidebar-module sidebar-module-inset">
                 <h4>Atao</h4>
-                <p>Geek. Technos de prédilections : Java, Android, Git.</p>
+                <p>Amateur de Java, Maven, Eclipse, etc.</p>
                 <!--
                 <ul>
                     <li><a href="https://twitter.com/ybonnel">@ybonnel</a></li>
