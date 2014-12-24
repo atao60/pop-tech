@@ -1,4 +1,4 @@
-title=Il faut bien qu'un premier soit
+title=Il en faut bien un premier
 date=2014-12-23
 type=post
 tags=blogger,jbake,github
