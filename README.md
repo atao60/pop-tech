@@ -8,3 +8,19 @@ Inspired by [Y. Bonnel blog](http://www.ybonnel.fr/), hosted [here](https://gith
 Go to the [blog](http://atao60.github.io/pop-tech).
 
 Doesn't use [Github Site Plugin](http://github.com/github/maven-plugins).
+
+Run
+------
+
+To preview the changes:
+
+      mvn clean jbake:inline
+
+To publish the changes:
+	  
+	  mvn clean jbake:generate scm-publish:publish-scm
+
+Credits
+------
+
+* photos : [Chaval Brasil](https://www.flickr.com/photos/chavals/) ([CC BY-NC-ND 2.0](https://creativecommons.org/licenses/by-nc-nd/2.0/))
