@@ -4,8 +4,17 @@
     
     <div id="footer">
       <div class="container">
-        <p class="text-muted credit">L'ensemble des posts de ce blog sont publiés sous licence <em>Creative Commons by-nc-sa</em>. <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"/></a></p>
-        <p class="text-muted credit">&copy; 2013 | Mixed with <a href="http://twitter.github.com/bootstrap/">Bootstrap v3.0.2</a> | Baked with <a href="http://jbake.org">JBake ${version}</a></p>
+        <p class="text-muted credit">
+            L'ensemble des posts de ce blog sont publiés sous licence 
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+                <img alt="CC BY-NC-SA 4.0" style="border-width:0" 
+                     src="http://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"/></a>.
+            Crédit photo : <a href="https://www.flickr.com/photos/chavals/">Chaval Brasil</a>
+                <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/2.0/">
+                <img alt="CC BY-NC-ND 2.0" style="border-width:0" 
+                     src="http://i.creativecommons.org/l/by-nc-nd/2.0/88x31.png"/></a>.
+        </p>
+        <p class="text-muted credit">&copy; 2014 | Mixed with <a href="http://twitter.github.com/bootstrap/">Bootstrap v3.0.2</a> | Baked with <a href="http://jbake.org">JBake ${version}</a></p>
       </div>
     </div>
     
