@@ -14,28 +14,41 @@
                 <img alt="CC BY-NC-ND 2.0" style="border-width:0" 
                      src="http://i.creativecommons.org/l/by-nc-nd/2.0/88x31.png"/></a>.
         </p>
-        <p class="text-muted credit">&copy; 2014 | Mixed with <a href="http://twitter.github.com/bootstrap/">Bootstrap v3.0.2</a> | Baked with <a href="http://jbake.org">JBake ${version}</a></p>
+        <p class="text-muted credit">&copy; ${config.inception_year}<%
+        
+            def currentYear = new Date().getAt(Calendar.YEAR)
+            if ( currentYear > config.inception_year.toInteger() ) { out << "-${currentYear}" }
+        %> | Mixed with <a href="http://twitter.github.com/bootstrap/">Bootstrap v${config.bootstrap_version}</a> | Baked with <a href="http://jbake.org">JBake ${version}</a></p>
       </div>
     </div>
     
-    <!-- Le javascript
-    ================================================== -->
+    <!-- Bootstrap core JavaScript
+    ===================================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <!-- script src="/js/jquery-1.10.2.min.js"></script -->
+    <%
+        def contentRootPath = ""
+        if (content.rootpath) {
+            contentRootPath = content.rootpath
+        }
+        else if (content.type == "tag"){
+            contentRootPath =  "../"
+        }
+    %>
+    <!-- script src="/js/jquery-${config.jquery_version}.min.js"></script -->
     <!-- script src="/js/bootstrap.min.js"></script -->
-    <script src="<%if (content.rootpath){%>${content.rootpath}<%}else{if (content.type == "tag"){%>../<%}}%>js/run_prettify.js"></script>
+    <script src="${contentRootPath}js/run_prettify.js"></script>
 
-    <script src='http://alexgorbatchev.com/pub/sh/3.0.83/scripts/shCore.js' type='text/javascript'></script>
-    <script src='http://alexgorbatchev.com/pub/sh/3.0.83/scripts/shBrushCss.js' type='text/javascript'></script>
-    <script src='http://alexgorbatchev.com/pub/sh/3.0.83/scripts/shBrushJava.js' type='text/javascript'></script>
-    <script src='http://alexgorbatchev.com/pub/sh/3.0.83/scripts/shBrushJScript.js' type='text/javascript'></script>
-    <script src='http://alexgorbatchev.com/pub/sh/3.0.83/scripts/shBrushSql.js' type='text/javascript'></script>
-    <script src='http://alexgorbatchev.com/pub/sh/3.0.83/scripts/shBrushVb.js' type='text/javascript'></script>
-    <script src='http://alexgorbatchev.com/pub/sh/3.0.83/scripts/shBrushXml.js' type='text/javascript'></script>
-    <script src='http://alexgorbatchev.com/pub/sh/3.0.83/scripts/shBrushBash.js' type='text/javascript'></script>
+    <script src='${contentRootPath}js/shCore.js' type='text/javascript'></script>
+    <script src='${contentRootPath}js/shBrushCss.js' type='text/javascript'></script>
+    <script src='${contentRootPath}js/shBrushJava.js' type='text/javascript'></script>
+    <script src='${contentRootPath}js/shBrushJScript.js' type='text/javascript'></script>
+    <script src='${contentRootPath}js/shBrushSql.js' type='text/javascript'></script>
+    <script src='${contentRootPath}js/shBrushVb.js' type='text/javascript'></script>
+    <script src='${contentRootPath}js/shBrushXml.js' type='text/javascript'></script>
+    <script src='${contentRootPath}js/shBrushBash.js' type='text/javascript'></script>
 
 
-    <script language='javascript'>
+    <script type="text/javascript">
         SyntaxHighlighter.config.bloggerMode = true;
         SyntaxHighlighter.all();
     </script>
@@ -50,11 +63,16 @@
             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
         })();
     </script>
-<!--
+    
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID and change domain name
     <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;
+      i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();
+      a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];
+      a.async=1;
+      a.src=g;
+      m.parentNode.insertBefore(a,m)
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
       ga('create', 'UA-28563381-1', 'www.ybonnel.fr');

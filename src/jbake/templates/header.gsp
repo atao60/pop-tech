@@ -14,6 +14,7 @@
         }
     %>
     <title>Pop Tech<%if (pagetitle) {%> - ${pagetitle}<%}%></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="<%
         if (pagetitle) {
@@ -47,30 +48,35 @@
             out << "Pop Tech : partager un rex perso. Très touche à tout : Linux, Java, Maven, Eclipse..."
         }
     %>" />
-    <meta property="og:locale" content="fr_FR" />
-    <meta property="og:site_name" content="Pop Tech" />
+    <meta property="og:locale" content="${config.site_locale}" />
+    <meta property="og:site_name" content="${config.site_name}" />
 
-    <!-- Le styles -->
-    <link href="<%if (content.rootpath){%>${content.rootpath}<%}else{if (content.type == "tag"){%>../<%}}%>css/yeti/bootstrap.min.css" rel="stylesheet">
-    <link href="<%if (content.rootpath){%>${content.rootpath}<%}else{if (content.type == "tag"){%>../<%}}%>css/base.css" rel="stylesheet">
-    <link href="<%if (content.rootpath){%>${content.rootpath}<%}else{if (content.type == "tag"){%>../<%}}%>css/asciidoctor.css" rel="stylesheet">
-    <!-- link href="/css/bootstrap-theme.min.css" rel="stylesheet" -->
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css">
-    <link href='http://alexgorbatchev.com/pub/sh/3.0.83/styles/shCore.css' rel='stylesheet' type='text/css'/>
-    <link href='http://alexgorbatchev.com/pub/sh/3.0.83/styles/shThemeDefault.css' rel='stylesheet' type='text/css'/>
+    <!-- Styles -->
+    <%
+        def contentRootPath = ""
+        if (content.rootpath) {
+            contentRootPath = content.rootpath
+        }
+        else if (content.type == "tag"){
+            contentRootPath =  "../"
+        }
+    %>
+    <link href="${contentRootPath}favicon.ico" rel="shortcut icon" >
+
+    <link href="${contentRootPath}css/${config.bootswatch_style}<% if (config.bootswatch_style){%>/<%}else{%><%} %>bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="${contentRootPath}css/base.css" rel="stylesheet" type="text/css">
+    <link href="${contentRootPath}css/asciidoctor.css" rel="stylesheet" type="text/css">
+
+    <link href="${contentRootPath}css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="${contentRootPath}css/shCore.css" rel="stylesheet" type="text/css"/>
+    <link href="${contentRootPath}css/shThemeDefault.css" rel="stylesheet" type="text/css"/>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+      <script src="${contentRootPath}js/html5shiv.js"></script>
+      <script src="${contentRootPath}js/respond.min.js"></script>
     <![endif]-->
 
-    <!-- Fav and touch icons -->
-    <!--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">-->
-    <link rel="shortcut icon" href="<%if (content.rootpath){%>${content.rootpath}<%}else{if (content.type == "tag"){%>../<%}}%>favicon.ico">
   </head>
   <body>
     <div id="wrap">
