@@ -8,8 +8,14 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
+    <name>Pop Tech blog</name>
+    <description>A personal blog about computer programing</description>
+    <url>https://${repository.domain}/{repository.user}/${repository.name}</url>
+    <inceptionYear>${inception.year}</inceptionYear>
+
     <properties>
-        <jbake.inputDirectory>${project.basedir}/src/jbake</jbake.inputDirectory>
+        <jbake.port>8083</jbake.port>
+        <jbake.inputDirectory>${project.basedir}/src/jbake/</jbake.inputDirectory>
 
         <maven.install.skip>true</maven.install.skip>
 <!-- 
@@ -17,7 +23,7 @@
         <maven.test.skip>true</maven.test.skip>
         <jar.skipIfEmpty>true</jar.skipIfEmpty>
  -->
- 
+
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
@@ -30,6 +36,8 @@
         <maven.compiler.optimize>true</maven.compiler.optimize>
         <maven.compiler.debug>true</maven.compiler.debug>
 
+        <jbake-maven-version>0.0.9</jbake-maven-version>
+
         <repository.domain>github.com</repository.domain>
         <repository.user>atao60</repository.user>
         <repository.name>pop-tech</repository.name>
@@ -40,22 +48,35 @@
         <scm.publish.pubScmUrl>
             scm:git:git@${repository.domain}:${repository.user}/${repository.name}.git
         </scm.publish.pubScmUrl>
-     </properties>
 
-    <url>https://${repository.domain}/{repository.user}/${repository.name}</url>
+    </properties>
 
     <build>
         <finalName>${repository.name}</finalName>
 
         <plugins>
-        
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>properties-maven-plugin</artifactId>
+                <version>1.0-alpha-2</version>
+                <executions>
+                    <execution>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>read-project-properties</goal>
+                        </goals>
+                        <configuration>
+                            <files>
+                                <file>${jbake.inputDirectory}/jbake.properties</file>
+                            </files>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>br.com.ingenieux</groupId>
                 <artifactId>jbake-maven-plugin</artifactId>
-                <version>0.0.9-SNAPSHOT</version>
-                <configuration>
-                    <port>8083</port>
-                </configuration>
+                <version>${jbake-maven-version}</version>
                 <executions>
                     <execution>
                         <id>default-generate</id>
@@ -66,11 +87,6 @@
                     </execution>
                 </executions>
                 <dependencies>
-                    <dependency>
-                        <groupId>org.jbake</groupId>
-                        <artifactId>jbake-core</artifactId>
-                        <version>2.3.2</version>
-                    </dependency>
                     <dependency>
                         <groupId>org.slf4j</groupId>
                         <artifactId>log4j-over-slf4j</artifactId>
@@ -101,45 +117,32 @@
                         <artifactId>freemarker</artifactId>
                         <version>2.3.19</version>
                     </dependency>
-                    <dependency><!-- just to avoid a warning from jbake-maven-plugin -->
+                    <dependency>
                         <groupId>org.asciidoctor</groupId>
-                        <artifactId>asciidoctor-java-integration</artifactId>
-                        <version>0.1.4</version>
+                        <artifactId>asciidoctorj</artifactId>
+                        <version>1.5.2</version>
                     </dependency>
-       <dependency>
-            <groupId>com.orientechnologies</groupId>
-            <artifactId>orientdb-core</artifactId>
-            <version>1.6.6</version>
-        </dependency>
                 </dependencies>
             </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-scm-publish-plugin</artifactId>
-                    <version>${scm.publish.maven.version}</version>
-                    <inherited>true</inherited>
-                    <configuration>
-                        <checkinComment>
-                            Publishing blog site for ${project.artifactId}:${project.version}
-                        </checkinComment>
-                        <skipDeletedFiles>true</skipDeletedFiles>
-                        <content>${project.build.directory}/${project.build.finalName}</content>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-scm-publish-plugin</artifactId>
+                <version>${scm.publish.maven.version}</version>
+                <inherited>true</inherited>
+                <configuration>
+                    <checkinComment>
+                        Publishing blog site for
+                        ${project.artifactId}:${project.version}
+                    </checkinComment>
+                    <skipDeletedFiles>true</skipDeletedFiles>
+                    <content>${project.build.directory}/${project.build.finalName}</content>
                         <!-- pubScmUrl default value can't be used here 
                             as distributionManagement.site.url value is chosen 
                             to dealt with multi module staging -->
-                        <pubScmUrl>${scm.publish.pubScmUrl}</pubScmUrl>
-                        <scmBranch>${scm.publish.scmBranch}</scmBranch>
-                    </configuration>
-                </plugin>
-
-<!-- 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.2</version>
+                    <pubScmUrl>${scm.publish.pubScmUrl}</pubScmUrl>
+                    <scmBranch>${scm.publish.scmBranch}</scmBranch>
+                </configuration>
             </plugin>
- -->
  <!-- 
             <plugin>
                 <! - - Deploy the web site - - >
@@ -168,9 +171,385 @@
                     </execution>
                 </executions>
             </plugin>
- -->            
+ -->
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>setup-assets</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.gmavenplus</groupId>
+                        <artifactId>gmavenplus-plugin</artifactId>
+                        <version>1.2</version>
+                        <configuration>
+                            <scripts>
+                                <script><![CDATA[
+                                if ( project.properties['bootswatch.style']
+                                         && project.properties['bootswatch.style'] != "bootswatch" ) {
+                                    project.properties['bootswatch.path.in'] = project.properties['bootswatch.style']
+                                    project.properties['bootswatch.path.out'] = project.properties['bootswatch.style']
+                                } else {
+                                    project.properties['bootswatch.path.in'] = "bower_components/bootstrap/dist/css"
+                                    project.properties['bootswatch.path.out'] = "bootswatch"
+                                }
+                                ]]></script>
+                            </scripts>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>set-bootswatch-pathes</id>
+                                <phase>initialize</phase>
+                                <goals>
+                                    <goal>execute</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <dependencies>
+                            <dependency>
+                                <groupId>org.codehaus.groovy</groupId>
+                                <artifactId>groovy-all</artifactId>
+                            <!-- any version of Groovy \>= 1.5.0 should work here -->
+                                <version>2.3.8</version>
+                                <scope>runtime</scope>
+                            </dependency>
+                        </dependencies>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-clean-plugin</artifactId>
+                        <version>2.6.1</version>
+                        <executions>
+                            <execution>
+                                <id>clean-js</id>
+                                <phase>initialize</phase>
+                                <goals>
+                                    <goal>clean</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <filesets>
+                                <fileset>
+                                    <directory>${jbake.inputDirectory}${asset.folder}</directory>
+                                    <includes>
+                                        <include>**/css/**/bootstrap*.*</include>
+                                        <include>**/css/**/prettify*.*</include>
+                                        <include>**/fonts/glyphicons-halflings-regular.*</include>
+                                        <include>**/js/bootstrap*.*</include>
+                                        <include>**/js/html5shiv*.*</include>
+                                        <include>**/js/respond*.*</include>
+                                        <include>**/js/*prettify*.*</include>
+                                    </includes>
+                                    <followSymlinks>false</followSymlinks>
+                                </fileset>
+                                <fileset>
+                                    <directory>${jbake.inputDirectory}${asset.folder}/js</directory>
+                                    <includes>
+                                        <include>**/js/jquery-*.js</include>
+                                    </includes>
+                                    <excludes>
+                                        <include>**/js/jquery-${jquery.version}.js</include>
+                                    </excludes>
+                                    <followSymlinks>false</followSymlinks>
+                                </fileset>
+                            </filesets>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>com.googlecode.maven-download-plugin</groupId>
+                        <artifactId>download-maven-plugin</artifactId>
+                        <version>1.2.1</version>
+                        <executions>
+                            <execution>
+                                <id>install-bootstrap</id>
+                                <phase>initialize</phase>
+                                <goals>
+                                    <goal>wget</goal>
+                                </goals>
+                                <configuration>
+                                    <url>https://github.com/twbs/bootstrap/releases/download/v${bootstrap.version}/bootstrap-${bootstrap.version}-dist.zip</url>
+                                    <outputDirectory>${project.build.directory}/bootstrap-dist</outputDirectory>
+                                    <unpack>true</unpack>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>install-jquery></id>
+                                <phase>initialize</phase>
+                                <goals>
+                                    <goal>wget</goal>
+                                </goals>
+                                <configuration>
+                                    <url>http://code.jquery.com/jquery-${jquery.version}.min.js</url>
+                                    <unpack>false</unpack>
+                                    <outputDirectory>${jbake.inputDirectory}${asset.folder}/js</outputDirectory>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>install-bootswatch></id>
+                                <phase>initialize</phase>
+                                <goals>
+                                    <goal>wget</goal>
+                                </goals>
+                                <configuration>
+                                    <url>http://bootswatch.com/${bootswatch.path.in}/bootstrap.min.css</url>
+                                    <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/${bootswatch.path.out}</cacheDirectory>
+                                    <unpack>false</unpack>
+                                    <outputDirectory>${jbake.inputDirectory}${asset.folder}/css/${bootswatch.path.out}</outputDirectory>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>install-prettify-css></id>
+                                <phase>initialize</phase>
+                                <goals>
+                                    <goal>wget</goal>
+                                </goals>
+                                <configuration>
+                                    <url>${cdn.url}prettify/${prettify.version}/prettify.min.css</url>
+                                    <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/prettify-${prettify.version}</cacheDirectory>
+                                    <unpack>false</unpack>
+                                    <outputDirectory>${jbake.inputDirectory}${asset.folder}/css</outputDirectory>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>install-prettify-js></id>
+                                <phase>initialize</phase>
+                                <goals>
+                                    <goal>wget</goal>
+                                </goals>
+                                <configuration>
+                                    <url>${cdn.url}prettify/${prettify.version}/prettify.min.js</url>
+                                    <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/prettify-${prettify.version}</cacheDirectory>
+                                    <unpack>false</unpack>
+                                    <outputDirectory>${jbake.inputDirectory}${asset.folder}/js</outputDirectory>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>install-run_prettify-js></id>
+                                <phase>initialize</phase>
+                                <goals>
+                                    <goal>wget</goal>
+                                </goals>
+                                <configuration>
+                                    <url>${cdn.url}prettify/${prettify.version}/run_prettify.min.js</url>
+                                    <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/prettify-${prettify.version}</cacheDirectory>
+                                    <unpack>false</unpack>
+                                    <outputDirectory>${jbake.inputDirectory}${asset.folder}/js</outputDirectory>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>install-html5shiv></id>
+                                <phase>initialize</phase>
+                                <goals>
+                                    <goal>wget</goal>
+                                </goals>
+                                <configuration>
+                                    <url>${cdn.url}html5shiv/${html5shiv.version}/html5shiv.min.js</url>
+                                    <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/html5shiv-${html5shiv.version}</cacheDirectory>
+                                    <unpack>false</unpack>
+                                    <outputDirectory>${jbake.inputDirectory}${asset.folder}/js</outputDirectory>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>install-respond></id>
+                                <phase>initialize</phase>
+                                <goals>
+                                    <goal>wget</goal>
+                                </goals>
+                                <configuration>
+                                    <url>${cdn.url}respond.js/${respond.version}/respond.min.js</url>
+                                    <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/respond-${respond.version}</cacheDirectory>
+                                    <unpack>false</unpack>
+                                    <outputDirectory>${jbake.inputDirectory}${asset.folder}/js</outputDirectory>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>install-fontawesome></id>
+                                <phase>initialize</phase>
+                                <goals>
+                                    <goal>wget</goal>
+                                </goals>
+                                <configuration>
+                                    <url>${cdn.url}font-awesome/${fontawesome.version}/css/font-awesome.min.css</url>
+                                    <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/fontawesome-${fontawesome.version}</cacheDirectory>
+                                    <unpack>false</unpack>
+                                    <outputDirectory>${jbake.inputDirectory}${asset.folder}/css</outputDirectory>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>install-shl-core-js></id>
+                                <phase>initialize</phase>
+                                <goals>
+                                    <goal>wget</goal>
+                                </goals>
+                                <configuration>
+                                    <url>${cdn.url}SyntaxHighlighter/${syntaxhighlighter.version}/scripts/shCore.min.js</url>
+                                    <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/syntaxhighlighter-${syntaxhighlighter.version}</cacheDirectory>
+                                    <unpack>false</unpack>
+                                    <outputDirectory>${jbake.inputDirectory}${asset.folder}/js</outputDirectory>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>install-shl-css-js></id>
+                                <phase>initialize</phase>
+                                <goals>
+                                    <goal>wget</goal>
+                                </goals>
+                                <configuration>
+                                    <url>${cdn.url}SyntaxHighlighter/${syntaxhighlighter.version}/scripts/shBrushCss.min.js</url>
+                                    <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/syntaxhighlighter-${syntaxhighlighter.version}</cacheDirectory>
+                                    <unpack>false</unpack>
+                                    <outputDirectory>${jbake.inputDirectory}${asset.folder}/js</outputDirectory>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>install-shl-java-js></id>
+                                <phase>initialize</phase>
+                                <goals>
+                                    <goal>wget</goal>
+                                </goals>
+                                <configuration>
+                                    <url>${cdn.url}SyntaxHighlighter/${syntaxhighlighter.version}/scripts/shBrushJava.min.js</url>
+                                    <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/syntaxhighlighter-${syntaxhighlighter.version}</cacheDirectory>
+                                    <unpack>false</unpack>
+                                    <outputDirectory>${jbake.inputDirectory}${asset.folder}/js</outputDirectory>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>install-shl-jscript-js></id>
+                                <phase>initialize</phase>
+                                <goals>
+                                    <goal>wget</goal>
+                                </goals>
+                                <configuration>
+                                    <url>${cdn.url}SyntaxHighlighter/${syntaxhighlighter.version}/scripts/shBrushJScript.min.js</url>
+                                    <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/syntaxhighlighter-${syntaxhighlighter.version}</cacheDirectory>
+                                    <unpack>false</unpack>
+                                    <outputDirectory>${jbake.inputDirectory}${asset.folder}/js</outputDirectory>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>install-shl-sql-js></id>
+                                <phase>initialize</phase>
+                                <goals>
+                                    <goal>wget</goal>
+                                </goals>
+                                <configuration>
+                                    <url>${cdn.url}SyntaxHighlighter/${syntaxhighlighter.version}/scripts/shBrushSql.min.js</url>
+                                    <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/syntaxhighlighter-${syntaxhighlighter.version}</cacheDirectory>
+                                    <unpack>false</unpack>
+                                    <outputDirectory>${jbake.inputDirectory}${asset.folder}/js</outputDirectory>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>install-shl-vb-js></id>
+                                <phase>initialize</phase>
+                                <goals>
+                                    <goal>wget</goal>
+                                </goals>
+                                <configuration>
+                                    <url>${cdn.url}SyntaxHighlighter/${syntaxhighlighter.version}/scripts/shBrushVb.min.js</url>
+                                    <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/syntaxhighlighter-${syntaxhighlighter.version}</cacheDirectory>
+                                    <unpack>false</unpack>
+                                    <outputDirectory>${jbake.inputDirectory}${asset.folder}/js</outputDirectory>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>install-shl-xml-js></id>
+                                <phase>initialize</phase>
+                                <goals>
+                                    <goal>wget</goal>
+                                </goals>
+                                <configuration>
+                                    <url>${cdn.url}SyntaxHighlighter/${syntaxhighlighter.version}/scripts/shBrushXml.min.js</url>
+                                    <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/syntaxhighlighter-${syntaxhighlighter.version}</cacheDirectory>
+                                    <unpack>false</unpack>
+                                    <outputDirectory>${jbake.inputDirectory}${asset.folder}/js</outputDirectory>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>install-shl-bash-js></id>
+                                <phase>initialize</phase>
+                                <goals>
+                                    <goal>wget</goal>
+                                </goals>
+                                <configuration>
+                                    <url>${cdn.url}SyntaxHighlighter/${syntaxhighlighter.version}/scripts/shBrushBash.min.js</url>
+                                    <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/syntaxhighlighter-${syntaxhighlighter.version}</cacheDirectory>
+                                    <unpack>false</unpack>
+                                    <outputDirectory>${jbake.inputDirectory}${asset.folder}/js</outputDirectory>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>install-shl-core-css></id>
+                                <phase>initialize</phase>
+                                <goals>
+                                    <goal>wget</goal>
+                                </goals>
+                                <configuration>
+                                    <url>${cdn.url}SyntaxHighlighter/${syntaxhighlighter.version}/styles/shCore.min.css</url>
+                                    <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/syntaxhighlighter-${syntaxhighlighter.version}</cacheDirectory>
+                                    <unpack>false</unpack>
+                                    <outputDirectory>${jbake.inputDirectory}${asset.folder}/css</outputDirectory>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>install-shl-td-css></id>
+                                <phase>initialize</phase>
+                                <goals>
+                                    <goal>wget</goal>
+                                </goals>
+                                <configuration>
+                                    <url>${cdn.url}SyntaxHighlighter/${syntaxhighlighter.version}/styles/shThemeDefault.min.css</url>
+                                    <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/syntaxhighlighter-${syntaxhighlighter.version}</cacheDirectory>
+                                    <unpack>false</unpack>
+                                    <outputDirectory>${jbake.inputDirectory}${asset.folder}/css</outputDirectory>
+                                </configuration>
+                            </execution>
+
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <version>2.6</version>
+                        <executions>
+                            <execution>
+                                <id>move-bootstrap</id>
+                                <phase>initialize</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${jbake.inputDirectory}${asset.folder}</outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>${project.build.directory}/bootstrap-dist/bootstrap-${bootstrap.version}-dist</directory>
+                                            <includes>
+                                                <include>**/css/*.min.css</include>
+                                                <include>**/fonts/*</include>
+                                                <include>**/js/*.min.js</include>
+                                            </includes>
+                                        </resource>
+                                        <resource>
+                                            <directory>${project.build.directory}/bootstrap-dist/dist</directory>
+                                            <includes>
+                                                <include>**/css/*.min.css</include>
+                                                <include>**/fonts/*</include>
+                                                <include>**/js/*.min.js</include>
+                                            </includes>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
     <dependencies>
         <dependency>
@@ -178,14 +557,5 @@
             <artifactId>rome-fetcher</artifactId>
             <version>1.5.0</version>
         </dependency>
-<!--         
-       <dependency>
-            <groupId>com.orientechnologies</groupId>
-            <artifactId>orientdb-core</artifactId>
-            <version>1.7.10</version>
-        </dependency>
- -->
-
-
     </dependencies>
 </project>
