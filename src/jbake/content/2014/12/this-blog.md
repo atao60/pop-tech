@@ -45,7 +45,7 @@ Pourquoi pas fournir un nom, mais aucune envie de fournir une adresse email qui 
 
 Ne reste donc qu'à remplacer [Github site plugin](https://github.com/github/maven-plugins) par une solution basée sur l'extension [maven-scm-publish-plugin](http://maven.apache.org/plugins/maven-scm-publish-plugin/).
 
-Enfin... quel plaisir d'avoir son petit blog perso. Et cerise sur le gâteau : [Github](https://github.com/) permet de publier un tel site avec son propre nom de domaine.
+Ah, quel plaisir d'avoir enfin son petit blog perso. Et cerise sur le gâteau : [Github](https://github.com/) permet de publier un tel site avec son propre nom de domaine.
 
 Dans une série de billets à venir, je donnerai plus de détail pour arriver à ce résultat. À bientôt.
 
