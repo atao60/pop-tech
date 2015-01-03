@@ -6,13 +6,13 @@ status=published
 id=this-blog
 ~~~~~~
 
-L'idée de faire un blog sur mes pérégrinations informatiques me trottait dans la tête depuis un certain temps. Histoire d'en conserver une trace. Et si en plus cela pouvait servir à d'autres... 009
+Faire un blog sur mes pérégrinations informatiques me trottait dans la tête depuis un certain temps. Histoire d'en conserver une trace. Et si en plus cela pouvait servir à d'autres...
 
 Après avoir installé un [site javadoc](http://atao60.github.io/maven-site-demo/) de démonstration sur [Github](https://github.com/) à l'aide de [Maven](http://maven.apache.org/), la possibilité de créer un blog sur le même principe est devenue incontournable. Le temps de faire le lien avec [Jekyll](http://jekyllrb.com/) puis [JBake](http://jbake.org/) !
 
 Le choix de [JBake](http://jbake.org/) permet de rester dans un cadre 100% JVM.
 
-Trois articles fournissent les bases techniques :
+Trois articles ont fourni les bases :
 
 * [Authoring your blog on GitHub with JBake and Gradle](http://melix.github.io/blog/2014/02/hosting-jbake-github.html)  
     Cédric Champeau, 3/2/14

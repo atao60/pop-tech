@@ -21,7 +21,7 @@ To preview the changes:
 
 To publish the changes:
 	  
-	  mvn jbake:generate scm-publish:publish-scm
+	  mvn clean jbake:generate scm-publish:publish-scm
 	  
 To update frameworks:
 

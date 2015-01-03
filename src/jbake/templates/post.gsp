@@ -55,11 +55,14 @@
             var disqus_shortname = 'poptech';
             var disqus_identifier = '${content.id}';
             (function() {
-                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                var dsq = document.createElement('script'); 
+                dsq.type = 'text/javascript'; 
+                dsq.async = true;
                 dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
                 (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
             })();
         </script>
+        <noscript>Please enable Javascript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus</a></noscript>
     </div>
 
     <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
