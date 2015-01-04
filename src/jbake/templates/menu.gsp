@@ -8,13 +8,31 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="<%if (content.rootpath){%>${content.rootpath}<%}else{if (content.type == "tag"){%>../<%}}%>index.html">Pop Tech</a>
+            <a class="navbar-brand" href="<%
+                    if (content.rootpath) {
+                        %>${content.rootpath}<%
+                    } else if (content.type == "tag"){
+                        %>../<%
+                    }
+                %>index.html">${config.site_name}</a>
           </div>
           <div class="collapse navbar-collapse" id="navbar-menu">
             <ul class="nav navbar-nav">
-              <li><a href="https://github.com/atao60" target="github:atao60">Github</a></li>
-              <li><a href="<%if (content.rootpath){%>${content.rootpath}<%}else{if (content.type == "tag"){%>../<%}}%>archive.html">Archives</a></li>
-              <li><a href="<%if (content.rootpath){%>${content.rootpath}<%}else{if (content.type == "tag"){%>../<%}}%>${config.feed_file}">Flux RSS</a></li>
+              <li><a href="https://github.com/${config.github_owner}" target="github:${config.github_owner}">Github</a></li>
+              <li><a href="<%
+                    if (content.rootpath) {
+                        %>${content.rootpath}<%
+                    } else if (content.type == "tag"){
+                        %>../<%
+                    }
+                    %>archive.html">Archives</a></li>
+              <li><a href="<%
+                    if (content.rootpath) {
+                        %>${content.rootpath}<%
+                    } else if (content.type == "tag") {
+                        %>../<%
+                    }
+                    %>${config.feed_file}">Flux RSS</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>

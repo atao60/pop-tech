@@ -13,21 +13,21 @@
             pagetitle = "Archives"
         }
     %>
-    <title>Pop Tech<%if (pagetitle) {%> - ${pagetitle}<%}%></title>
+    <title>${config.site_name}<%if (pagetitle) {%> - ${pagetitle}<%}%></title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="<%
         if (pagetitle) {
-            out << "Pop Tech : ${pagetitle}"
+            out << "${config.site_name} : ${pagetitle}"
         } else {
-            out << "Pop Tech : partager un rex perso. Très touche à tout : Linux, Java, Maven, Eclipse..."
+            out << "${config.site_description}"
         }
     %>">
     <meta property="og:title" content="<%
         if (pagetitle) {
-            out << "Pop Tech - ${pagetitle}"
+            out << "${config.site_name} - ${pagetitle}"
         } else {
-            out << "Pop Tech"
+            out << "${config.site_name}"
         }
     %>" />
     <meta property="og:type" content="website" />
@@ -43,9 +43,9 @@
     %>" />
     <meta property="og:description" content="<%
         if (pagetitle) {
-            out << "Pop Tech : ${pagetitle}"
+            out << "${config.site_name} : ${pagetitle}"
         } else {
-            out << "Pop Tech : partager un rex perso. Très touche à tout : Linux, Java, Maven, Eclipse..."
+            out << "${config.site_description}"
         }
     %>" />
     <meta property="og:locale" content="${config.site_locale}" />

@@ -22,7 +22,7 @@ Trois articles ont fourni les bases :
     
 * [JBake Maven Plugin Walkthough](http://docs.ingenieux.com.br/project/jbake/walkthrough.html)    
 
-N'ayant jamais utilisé [Gradle](https://www.gradle.org/), j'ai opté pour [Maven](http://maven.apache.org/) avec l'extension [jbake-maven-plugin](https://github.com/ingenieux/jbake-maven-plugin). Yan Bonnel fournit dans son billet toutes les informations nécessaires. D'autant qu'il met aussi à disposition le code de son propre blog [JustAnOtherDevBlog](http://www.ybonnel.fr/).
+N'ayant jamais utilisé [Gradle](https://www.gradle.org/), j'ai opté pour [Maven](http://maven.apache.org/) avec l'extension [jbake-maven-plugin](https://github.com/ingenieux/jbake-maven-plugin). Yan Bonnel fournit dans son billet toutes les informations pour se lancer. D'autant qu'il met aussi à disposition le [code](http://github.com/ybonnel/blog) de son propre blog [JustAnOtherDevBlog](http://www.ybonnel.fr/). Et pour rendre à César... Cédric Champeau fait [de même](https://github.com/melix/blog) pour son [Blog](http://melix.github.io/blog/) .
 
 Ne reste plus qu'à tester :
 
@@ -31,7 +31,7 @@ Ne reste plus qu'à tester :
 
 Ce qui aurait dû rester une promenade de santé s'est avéré un parcours du combattant. 
 
-Commençons avec [livereload](http://livereload.com/) : dès qu'une modification est enregistrée, [livereload](http://livereload.com/) s'arrête, cf. [jbake:inline fails after one change #6](https://github.com/ingenieux/jbake-maven-plugin/issues/6). Pour le moment, il faut travailler avec un [fork](https://github.com/atao60/jbake-maven-plugin) de la version 0.0.9-SNAPSHOT.
+Commençons avec [livereload](http://livereload.com/) : dès qu'une modification est enregistrée, [livereload s'arrête](https://github.com/ingenieux/jbake-maven-plugin/issues/6). Pour le moment, il faut travailler avec un [fork](https://github.com/atao60/jbake-maven-plugin) de la version 0.0.9-SNAPSHOT.
 
 Et les déboires continuent avec [Github site plugin](https://github.com/github/maven-plugins) :
 
@@ -41,9 +41,9 @@ Et les déboires continuent avec [Github site plugin](https://github.com/github/
 
 * et reste au final que l'API de [Github site plugin](https://github.com/github/maven-plugins) a changé : elle requiert maintenant que le nom et l'email du compte [Github](https://github.com/) soient renseignés, cf.<nbsp/>[Error deploying when email address not public #77](https://github.com/github/maven-plugins/issues/77).
  
-Pourquoi pas fournir un nom, mais aucune envie de fournir une adresse email qui soit rendue publique.
+Pourquoi pas de fournir un nom, mais aucune envie d'une adresse email qui soit rendue publique.
 
-Ne reste donc qu'à remplacer [Github site plugin](https://github.com/github/maven-plugins) par une solution basée sur l'extension [maven-scm-publish-plugin](http://maven.apache.org/plugins/maven-scm-publish-plugin/).
+Ne reste donc qu'à remplacer [Github site plugin](https://github.com/github/maven-plugins) par [maven-scm-publish-plugin](http://maven.apache.org/plugins/maven-scm-publish-plugin/).
 
 Ah, quel plaisir d'avoir enfin son petit blog perso. Et cerise sur le gâteau : [Github](https://github.com/) permet de publier un tel site avec son propre nom de domaine.
 

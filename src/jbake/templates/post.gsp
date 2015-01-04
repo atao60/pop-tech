@@ -25,13 +25,11 @@
         <meta itemprop="name" content="${content.title}"/>
 
         <div itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <meta itemprop="name" content="Atao"/>
+            <meta itemprop="name" content="${config.owner_name}"/>
         </div>
-        <meta itemprop="inLanguage" content="fr-FR"/>
+        <meta itemprop="inLanguage" content="${config.site_locale}"/>
         <meta itemprop="url" content="${config.site_host}/${content.uri}"/>
         <meta itemprop="discussionUrl" content="${config.site_host}/${content.uri}#disqus_thread"/>
-
-
 
         <p>Tags :
         <meta itemprop="keywords" content="${content.tags.join(",")}"/>
@@ -42,17 +40,16 @@
         %>
         </p>
 
-        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.popsuite.net/${content.uri}" data-via="atao" data-text="${content.title}" data-lang="fr">Tweeter</a>
-        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-        <div class="g-plusone" data-size="medium" data-href="http://www.popsuite.net/${content.uri}"></div>
-
+        <%  current=content
+            include "share.gsp"%>
+        
         <div itemprop="blogPost">
         <p>${content.body}</p>
         </div>
 
         <div id="disqus_thread"></div>
         <script type="text/javascript">
-            var disqus_shortname = 'poptech';
+            var disqus_shortname = '${config.disqus_shortname}';
             var disqus_identifier = '${content.id}';
             (function() {
                 var dsq = document.createElement('script'); 
@@ -66,38 +63,11 @@
     </div>
 
     <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
-        <div class="sidebar-module sidebar-module-inset">
-            <h4>Atao</h4>
-            <p>Amateur de Java, Maven, Eclipse, etc.</p>
-            <!--
-            <ul>
-                <li><a href="https://twitter.com/ybonnel">@ybonnel</a></li>
-                <li><a href="https://plus.google.com/110565525210888845228?rel=author">+yanbonnel</a></li>
-            </ul>
-            -->
-        </div>
+<%include "owner.gsp"%>
 
-        <div class="sidebar-module">
-            <h4>Tags</h4>
-            <ol class="list-unstyled" style="margin-left: 0px">
-                <%
-                    alltags.collect { tag ->
-                        [
-                                tag,
-                                posts.findAll { post ->
-                                    post.tags.contains(tag)
-                                }.size()
-                        ]
-                    } .sort { tag ->
-                        String.format("%03d%s", 1000 - tag[1], tag[0].toLowerCase())
-                    } .each { tagWithCount ->
+<%rootpath=content.rootpath + "tags/"
+  include "alltags.gsp"%>
 
-                %>
-
-                <li><a href="${content.rootpath}tags/${tagWithCount[0]}.html">${tagWithCount[0]}</a> (${tagWithCount[1]})</li>
-                <%}%>
-            </ol>
-        </div>
     </div>
 	
 <%include "footer.gsp"%>

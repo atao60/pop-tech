@@ -53,32 +53,37 @@
         SyntaxHighlighter.all();
     </script>
 
-
+    <!-- Asynchronous loading of Google API -->
+    <!-- Placed after the last Google+ button -->
     <script type="text/javascript">
-        window.___gcfg = {lang: 'fr'};
+        window.___gcfg = {lang: '${config.site_locale}'};
 
         (function() {
-            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+            var po = document.createElement('script'); 
+            po.type = 'text/javascript'; 
+            po.async = true;
             po.src = 'https://apis.google.com/js/platform.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+            var s = document.getElementsByTagName('script')[0]; 
+            s.parentNode.insertBefore(po, s);
         })();
     </script>
     
-<!-- Google Analytics: change UA-XXXXX-X to be your site's ID and change domain name
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID and change domain name  -->
     <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;
-      i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();
-      a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];
-      a.async=1;
-      a.src=g;
-      m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        (function(i,s,o,g,r,a,m){
+            i['GoogleAnalyticsObject']=r;
+            i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();
+            a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];
+            a.async=1;
+            a.src=g;
+            m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-      ga('create', 'UA-28563381-1', 'www.ybonnel.fr');
-      ga('send', 'pageview');
+        ga('create', '${config.ga_id}', '${config.ga_site}');
+        ga('send', 'pageview');
 
     </script>
-    -->
+   
   </body>
 </html>

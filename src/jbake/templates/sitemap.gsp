@@ -7,25 +7,23 @@
     <url>
         <loc>${config.site_host}/archive.html</loc>
         <lastmod>${published_date.format("yyyy-MM-dd")}</lastmod>
-    </url>
-<% alltags.each { tag -> %>
-    <url>
-        <loc>${config.site_host}/tags/${tag}.html</loc>
-        <%
+    </url><%
+    alltags.each { tag -> 
             def lastMod = posts.findAll { post ->
                 post.tags.contains(tag)
             } .collect { post ->
                 post.date
-            } .max();
-        %>
-
+            } .max(); %>
+    <url>
+        <loc>${config.site_host}/tags/${tag}.html</loc>
         <lastmod>${lastMod.format("yyyy-MM-dd")}</lastmod>
-    </url>
-<%}%>
-<% published_content.each { content -> %>
+    </url><%
+  }
+   published_content.each { content -> %>
     <url>
         <loc>${config.site_host}/${content.uri}</loc>
         <lastmod>${content.date.format("yyyy-MM-dd")}</lastmod>
-    </url>
-<%}%>
+    </url><%
+}
+%>
 </urlset>
