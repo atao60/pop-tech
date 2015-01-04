@@ -8,8 +8,8 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>Pop Tech blog</name>
-    <description>A personal blog about computer programing</description>
+    <name>${site.name}</name>
+    <description>${site.description}</description>
     <url>https://${repository.domain}/{repository.user}/${repository.name}</url>
     <inceptionYear>${inception.year}</inceptionYear>
 
@@ -37,13 +37,26 @@
         <maven.compiler.debug>true</maven.compiler.debug>
 
         <jbake-maven-version>0.0.9</jbake-maven-version>
+        <properties-maven-version>1.0-alpha-2</properties-maven-version>
+        <scm.publish.maven.version>1.1</scm.publish.maven.version>
+        <gmavenplus.maven.version>1.2</gmavenplus.maven.version>
+        <clean.maven.version>2.6.1</clean.maven.version>
+        <download.maven.version>1.2.1</download.maven.version>
+        <resources.maven.version>2.6</resources.maven.version>
+        
+        <slf4j.version>1.7.9</slf4j.version>
+        <logback.version>1.1.2</logback.version>
+        <groovy.version>2.3.8</groovy.version>
+        <freemarker.version>2.3.21</freemarker.version>
+        <markdown.version>1.4.2</markdown.version>
+        <asciidoc.version>1.5.2</asciidoc.version>
+        <rss.version>1.5.0</rss.version>
 
         <repository.domain>github.com</repository.domain>
         <repository.user>atao60</repository.user>
         <repository.name>pop-tech</repository.name>
         <site.path>${repository.domain}/${repository.user}/${repository.name}</site.path>
 
-        <scm.publish.maven.version>1.1</scm.publish.maven.version>
         <scm.publish.scmBranch>gh-pages</scm.publish.scmBranch>
         <scm.publish.pubScmUrl>
             scm:git:git@${repository.domain}:${repository.user}/${repository.name}.git
@@ -58,7 +71,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>properties-maven-plugin</artifactId>
-                <version>1.0-alpha-2</version>
+                <version>${properties-maven-version}</version>
                 <executions>
                     <execution>
                         <phase>initialize</phase>
@@ -90,37 +103,37 @@
                     <dependency>
                         <groupId>org.slf4j</groupId>
                         <artifactId>log4j-over-slf4j</artifactId>
-                        <version>1.7.9</version>
+                        <version>${slf4j.version}</version>
                     </dependency>
                     <dependency>
                         <groupId>org.slf4j</groupId>
                         <artifactId>slf4j-api</artifactId>
-                        <version>1.7.9</version>
+                        <version>${slf4j.version}</version>
                     </dependency>
                     <dependency>
                         <groupId>ch.qos.logback</groupId>
                         <artifactId>logback-classic</artifactId>
-                        <version>1.1.2</version>
+                        <version>${logback.version}</version>
                     </dependency>
                     <dependency>
                         <groupId>org.codehaus.groovy</groupId>
                         <artifactId>groovy-all</artifactId>
-                        <version>2.3.3</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.pegdown</groupId>
-                        <artifactId>pegdown</artifactId>
-                        <version>1.4.2</version>
+                        <version>${groovy.version}</version>
                     </dependency>
                     <dependency>
                         <groupId>org.freemarker</groupId>
                         <artifactId>freemarker</artifactId>
-                        <version>2.3.19</version>
+                        <version>${freemarker.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.pegdown</groupId>
+                        <artifactId>pegdown</artifactId>
+                        <version>${markdown.version}</version>
                     </dependency>
                     <dependency>
                         <groupId>org.asciidoctor</groupId>
                         <artifactId>asciidoctorj</artifactId>
-                        <version>1.5.2</version>
+                        <version>${asciidoc.version}</version>
                     </dependency>
                 </dependencies>
             </plugin>
@@ -143,35 +156,6 @@
                     <scmBranch>${scm.publish.scmBranch}</scmBranch>
                 </configuration>
             </plugin>
- <!-- 
-            <plugin>
-                <! - - Deploy the web site - - >
-                <groupId>com.github.github</groupId>
-                <artifactId>site-maven-plugin</artifactId>
-                <version>0.10</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>site</goal>
-                        </goals>
-                        <! - - select the Maven phase in which the plugin will be executed - - >
-                        <phase>deploy</phase>
-                        <configuration>
-                            <! - - Plugin configuration ges here - - >
-
-                            <server>github</server>
- 
-                            <! - - The commit message - - >
-                            <message>New version of blog</message>
-                            <! - - The location where the site is available - - >
-                            <outputDirectory>${project.build.directory}/${project.build.finalName}</outputDirectory>
-                            <! - - Use merge or override the content - - >
-                            <merge>true</merge>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
- -->
         </plugins>
     </build>
 
@@ -183,7 +167,7 @@
                     <plugin>
                         <groupId>org.codehaus.gmavenplus</groupId>
                         <artifactId>gmavenplus-plugin</artifactId>
-                        <version>1.2</version>
+                        <version>${gmavenplus.maven.version}</version>
                         <configuration>
                             <scripts>
                                 <script><![CDATA[
@@ -211,8 +195,8 @@
                             <dependency>
                                 <groupId>org.codehaus.groovy</groupId>
                                 <artifactId>groovy-all</artifactId>
-                            <!-- any version of Groovy \>= 1.5.0 should work here -->
-                                <version>2.3.8</version>
+                                <!-- any version of Groovy >= 1.5.0 should work here -->
+                                <version>${groovy.version}</version>
                                 <scope>runtime</scope>
                             </dependency>
                         </dependencies>
@@ -220,7 +204,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-clean-plugin</artifactId>
-                        <version>2.6.1</version>
+                        <version>${clean.maven.version}</version>
                         <executions>
                             <execution>
                                 <id>clean-js</id>
@@ -261,7 +245,7 @@
                     <plugin>
                         <groupId>com.googlecode.maven-download-plugin</groupId>
                         <artifactId>download-maven-plugin</artifactId>
-                        <version>1.2.1</version>
+                        <version>${download.maven.version}</version>
                         <executions>
                             <execution>
                                 <id>install-bootstrap</id>
@@ -514,7 +498,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-resources-plugin</artifactId>
-                        <version>2.6</version>
+                        <version>${resources.maven.version}</version>
                         <executions>
                             <execution>
                                 <id>move-bootstrap</id>
@@ -555,7 +539,8 @@
         <dependency>
             <groupId>com.rometools</groupId>
             <artifactId>rome-fetcher</artifactId>
-            <version>1.5.0</version>
+            <version>${rss.version}</version>
         </dependency>
     </dependencies>
+
 </project>
