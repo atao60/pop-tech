@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Pop Tech</title>
+    <title>${config.site_name}</title>
     <link>${config.site_host}</link>
     <atom:link href="${config.site_host}/${config.feed_file}" rel="self" type="application/rss+xml" />
-    <description>Pop Tech</description>
+    <description>${config.site_description}</description>
     <language>en-gb</language>
       <pubDate>${new java.text.SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss Z", Locale.US).format(published_date)}</pubDate>
       <lastBuildDate>${new java.text.SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss Z", Locale.US).format(published_date)}</lastBuildDate>

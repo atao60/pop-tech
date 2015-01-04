@@ -1,5 +1,6 @@
+<%rootpath="tags/"%>
 <%include "header.gsp"%>
-	
+
 	<%include "menu.gsp"%>
 
 	<div class="page-header">
@@ -19,7 +20,7 @@
                         <div itemprop="author" itemscope itemtype="http://schema.org/Person">
                             <meta itemprop="name" content="${config.owner_name}"/>
                         </div>
-                        <meta itemprop="inLanguage" content="fr-FR"/>
+                        <meta itemprop="inLanguage" content="${config.site_locale}"/>
                         <a itemprop="url" href="${post.uri}">
                             <h1 itemprop="name">${post.title}</h1>
                         </a>
@@ -30,22 +31,14 @@
                             </time>
                         </p>
 
-                        <p>Tags :
-                            <meta itemprop="keywords" content="${post.tags.join(",")}"/>
-                            <%
-                                out << post.tags.collect { post_tag ->
-                                    """<a href="tags/${post_tag}.html">${post_tag}</a>"""
-                                } .join(", ")
-                            %>
-                        </p>
-
                         <%current=post
+                          include 'taglist.gsp'
                           include "share.gsp"%>
 
                         <div itemprop="blogPost">
                             <p>${post.body}</p>
                         </div>
-                        <p><a itemprop="discussionUrl" href="${post.uri}#disqus_thread">Commentaires</a></p>
+                        <p><a itemprop="discussionUrl" href="${post.uri}#disqus_thread">${config.i18n_comments.capitalize()}</a></p>
 
                     </div>
                 <%}%>
@@ -54,7 +47,7 @@
 
             <hr />
 
-            <p>Billets plus anciens disponibles sur la page <a href="${config.archive_file}">archive</a>.</p>
+            <p><%out << sprintf(config.i18n_olderposts,config.archive_file)%></p>
 
         </div>
 
@@ -65,7 +58,7 @@
             <div class="sidebar-module">
                 <a class="twitter-timeline"  
                    href="https://twitter.com/${config.twitter_owner}"  
-                   data-widget-id="${config.twitter_id}">Tweets de @${config.twitter_owner}</a>
+                   data-widget-id="${config.twitter_id}"><%out << sprintf(config.i18n_tweetsfrom,config.twitter_owner)%></a>
                 <script>!function(d,s,id){
                     var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
                     if (!d.getElementById(id)) {
@@ -77,11 +70,11 @@
                 </script>
             </div>
 
-<%rootpath="tags/"
-  include "alltags.gsp"%>
+<%include "alltags.gsp"%>
 
         </div>
 
     </div>
 
+<%include "sharescripts.gsp"%>
 <%include "footer.gsp"%>

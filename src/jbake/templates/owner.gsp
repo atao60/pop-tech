@@ -1,6 +1,6 @@
         <div class="sidebar-module sidebar-module-inset">
             <h4>${config.owner_name}</h4>
-            <p><% out << config.owner_presentation %></p>
+            <p>${config.owner_presentation}</p>
             <% /*
             <ul>
                 <li><a href="https://twitter.com/${config.twitter_owner}">@${config.twitter_owner}</a></li>

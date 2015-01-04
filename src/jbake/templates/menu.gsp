@@ -25,14 +25,14 @@
                     } else if (content.type == "tag"){
                         %>../<%
                     }
-                    %>archive.html">Archives</a></li>
+                    %>archive.html">${config.i18n_archives.capitalize()}</a></li>
               <li><a href="<%
                     if (content.rootpath) {
                         %>${content.rootpath}<%
                     } else if (content.type == "tag") {
                         %>../<%
                     }
-                    %>${config.feed_file}">Flux RSS</a></li>
+                    %>${config.feed_file}">${config.i18n_feed.capitalize()}</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>

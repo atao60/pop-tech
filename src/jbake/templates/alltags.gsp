@@ -1,6 +1,6 @@
-<%if (render.tags) {%>
+<%if (config.render_tags != 'false') {%>
             <div class="sidebar-module">
-                <h4>Tags</h4>
+                <h4>${config.i18n_tags.capitalize()}</h4>
                 <ol class="list-unstyled" style="margin-left: 0px"><%
                         alltags.collect { tag ->
                             [
