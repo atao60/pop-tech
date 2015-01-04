@@ -1,7 +1,7 @@
 <a href="https://twitter.com/share" 
            class="twitter-share-button" 
            data-url="http://${config.site_host}/${current.uri}" 
-           data-via="${config.tweeter_owner}" 
+           data-via="${config.twitter_owner}" 
            data-text="${current.title}" 
            data-lang="${config.site_locale.substring(0,2)}">Tweeter</a>
         

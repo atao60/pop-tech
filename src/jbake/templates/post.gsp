@@ -31,6 +31,7 @@
         <meta itemprop="url" content="${config.site_host}/${content.uri}"/>
         <meta itemprop="discussionUrl" content="${config.site_host}/${content.uri}#disqus_thread"/>
 
+<%if (render.tags) {%>
         <p>Tags :
         <meta itemprop="keywords" content="${content.tags.join(",")}"/>
         <%
@@ -39,7 +40,7 @@
             } .join(", ")
         %>
         </p>
-
+<%}%>
         <%  current=content
             include "share.gsp"%>
         

@@ -1,3 +1,4 @@
+<%if (render.tags) {%>
             <div class="sidebar-module">
                 <h4>Tags</h4>
                 <ol class="list-unstyled" style="margin-left: 0px"><%
@@ -15,4 +16,4 @@
                         }%>
                  </ol>
             </div>
-            
+<%}%>            

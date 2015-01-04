@@ -63,8 +63,18 @@
 <%include "owner.gsp"%>
 
             <div class="sidebar-module">
-                <a class="twitter-timeline"  href="https://twitter.com/atao"  data-widget-id="482174196248608769">Tweets de @atao</a>
-                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                <a class="twitter-timeline"  
+                   href="https://twitter.com/${config.twitter_owner}"  
+                   data-widget-id="${config.twitter_id}">Tweets de @${config.twitter_owner}</a>
+                <script>!function(d,s,id){
+                    var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+                    if (!d.getElementById(id)) {
+                        js=d.createElement(s);
+                        js.id=id;
+                        js.src=p+"://platform.twitter.com/widgets.js";
+                        fjs.parentNode.insertBefore(js,fjs);
+                    }}(document,"script","twitter-wjs");
+                </script>
             </div>
 
 <%rootpath="tags/"
