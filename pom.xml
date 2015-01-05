@@ -14,7 +14,7 @@
     <inceptionYear>${inception.year}</inceptionYear>
 
     <properties>
-        <jbake.port>8083</jbake.port>
+        <jbake.port>8083</jbake.port><!-- can't be defined in jbake.properties -->
         <jbake.inputDirectory>${project.basedir}/src/jbake/</jbake.inputDirectory>
 
         <maven.install.skip>true</maven.install.skip>
