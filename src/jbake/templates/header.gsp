@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="${config.site_locale.substring(0,2)}">
   <head>
     <meta charset="utf-8">
     <%
@@ -68,8 +68,8 @@
     <link href="${contentRootPath}css/asciidoctor.css" rel="stylesheet" type="text/css">
 
     <link href="${contentRootPath}css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="${contentRootPath}css/shCore.css" rel="stylesheet" type="text/css"/>
-    <link href="${contentRootPath}css/shThemeDefault.css" rel="stylesheet" type="text/css"/>
+    <link href="${contentRootPath}css/shCore.min.css" rel="stylesheet" type="text/css"/>
+    <link href="${contentRootPath}css/shThemeDefault.min.css" rel="stylesheet" type="text/css"/>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
