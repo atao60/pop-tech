@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="${config.site_locale.substring(0,2)}">
   <head>
-    <meta charset="utf-8">
+    <meta charset="${config.site_encoding.toLowerCase()}">
     <%
         def pagetitle = null
         if (content.title) {
