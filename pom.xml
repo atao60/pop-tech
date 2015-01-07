@@ -8,13 +8,13 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>Pop Tech (expérimental - essais en cours)</name><!-- can't be defined in jbake.properties -->
+    <name>Pop Tech (expérimental - essais en cours)</name>
     <description>Pop Tech - Un blog personnel sur la programmation informatique</description>
     <url>https://${repository.domain}/{repository.user}/${repository.name}</url>
     <inceptionYear>2014</inceptionYear>
 
     <properties>
-        <jbake.port>8083</jbake.port><!-- can't be defined in jbake.properties -->
+        <jbake.port>8083</jbake.port>
         <jbake.inputDirectory>${project.basedir}/src/jbake/</jbake.inputDirectory>
 
         <maven.install.skip>true</maven.install.skip>
@@ -24,7 +24,7 @@
         <jar.skipIfEmpty>true</jar.skipIfEmpty>
  -->
         
-        <site.encoding>UTF-8</site.encoding><!-- can't be defined in jbake.properties -->
+        <site.encoding>UTF-8</site.encoding>
         <project.build.sourceEncoding>${site.encoding}</project.build.sourceEncoding>
         <project.reporting.outputEncoding>${site.encoding}</project.reporting.outputEncoding>
 
@@ -172,8 +172,8 @@
                     <skipDeletedFiles>true</skipDeletedFiles>
                     <content>${project.build.directory}/${project.build.finalName}</content>
                         <!-- pubScmUrl default value can't be used here 
-                            as distributionManagement.site.url value is chosen 
-                            to dealt with multi module staging -->
+                            as distributionManagement.site.url value is set 
+                            to deal with multi module staging -->
                     <pubScmUrl>${scm.publish.pubScmUrl}</pubScmUrl>
                     <scmBranch>${scm.publish.scmBranch}</scmBranch>
                 </configuration>
