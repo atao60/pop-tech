@@ -8,10 +8,10 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>Pop Tech</name><!-- can't be defined in jbake.properties -->
-    <description>${site.description}</description>
+    <name>Pop Tech (expérimental - essais en cours)</name><!-- can't be defined in jbake.properties -->
+    <description>Pop Tech - Un blog personnel sur la programmation informatique</description>
     <url>https://${repository.domain}/{repository.user}/${repository.name}</url>
-    <inceptionYear>${inception.year}</inceptionYear>
+    <inceptionYear>2014</inceptionYear>
 
     <properties>
         <jbake.port>8083</jbake.port><!-- can't be defined in jbake.properties -->
@@ -24,8 +24,8 @@
         <jar.skipIfEmpty>true</jar.skipIfEmpty>
  -->
         
-        <siteEncoding>UTF-8</siteEncoding><!-- can't be defined in jbake.properties -->
-        <project.build.sourceEncoding>${siteEncoding}</project.build.sourceEncoding>
+        <site.encoding>UTF-8</site.encoding><!-- can't be defined in jbake.properties -->
+        <project.build.sourceEncoding>${site.encoding}</project.build.sourceEncoding>
         <project.reporting.outputEncoding>${site.encoding}</project.reporting.outputEncoding>
 
         <jdkVersion>1.8</jdkVersion>
@@ -62,6 +62,29 @@
         <scm.publish.pubScmUrl>
             scm:git:git@${repository.domain}:${repository.user}/${repository.name}.git
         </scm.publish.pubScmUrl>
+        
+        <!-- other properties also used by jbake -->
+        <inception.year>${project.inceptionYear}</inception.year>
+        <site.name>${project.name}</site.name>
+        <site.description>${project.description}</site.description>
+        
+        <asset.folder>assets</asset.folder>
+        <template.folder>templates</template.folder>
+        <content.folder>content</content.folder>
+        
+        <bootstrap.version>3.3.1</bootstrap.version>
+        <jquery.version>1.11.2</jquery.version>
+        <syntaxhighlighter.version>3.0.83</syntaxhighlighter.version>
+        <html5shiv.version>3.7.2</html5shiv.version>
+        <respond.version>1.4.2</respond.version>
+        <fontawesome.version>4.2.0</fontawesome.version>
+        <prettify.version>r298</prettify.version>
+        <foundation.version>5.5.0</foundation.version>
+        <asciidoctor-stylesheet-factory>0.0.0</asciidoctor-stylesheet-factory>
+
+        <bootswatch.style>yeti</bootswatch.style>
+
+        <cdn.url>http://cdnjs.cloudflare.com/ajax/libs/</cdn.url>
 
     </properties>
 
@@ -77,12 +100,10 @@
                     <execution>
                         <phase>initialize</phase>
                         <goals>
-                            <goal>read-project-properties</goal>
+                            <goal>write-project-properties</goal>
                         </goals>
                         <configuration>
-                            <files>
-                                <file>${jbake.inputDirectory}/jbake.properties</file>
-                            </files>
+                            <outputFile>${jbake.inputDirectory}/custom.properties</outputFile>
                         </configuration>
                     </execution>
                 </executions>
