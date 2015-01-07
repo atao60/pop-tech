@@ -8,7 +8,7 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>${site.name}</name>
+    <name>Pop Tech</name><!-- can't be defined in jbake.properties -->
     <description>${site.description}</description>
     <url>https://${repository.domain}/{repository.user}/${repository.name}</url>
     <inceptionYear>${inception.year}</inceptionYear>
@@ -23,8 +23,9 @@
         <maven.test.skip>true</maven.test.skip>
         <jar.skipIfEmpty>true</jar.skipIfEmpty>
  -->
-
-        <project.build.sourceEncoding>${site.encoding}</project.build.sourceEncoding>
+        
+        <siteEncoding>UTF-8</siteEncoding><!-- can't be defined in jbake.properties -->
+        <project.build.sourceEncoding>${siteEncoding}</project.build.sourceEncoding>
         <project.reporting.outputEncoding>${site.encoding}</project.reporting.outputEncoding>
 
         <jdkVersion>1.8</jdkVersion>
