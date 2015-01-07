@@ -36,23 +36,93 @@
     %>
     <!-- script src="/js/jquery-${config.jquery_version}.min.js"></script -->
     <!-- script src="/js/bootstrap.min.js"></script -->
-    <script src="${contentRootPath}js/run_prettify.js"></script>
+    <!-- script src="${contentRootPath}js/run_prettify.js"></script -->
 
-    <script src='${contentRootPath}js/shCore.js' type='text/javascript'></script>
-    <script src='${contentRootPath}js/shBrushCss.js' type='text/javascript'></script>
-    <script src='${contentRootPath}js/shBrushJava.js' type='text/javascript'></script>
-    <script src='${contentRootPath}js/shBrushJScript.js' type='text/javascript'></script>
-    <script src='${contentRootPath}js/shBrushSql.js' type='text/javascript'></script>
-    <script src='${contentRootPath}js/shBrushVb.js' type='text/javascript'></script>
-    <script src='${contentRootPath}js/shBrushXml.js' type='text/javascript'></script>
-    <script src='${contentRootPath}js/shBrushBash.js' type='text/javascript'></script>
+    <script src='${contentRootPath}js/shCore.min.js' type='text/javascript'></script>
+    <script src='${contentRootPath}js/shBrushCss.min.js' type='text/javascript'></script>
+    <script src='${contentRootPath}js/shBrushJava.min.js' type='text/javascript'></script>
+    <script src='${contentRootPath}js/shBrushJScript.min.js' type='text/javascript'></script>
+    <script src='${contentRootPath}js/shBrushSql.min.js' type='text/javascript'></script>
+    <script src='${contentRootPath}js/shBrushVb.min.js' type='text/javascript'></script>
+    <script src='${contentRootPath}js/shBrushXml.min.js' type='text/javascript'></script>
+    <script src='${contentRootPath}js/shBrushBash.min.js' type='text/javascript'></script>
 
 
     <script type="text/javascript">
-        SyntaxHighlighter.config.bloggerMode = true;
+        SyntaxHighlighter.config.bloggerMode = ${config.sh_blogger_mode};
         SyntaxHighlighter.all();
     </script>
 
+<% /*
+    <script src='${contentRootPath}js/shCore.js' type='text/javascript'></script>
+    <script src='${contentRootPath}js/shAutoloader.js' type='text/javascript'></script>
+    <script type='text/javascript'></script>
+        function path() {
+            var args = arguments, result = [];
+            for(var i = 0; i < args.length; i++)
+                result.push(args[i].replace('@', '${contentRootPath}js/'));
+            return result;
+        }
+        SyntaxHighlighter.autoloader.apply(null, path(
+            'js jscript javascript @shBrushJScript.js',
+            'bash shell            @shBrushBash.js',
+            'cpp c                 @shBrushCpp.js',
+            'css                   @shBrushCss.js',
+            'groovy                @shBrushGroovy.js',
+            'java                  @shBrushJava.js',
+            'jfx javafx            @shBrushJavaFX.js',
+            'php                   @shBrushPhp.js',
+            'plain text            @shBrushPlain.js',
+            'py python             @shBrushPython.js',
+            'ruby rails ror rb     @shBrushRuby.js',
+            'sass scss             @shBrushSass.js',
+            'scala                 @shBrushScala.js',
+            'sql                   @shBrushSql.js',
+            'xml xhtml xslt html   @shBrushXml.js',
+            'diff patch pas        @shBrushDiff.js',
+            'perl pl               @shBrushPerl.js',
+            'erl erlang            @shBrushErlang.js',
+            'c# c-sharp csharp     @shBrushCSharp,
+            'applescript           @shBrushAppleScript.js',
+            'vb vbnet              @shBrushVb.js',
+            'delphi pascal         @shBrushDelphi.js'
+        ));
+        SyntaxHighlighter.config.bloggerMode = ${config.sh_blogger_mode};
+        SyntaxHighlighter.all();
+    </script>
+*/ %>
+<% /*
+    <script src='${contentRootPath}js/shCore.js' type='text/javascript'></script>
+    <script src='${contentRootPath}js/shAutoloader.js' type='text/javascript'></script>
+    <script type='text/javascript'>
+        SyntaxHighlighter.autoloader(
+            'js jscript javascript ${contentRootPath}js/shBrushJScript.js',
+            'bash shell            ${contentRootPath}js/shBrushBash.js',
+            'cpp c                 ${contentRootPath}js/shBrushCpp.js',
+            'css                   ${contentRootPath}js/shBrushCss.js',
+            'groovy                ${contentRootPath}js/shBrushGroovy.js',
+            'java                  ${contentRootPath}js/shBrushJava.js',
+            'jfx javafx            ${contentRootPath}js/shBrushJavaFX.js',
+            'php                   ${contentRootPath}js/shBrushPhp.js',
+            'plain text            ${contentRootPath}js/shBrushPlain.js',
+            'py python             ${contentRootPath}js/shBrushPython.js',
+            'ruby rails ror rb     ${contentRootPath}js/shBrushRuby.js',
+            'sass scss             ${contentRootPath}js/shBrushSass.js',
+            'scala                 ${contentRootPath}js/shBrushScala.js',
+            'sql                   ${contentRootPath}js/shBrushSql.js',
+            'xml xhtml xslt html   ${contentRootPath}js/shBrushXml.js',
+            'diff patch pas        ${contentRootPath}js/shBrushDiff.js',
+            'perl pl               ${contentRootPath}js/shBrushPerl.js',
+            'erl erlang            ${contentRootPath}js/shBrushErlang.js',
+            'c# c-sharp csharp     ${contentRootPath}js/shBrushCSharp,
+            'applescript           ${contentRootPath}js/shBrushAppleScript.js',
+            'vb vbnet              ${contentRootPath}js/shBrushVb.js',
+            'delphi pascal         ${contentRootPath}js/shBrushDelphi.js'
+        );
+        SyntaxHighlighter.config.bloggerMode = ${config.sh_blogger_mode};
+        SyntaxHighlighter.all();
+    </script>
+*/ %>
     <!-- Asynchronous loading of Google API -->
     <!-- Placed after the last Google+ button -->
     <script type="text/javascript">
