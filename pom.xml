@@ -24,8 +24,8 @@
         <jar.skipIfEmpty>true</jar.skipIfEmpty>
  -->
 
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <project.build.sourceEncoding>${site.encoding}</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>${site.encoding}</project.reporting.outputEncoding>
 
         <jdkVersion>1.8</jdkVersion>
         <maven.compiler.source>${jdkVersion}</maven.compiler.source>
