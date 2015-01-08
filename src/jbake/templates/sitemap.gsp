@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="${config.site_encoding.toUpperCase()}"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     <url>
-        <loc>${config.site_host}/index.html</loc>
+        <loc>${config.site_host}/${config.index_file}</loc>
         <lastmod>${published_date.format("yyyy-MM-dd")}</lastmod>
     </url>
     <url>
-        <loc>${config.site_host}/archive.html</loc>
+        <loc>${config.site_host}/${config.archive_file}</loc>
         <lastmod>${published_date.format("yyyy-MM-dd")}</lastmod>
     </url><%
     alltags.each { tag -> 
@@ -15,7 +15,7 @@
                 post.date
             } .max(); %>
     <url>
-        <loc>${config.site_host}/tags/${tag}.html</loc>
+        <loc>${config.site_host}/${config.tag_path}/${tag}.html</loc>
         <lastmod>${lastMod.format("yyyy-MM-dd")}</lastmod>
     </url><%
   }
