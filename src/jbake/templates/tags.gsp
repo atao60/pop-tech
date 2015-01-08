@@ -5,7 +5,7 @@
 
 	<div class="page-header">
             <div class="row">
-                <div class="col-xs-4 col-md-2"><img src="../img/poptech.png"></div>
+                <div class="col-xs-4 col-md-2"><img src="../img/${config.site_logo}"></div>
                 <div class="col-xs-12 col-md-8"><h1>${config.i18n_tag.capitalize()}${config.i18n_colon} ${tag}</h1></div>
             </div>
 	</div>
