@@ -23,7 +23,7 @@
         <maven.test.skip>true</maven.test.skip>
         <jar.skipIfEmpty>true</jar.skipIfEmpty>
  -->
-        
+
         <site.encoding>UTF-8</site.encoding>
         <project.build.sourceEncoding>${site.encoding}</project.build.sourceEncoding>
         <project.reporting.outputEncoding>${site.encoding}</project.reporting.outputEncoding>
@@ -44,7 +44,7 @@
         <clean.maven.version>2.6.1</clean.maven.version>
         <download.maven.version>1.2.1</download.maven.version>
         <resources.maven.version>2.6</resources.maven.version>
-        
+
         <slf4j.version>1.7.9</slf4j.version>
         <logback.version>1.1.2</logback.version>
         <groovy.version>2.3.8</groovy.version>
@@ -67,11 +67,14 @@
         <inception.year>${project.inceptionYear}</inception.year>
         <site.name>${project.name}</site.name>
         <site.description>${project.description}</site.description>
-        
+        <site.logo>poptech.jpg</site.logo>
+
         <asset.folder>assets</asset.folder>
         <template.folder>templates</template.folder>
         <content.folder>content</content.folder>
-        
+
+        <lib.min><!--.min -->
+        </lib.min>
         <bootstrap.version>3.3.1</bootstrap.version>
         <jquery.version>1.11.2</jquery.version>
         <syntaxhighlighter.version>3.0.83</syntaxhighlighter.version>
@@ -157,6 +160,11 @@
                         <artifactId>asciidoctorj</artifactId>
                         <version>${asciidoc.version}</version>
                     </dependency>
+                    <dependency>
+                        <groupId>org.apache.commons</groupId>
+                        <artifactId>commons-lang3</artifactId>
+                        <version>3.3.2</version>
+                    </dependency>
                 </dependencies>
             </plugin>
             <plugin>
@@ -223,6 +231,25 @@
                             </dependency>
                         </dependencies>
                     </plugin>
+                    
+<!-- 
+
+                    <plugin>
+                        <groupId>org.imgscalr</groupId>
+                        <artifactId>imgscalr-lib</artifactId>
+                        <version>4.2</version>
+                    </plugin>
+                    
+                    <plugin>
+                        <groupId>net.coobird</groupId>
+                        <artifactId>thumbnailator</artifactId>
+                        <version>0.4.8</version>
+                    </plugin>
+
+ -->
+
+
+
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-clean-plugin</artifactId>
@@ -288,7 +315,7 @@
                                     <goal>wget</goal>
                                 </goals>
                                 <configuration>
-                                    <url>http://code.jquery.com/jquery-${jquery.version}.min.js</url>
+                                    <url>http://code.jquery.com/jquery-${jquery.version}${lib.min}.js</url>
                                     <unpack>false</unpack>
                                     <outputDirectory>${jbake.inputDirectory}${asset.folder}/js</outputDirectory>
                                 </configuration>
@@ -300,7 +327,7 @@
                                     <goal>wget</goal>
                                 </goals>
                                 <configuration>
-                                    <url>http://bootswatch.com/${bootswatch.path.in}/bootstrap.min.css</url>
+                                    <url>http://bootswatch.com/${bootswatch.path.in}/bootstrap${lib.min}.css</url>
                                     <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/${bootswatch.path.out}</cacheDirectory>
                                     <unpack>false</unpack>
                                     <outputDirectory>${jbake.inputDirectory}${asset.folder}/css/${bootswatch.path.out}</outputDirectory>
@@ -313,7 +340,7 @@
                                     <goal>wget</goal>
                                 </goals>
                                 <configuration>
-                                    <url>${cdn.url}prettify/${prettify.version}/prettify.min.css</url>
+                                    <url>${cdn.url}prettify/${prettify.version}/prettify${lib.min}.css</url>
                                     <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/prettify-${prettify.version}</cacheDirectory>
                                     <unpack>false</unpack>
                                     <outputDirectory>${jbake.inputDirectory}${asset.folder}/css</outputDirectory>
@@ -326,7 +353,7 @@
                                     <goal>wget</goal>
                                 </goals>
                                 <configuration>
-                                    <url>${cdn.url}prettify/${prettify.version}/prettify.min.js</url>
+                                    <url>${cdn.url}prettify/${prettify.version}/prettify${lib.min}.js</url>
                                     <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/prettify-${prettify.version}</cacheDirectory>
                                     <unpack>false</unpack>
                                     <outputDirectory>${jbake.inputDirectory}${asset.folder}/js</outputDirectory>
@@ -339,7 +366,7 @@
                                     <goal>wget</goal>
                                 </goals>
                                 <configuration>
-                                    <url>${cdn.url}prettify/${prettify.version}/run_prettify.min.js</url>
+                                    <url>${cdn.url}prettify/${prettify.version}/run_prettify${lib.min}.js</url>
                                     <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/prettify-${prettify.version}</cacheDirectory>
                                     <unpack>false</unpack>
                                     <outputDirectory>${jbake.inputDirectory}${asset.folder}/js</outputDirectory>
@@ -352,7 +379,7 @@
                                     <goal>wget</goal>
                                 </goals>
                                 <configuration>
-                                    <url>${cdn.url}html5shiv/${html5shiv.version}/html5shiv.min.js</url>
+                                    <url>${cdn.url}html5shiv/${html5shiv.version}/html5shiv${lib.min}.js</url>
                                     <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/html5shiv-${html5shiv.version}</cacheDirectory>
                                     <unpack>false</unpack>
                                     <outputDirectory>${jbake.inputDirectory}${asset.folder}/js</outputDirectory>
@@ -365,7 +392,7 @@
                                     <goal>wget</goal>
                                 </goals>
                                 <configuration>
-                                    <url>${cdn.url}respond.js/${respond.version}/respond.min.js</url>
+                                    <url>${cdn.url}respond.js/${respond.version}/respond${lib.min}.js</url>
                                     <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/respond-${respond.version}</cacheDirectory>
                                     <unpack>false</unpack>
                                     <outputDirectory>${jbake.inputDirectory}${asset.folder}/js</outputDirectory>
@@ -378,7 +405,7 @@
                                     <goal>wget</goal>
                                 </goals>
                                 <configuration>
-                                    <url>${cdn.url}font-awesome/${fontawesome.version}/css/font-awesome.min.css</url>
+                                    <url>${cdn.url}font-awesome/${fontawesome.version}/css/font-awesome${lib.min}.css</url>
                                     <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/fontawesome-${fontawesome.version}</cacheDirectory>
                                     <unpack>false</unpack>
                                     <outputDirectory>${jbake.inputDirectory}${asset.folder}/css</outputDirectory>
@@ -391,7 +418,7 @@
                                     <goal>wget</goal>
                                 </goals>
                                 <configuration>
-                                    <url>${cdn.url}SyntaxHighlighter/${syntaxhighlighter.version}/scripts/shCore.min.js</url>
+                                    <url>${cdn.url}SyntaxHighlighter/${syntaxhighlighter.version}/scripts/shCore${lib.min}.js</url>
                                     <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/syntaxhighlighter-${syntaxhighlighter.version}</cacheDirectory>
                                     <unpack>false</unpack>
                                     <outputDirectory>${jbake.inputDirectory}${asset.folder}/js</outputDirectory>
@@ -404,7 +431,7 @@
                                     <goal>wget</goal>
                                 </goals>
                                 <configuration>
-                                    <url>${cdn.url}SyntaxHighlighter/${syntaxhighlighter.version}/scripts/shBrushCss.min.js</url>
+                                    <url>${cdn.url}SyntaxHighlighter/${syntaxhighlighter.version}/scripts/shBrushCss${lib.min}.js</url>
                                     <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/syntaxhighlighter-${syntaxhighlighter.version}</cacheDirectory>
                                     <unpack>false</unpack>
                                     <outputDirectory>${jbake.inputDirectory}${asset.folder}/js</outputDirectory>
@@ -417,7 +444,7 @@
                                     <goal>wget</goal>
                                 </goals>
                                 <configuration>
-                                    <url>${cdn.url}SyntaxHighlighter/${syntaxhighlighter.version}/scripts/shBrushJava.min.js</url>
+                                    <url>${cdn.url}SyntaxHighlighter/${syntaxhighlighter.version}/scripts/shBrushJava${lib.min}.js</url>
                                     <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/syntaxhighlighter-${syntaxhighlighter.version}</cacheDirectory>
                                     <unpack>false</unpack>
                                     <outputDirectory>${jbake.inputDirectory}${asset.folder}/js</outputDirectory>
@@ -430,7 +457,7 @@
                                     <goal>wget</goal>
                                 </goals>
                                 <configuration>
-                                    <url>${cdn.url}SyntaxHighlighter/${syntaxhighlighter.version}/scripts/shBrushJScript.min.js</url>
+                                    <url>${cdn.url}SyntaxHighlighter/${syntaxhighlighter.version}/scripts/shBrushJScript${lib.min}.js</url>
                                     <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/syntaxhighlighter-${syntaxhighlighter.version}</cacheDirectory>
                                     <unpack>false</unpack>
                                     <outputDirectory>${jbake.inputDirectory}${asset.folder}/js</outputDirectory>
@@ -443,7 +470,7 @@
                                     <goal>wget</goal>
                                 </goals>
                                 <configuration>
-                                    <url>${cdn.url}SyntaxHighlighter/${syntaxhighlighter.version}/scripts/shBrushSql.min.js</url>
+                                    <url>${cdn.url}SyntaxHighlighter/${syntaxhighlighter.version}/scripts/shBrushSql${lib.min}.js</url>
                                     <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/syntaxhighlighter-${syntaxhighlighter.version}</cacheDirectory>
                                     <unpack>false</unpack>
                                     <outputDirectory>${jbake.inputDirectory}${asset.folder}/js</outputDirectory>
@@ -456,7 +483,7 @@
                                     <goal>wget</goal>
                                 </goals>
                                 <configuration>
-                                    <url>${cdn.url}SyntaxHighlighter/${syntaxhighlighter.version}/scripts/shBrushVb.min.js</url>
+                                    <url>${cdn.url}SyntaxHighlighter/${syntaxhighlighter.version}/scripts/shBrushVb${lib.min}.js</url>
                                     <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/syntaxhighlighter-${syntaxhighlighter.version}</cacheDirectory>
                                     <unpack>false</unpack>
                                     <outputDirectory>${jbake.inputDirectory}${asset.folder}/js</outputDirectory>
@@ -469,7 +496,7 @@
                                     <goal>wget</goal>
                                 </goals>
                                 <configuration>
-                                    <url>${cdn.url}SyntaxHighlighter/${syntaxhighlighter.version}/scripts/shBrushXml.min.js</url>
+                                    <url>${cdn.url}SyntaxHighlighter/${syntaxhighlighter.version}/scripts/shBrushXml${lib.min}.js</url>
                                     <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/syntaxhighlighter-${syntaxhighlighter.version}</cacheDirectory>
                                     <unpack>false</unpack>
                                     <outputDirectory>${jbake.inputDirectory}${asset.folder}/js</outputDirectory>
@@ -482,7 +509,7 @@
                                     <goal>wget</goal>
                                 </goals>
                                 <configuration>
-                                    <url>${cdn.url}SyntaxHighlighter/${syntaxhighlighter.version}/scripts/shBrushBash.min.js</url>
+                                    <url>${cdn.url}SyntaxHighlighter/${syntaxhighlighter.version}/scripts/shBrushBash${lib.min}.js</url>
                                     <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/syntaxhighlighter-${syntaxhighlighter.version}</cacheDirectory>
                                     <unpack>false</unpack>
                                     <outputDirectory>${jbake.inputDirectory}${asset.folder}/js</outputDirectory>
@@ -495,7 +522,7 @@
                                     <goal>wget</goal>
                                 </goals>
                                 <configuration>
-                                    <url>${cdn.url}SyntaxHighlighter/${syntaxhighlighter.version}/styles/shCore.min.css</url>
+                                    <url>${cdn.url}SyntaxHighlighter/${syntaxhighlighter.version}/styles/shCore${lib.min}.css</url>
                                     <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/syntaxhighlighter-${syntaxhighlighter.version}</cacheDirectory>
                                     <unpack>false</unpack>
                                     <outputDirectory>${jbake.inputDirectory}${asset.folder}/css</outputDirectory>
@@ -508,15 +535,43 @@
                                     <goal>wget</goal>
                                 </goals>
                                 <configuration>
-                                    <url>${cdn.url}SyntaxHighlighter/${syntaxhighlighter.version}/styles/shThemeDefault.min.css</url>
+                                    <url>${cdn.url}SyntaxHighlighter/${syntaxhighlighter.version}/styles/shThemeDefault${lib.min}.css</url>
                                     <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/syntaxhighlighter-${syntaxhighlighter.version}</cacheDirectory>
                                     <unpack>false</unpack>
                                     <outputDirectory>${jbake.inputDirectory}${asset.folder}/css</outputDirectory>
                                 </configuration>
                             </execution>
+                            <execution>
+                                <id>install-logo></id>
+                                <phase>initialize</phase>
+                                <goals>
+                                    <goal>wget</goal>
+                                </goals>
+                                <configuration>
+                                    <url>https://farm4.staticflickr.com/3169/2867486785_dd36117f32_q_d.jpg</url>
+                                    <unpack>false</unpack>
+                                    <outputDirectory>${jbake.inputDirectory}${asset.folder}/img</outputDirectory>
+                                    <outputFileName>${site.logo}</outputFileName>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>install-favicon></id>
+                                <phase>validate</phase><!-- to be sure that the file is available for cropping -->
+                                <goals>
+                                    <goal>wget</goal>
+                                </goals>
+                                <configuration>
+                                    <url>https://farm4.staticflickr.com/3012/2869153410_93fb1c47de_q_d.jpg</url>
+                                    <unpack>false</unpack>
+                                    <outputDirectory>${jbake.inputDirectory}${asset.folder}/img</outputDirectory>
+                                </configuration>
+                            </execution>
 
                         </executions>
                     </plugin>
+                    
+                    <!--  net.coobird:thumbnaillator:0.4.8 -->
+
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-resources-plugin</artifactId>
@@ -534,17 +589,17 @@
                                         <resource>
                                             <directory>${project.build.directory}/bootstrap-dist/bootstrap-${bootstrap.version}-dist</directory>
                                             <includes>
-                                                <include>**/css/*.min.css</include>
+                                                <include>**/css/*.css</include>
                                                 <include>**/fonts/*</include>
-                                                <include>**/js/*.min.js</include>
+                                                <include>**/js/*.js</include>
                                             </includes>
                                         </resource>
                                         <resource>
                                             <directory>${project.build.directory}/bootstrap-dist/dist</directory>
                                             <includes>
-                                                <include>**/css/*.min.css</include>
+                                                <include>**/css/*.css</include>
                                                 <include>**/fonts/*</include>
-                                                <include>**/js/*.min.js</include>
+                                                <include>**/js/*.js</include>
                                             </includes>
                                         </resource>
                                     </resources>
