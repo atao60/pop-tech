@@ -1,5 +1,5 @@
-<%rootpath=""%>
-<%include "header.gsp"%>
+<%rootpath="
+"%><%include "header.gsp"%>
 	
 	<%include "menu.gsp"%>
 
