@@ -570,8 +570,6 @@
                         </executions>
                     </plugin>
                     
-                    <!--  net.coobird:thumbnaillator:0.4.8 -->
-
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-resources-plugin</artifactId>
