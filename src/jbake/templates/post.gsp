@@ -45,6 +45,7 @@
         <script type="text/javascript">
             var disqus_shortname = '${config.disqus_shortname}';
             var disqus_identifier = '${content.id}';
+            var disqus_config = function(){this.language="${config.site_locale.substring(0,2).toLowerCase()}"};
             (function() {
                 var dsq = document.createElement('script'); 
                 dsq.type = 'text/javascript'; 

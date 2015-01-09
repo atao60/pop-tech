@@ -177,7 +177,7 @@
                         Publishing blog site for
                         ${project.artifactId}:${project.version}
                     </checkinComment>
-                    <skipDeletedFiles>true</skipDeletedFiles>
+                    <skipDeletedFiles>false</skipDeletedFiles>
                     <content>${project.build.directory}/${project.build.finalName}</content>
                         <!-- pubScmUrl default value can't be used here 
                             as distributionManagement.site.url value is set 
