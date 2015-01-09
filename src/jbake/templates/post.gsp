@@ -1,5 +1,5 @@
-<%rootpath=content.rootpath + "tags/"%>
-<%include "header.gsp"%>
+<%rootpath=content.rootpath + "tags/"
+%><%include "header.gsp"%>
 	
 	<%include "menu.gsp"%>
 	

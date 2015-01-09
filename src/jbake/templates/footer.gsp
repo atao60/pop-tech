@@ -4,21 +4,28 @@
     
     <div id="footer">
       <div class="container">
-        <p class="text-muted credit">
-            L'ensemble des posts de ce blog sont publiés sous licence 
-            <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
-                <img alt="CC BY-NC-SA 4.0" style="border-width:0" 
-                     src="http://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png"/></a>.
-            Crédit photo : <a href="https://www.flickr.com/photos/chavals/">Chaval Brasil</a>
-                <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/2.0/">
-                <img alt="CC BY-NC-ND 2.0" style="border-width:0" 
-                     src="http://i.creativecommons.org/l/by-nc-nd/2.0/88x31.png"/></a>.
+        <p class="text-muted credit"><% 
+            out << sprintf(config.i18n_post_license,
+                              """<a rel='license' href='http://creativecommons.org/licenses/by-nc-sa/4.0/'>
+                <img alt='CC BY-NC-SA 4.0' style='border-width:0' 
+                     src='http://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png'/></a>""")
+            %> <%
+            out << sprintf(config.i18n_photo_credits,
+                              """<a href='https://www.flickr.com/photos/chavals/'>Chaval Brasil</a>
+                <a rel='license' href='http://creativecommons.org/licenses/by-nc-nd/2.0/'>
+                <img alt='CC BY-NC-ND 2.0' style='border-width:0' 
+                     src='http://i.creativecommons.org/l/by-nc-nd/2.0/88x31.png'/></a>""") %>
         </p>
-        <p class="text-muted credit">&copy; ${config.inception_year}<%
-        
+        <p class="text-muted credit"><% 
+            def validityPeriod = config.inception_year
             def currentYear = new Date().getAt(Calendar.YEAR)
-            if ( currentYear > config.inception_year.toInteger() ) { out << "-${currentYear}" }
-        %> | Mixed with <a href="http://twitter.github.com/bootstrap/">Bootstrap v${config.bootstrap_version}</a> | Baked with <a href="http://jbake.org">JBake ${version}</a></p>
+            if ( currentYear > config.inception_year.toInteger() ) { 
+                validityPeriod += "-${currentYear}" 
+            }
+            out << sprintf(config.i18n_copyright, validityPeriod,
+                            "<a href='http://twitter.github.com/bootstrap/'>Bootstrap v${config.bootstrap_version}</a>",
+                            "<a href='http://jbake.org'>JBake ${version}</a>") %>
+        </p>
       </div>
     </div>
     
@@ -34,18 +41,18 @@
             contentRootPath =  "../"
         }
     %>
-    <!-- script src="/js/jquery-${config.jquery_version}.min.js"></script -->
-    <!-- script src="/js/bootstrap.min.js"></script -->
-    <!-- script src="${contentRootPath}js/run_prettify.js"></script -->
+    <!-- script src="/js/jquery-${config.jquery_version}${config.lib_min}.js"></script -->
+    <!-- script src="/js/bootstrap${config.lib_min}.js"></script -->
+    <!-- script src="${contentRootPath}js/run_prettify${config.lib_min}.js"></script -->
 
-    <script src='${contentRootPath}js/shCore.min.js' type='text/javascript'></script>
-    <script src='${contentRootPath}js/shBrushCss.min.js' type='text/javascript'></script>
-    <script src='${contentRootPath}js/shBrushJava.min.js' type='text/javascript'></script>
-    <script src='${contentRootPath}js/shBrushJScript.min.js' type='text/javascript'></script>
-    <script src='${contentRootPath}js/shBrushSql.min.js' type='text/javascript'></script>
-    <script src='${contentRootPath}js/shBrushVb.min.js' type='text/javascript'></script>
-    <script src='${contentRootPath}js/shBrushXml.min.js' type='text/javascript'></script>
-    <script src='${contentRootPath}js/shBrushBash.min.js' type='text/javascript'></script>
+    <script src='${contentRootPath}js/shCore${config.lib_min}.js' type='text/javascript'></script>
+    <script src='${contentRootPath}js/shBrushCss${config.lib_min}.js' type='text/javascript'></script>
+    <script src='${contentRootPath}js/shBrushJava${config.lib_min}.js' type='text/javascript'></script>
+    <script src='${contentRootPath}js/shBrushJScript${config.lib_min}.js' type='text/javascript'></script>
+    <script src='${contentRootPath}js/shBrushSql${config.lib_min}.js' type='text/javascript'></script>
+    <script src='${contentRootPath}js/shBrushVb${config.lib_min}.js' type='text/javascript'></script>
+    <script src='${contentRootPath}js/shBrushXml${config.lib_min}.js' type='text/javascript'></script>
+    <script src='${contentRootPath}js/shBrushBash${config.lib_min}.js' type='text/javascript'></script>
 
 
     <script type="text/javascript">
