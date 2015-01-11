@@ -73,7 +73,8 @@
         <template.folder>templates</template.folder>
         <content.folder>content</content.folder>
 
-        <lib.min><!--.min -->
+        <lib.min><!--.min-->
+            .min
         </lib.min>
         <bootstrap.version>3.3.1</bootstrap.version>
         <jquery.version>1.11.2</jquery.version>
@@ -111,6 +112,31 @@
                     </execution>
                 </executions>
             </plugin>
+                <plugin>
+                    <groupId>com.google.code.maven-replacer-plugin</groupId>
+                    <artifactId>replacer</artifactId>
+                    <executions>
+                        <execution>
+                            <id>add-warning</id>
+                            <phase>initialize</phase>
+                            <goals>
+                                <goal>replace</goal>
+                            </goals>
+                            <configuration>
+                                <ignoreErrors>true</ignoreErrors>
+                                <file>${jbake.inputDirectory}/custom.properties</file>
+                                <regex>true</regex>
+                                <replacements>
+                                    <replacement>
+                                        <token>^#Properties.*</token>
+                                        <value>#WARNING: any change would be lost as it's a generated file.</value>
+                                    </replacement>
+                                </replacements>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+
             <plugin>
                 <groupId>br.com.ingenieux</groupId>
                 <artifactId>jbake-maven-plugin</artifactId>
@@ -187,6 +213,29 @@
                 </configuration>
             </plugin>
         </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>com.google.code.maven-replacer-plugin</groupId>
+                    <artifactId>replacer</artifactId>
+                    <version>1.5.3</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.gmavenplus</groupId>
+                    <artifactId>gmavenplus-plugin</artifactId>
+                    <version>${gmavenplus.maven.version}</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.codehaus.groovy</groupId>
+                            <artifactId>groovy-all</artifactId>
+                                <!-- any version of Groovy >= 1.5.0 should work here -->
+                            <version>${groovy.version}</version>
+                            <scope>runtime</scope>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
 
     <profiles>
@@ -197,10 +246,16 @@
                     <plugin>
                         <groupId>org.codehaus.gmavenplus</groupId>
                         <artifactId>gmavenplus-plugin</artifactId>
-                        <version>${gmavenplus.maven.version}</version>
-                        <configuration>
-                            <scripts>
-                                <script><![CDATA[
+                        <executions>
+                            <execution>
+                                <id>set-bootswatch-pathes</id>
+                                <phase>initialize</phase>
+                                <goals>
+                                    <goal>execute</goal>
+                                </goals>
+                                <configuration>
+                                    <scripts>
+                                        <script><![CDATA[
                                 if ( project.properties['bootswatch.style']
                                          && project.properties['bootswatch.style'] != "bootswatch" ) {
                                     project.properties['bootswatch.path.in'] = project.properties['bootswatch.style']
@@ -209,46 +264,12 @@
                                     project.properties['bootswatch.path.in'] = "bower_components/bootstrap/dist/css"
                                     project.properties['bootswatch.path.out'] = "bootswatch"
                                 }
-                                ]]></script>
-                            </scripts>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>set-bootswatch-pathes</id>
-                                <phase>initialize</phase>
-                                <goals>
-                                    <goal>execute</goal>
-                                </goals>
+                                        ]]></script>
+                                    </scripts>
+                                </configuration>
                             </execution>
                         </executions>
-                        <dependencies>
-                            <dependency>
-                                <groupId>org.codehaus.groovy</groupId>
-                                <artifactId>groovy-all</artifactId>
-                                <!-- any version of Groovy >= 1.5.0 should work here -->
-                                <version>${groovy.version}</version>
-                                <scope>runtime</scope>
-                            </dependency>
-                        </dependencies>
                     </plugin>
-                    
-<!-- 
-
-                    <plugin>
-                        <groupId>org.imgscalr</groupId>
-                        <artifactId>imgscalr-lib</artifactId>
-                        <version>4.2</version>
-                    </plugin>
-                    
-                    <plugin>
-                        <groupId>net.coobird</groupId>
-                        <artifactId>thumbnailator</artifactId>
-                        <version>0.4.8</version>
-                    </plugin>
-
- -->
-
-
 
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
@@ -267,15 +288,14 @@
                             <filesets>
                                 <fileset>
                                     <directory>${jbake.inputDirectory}${asset.folder}</directory>
-                                    <includes>
-                                        <include>**/css/**/bootstrap*.*</include>
-                                        <include>**/css/**/prettify*.*</include>
-                                        <include>**/fonts/glyphicons-halflings-regular.*</include>
-                                        <include>**/js/bootstrap*.*</include>
-                                        <include>**/js/html5shiv*.*</include>
-                                        <include>**/js/respond*.*</include>
-                                        <include>**/js/*prettify*.*</include>
-                                    </includes>
+                                    <excludes>
+                                        <exclude>css/asciidoctor.css</exclude>
+                                        <exclude>css/base.css</exclude>
+                                        <exclude>img/CREDITS</exclude>
+                                        <exclude>robots.txt</exclude>
+                                        <exclude>favicon.ico</exclude>
+                                        <exclude>CNAME</exclude>
+                                    </excludes>
                                     <followSymlinks>false</followSymlinks>
                                 </fileset>
                                 <fileset>
@@ -569,7 +589,7 @@
 
                         </executions>
                     </plugin>
-                    
+
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-resources-plugin</artifactId>
@@ -587,17 +607,17 @@
                                         <resource>
                                             <directory>${project.build.directory}/bootstrap-dist/bootstrap-${bootstrap.version}-dist</directory>
                                             <includes>
-                                                <include>**/css/*.css</include>
+                                                <include>**/css/*${lib.min}.css</include>
                                                 <include>**/fonts/*</include>
-                                                <include>**/js/*.js</include>
+                                                <include>**/js/*${lib.min}.js</include>
                                             </includes>
                                         </resource>
                                         <resource>
                                             <directory>${project.build.directory}/bootstrap-dist/dist</directory>
                                             <includes>
-                                                <include>**/css/*.css</include>
+                                                <include>**/css/*${lib.min}.css</include>
                                                 <include>**/fonts/*</include>
-                                                <include>**/js/*.js</include>
+                                                <include>**/js/*${lib.min}.js</include>
                                             </includes>
                                         </resource>
                                     </resources>
