@@ -6,7 +6,7 @@
                             [
                                 tag,
                                 posts.findAll { post ->
-                                    post.tags.contains(tag)
+                                    post.tags.contains(tag) && (post.status == "published")
                                 }.size()
                             ]
                         } .sort { tag ->
