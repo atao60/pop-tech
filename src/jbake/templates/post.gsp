@@ -32,14 +32,13 @@
         <meta itemprop="url" content="${config.site_host}/${content.uri}"/>
         <meta itemprop="discussionUrl" content="${config.site_host}/${content.uri}#disqus_thread"/>
 
-
         <%current=content
           include 'taglist.gsp'
           include "share.gsp"%>
         
         <div itemprop="blogPost">
-        <p>${content.body}</p>
-        </div>
+        ${content.body}
+        </div><!-- end of blogPost -->
 
         <div id="disqus_thread"></div>
         <script type="text/javascript">

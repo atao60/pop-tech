@@ -36,8 +36,8 @@
                           include "share.gsp"%>
 
                         <div itemprop="blogPost">
-                            <p>${post.body}</p>
-                        </div>
+                            ${post.body}
+                        </div><!-- end of blogPost -->
                         <p><a itemprop="discussionUrl" href="${post.uri}#disqus_thread">${config.i18n_comments.capitalize()}</a></p>
 
                     </div>

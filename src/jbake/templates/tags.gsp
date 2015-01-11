@@ -21,9 +21,10 @@
                 <%current=post
                   include 'taglist.gsp'
                   include "share.gsp"%>
-        
-                <p>${post.body}</p>
-                <p><a href="${post.uri}#disqus_thread">${config.i18n_comments.capitalize()}</a></p>
+                <!-- post: begin -->
+                ${post.body}
+                <!-- post: end -->
+                <p><a href="../${post.uri}#disqus_thread">${config.i18n_comments.capitalize()}</a></p>
             <%}%>
 
         <%}%>
