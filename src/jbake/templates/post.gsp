@@ -53,7 +53,6 @@
                 (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
             })();
         </script>
-        <noscript>Please enable Javascript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus</a></noscript>
     </div>
 
     <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
