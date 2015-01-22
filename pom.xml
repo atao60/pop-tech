@@ -6,9 +6,9 @@
     <groupId>popsuite-blog</groupId>
     <artifactId>pop-tech</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
 
-    <name>Pop Tech (expérimental - essais en cours)</name>
+    <name>Pop Tech</name>
     <description>Pop Tech - Un blog personnel sur la programmation informatique</description>
     <url>https://${repository.domain}/{repository.user}/${repository.name}</url>
     <inceptionYear>2014</inceptionYear>
@@ -17,7 +17,7 @@
         <jbake.port>8083</jbake.port>
         <jbake.inputDirectory>${project.basedir}/src/jbake/</jbake.inputDirectory>
 
-        <maven.install.skip>true</maven.install.skip>
+        <maven.install.skip>false</maven.install.skip>
 <!-- 
         <maven.deploy.skip>true</maven.deploy.skip>
         <maven.test.skip>true</maven.test.skip>
@@ -112,30 +112,31 @@
                     </execution>
                 </executions>
             </plugin>
-                <plugin>
-                    <groupId>com.google.code.maven-replacer-plugin</groupId>
-                    <artifactId>replacer</artifactId>
-                    <executions>
-                        <execution>
-                            <id>add-warning</id>
-                            <phase>initialize</phase>
-                            <goals>
-                                <goal>replace</goal>
-                            </goals>
-                            <configuration>
-                                <ignoreErrors>true</ignoreErrors>
-                                <file>${jbake.inputDirectory}/custom.properties</file>
-                                <regex>true</regex>
-                                <replacements>
-                                    <replacement>
-                                        <token>^#Properties.*</token>
-                                        <value>#WARNING: any change would be lost as it's a generated file.</value>
-                                    </replacement>
-                                </replacements>
-                            </configuration>
-                        </execution>
-                    </executions>
-                </plugin>
+            <plugin>
+                <groupId>com.google.code.maven-replacer-plugin</groupId>
+                <artifactId>replacer</artifactId>
+                <executions>
+                    <execution>
+                        <id>add-warning</id>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>replace</goal>
+                        </goals>
+                        <configuration>
+                            <ignoreErrors>true</ignoreErrors>
+                            <file>${jbake.inputDirectory}/custom.properties</file>
+                            <regex>true</regex>
+                            <replacements>
+                                <replacement>
+                                    <token>^#Properties.*</token>
+                                    <value>#WARNING: any change would be
+                                        lost as it's a generated file.</value>
+                                </replacement>
+                            </replacements>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
 
             <plugin>
                 <groupId>br.com.ingenieux</groupId>
@@ -190,6 +191,11 @@
                         <groupId>org.apache.commons</groupId>
                         <artifactId>commons-lang3</artifactId>
                         <version>3.3.2</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>popsuite-blog</groupId>
+                        <artifactId>pop-tech</artifactId>
+                        <version>1.0-SNAPSHOT</version>
                     </dependency>
                 </dependencies>
             </plugin>
@@ -636,6 +642,106 @@
             <artifactId>rome-fetcher</artifactId>
             <version>${rss.version}</version>
         </dependency>
+        <!-- 
+        <dependency>
+            <groupId>org.ccil.cowan.tagsoup</groupId>
+            <artifactId>tagsoup</artifactId>
+            <version>1.2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-xml</artifactId>
+            <version>2.3.9</version>
+        </dependency>
+         -->
+        <dependency>
+            <groupId>org.apache.tika</groupId>
+            <artifactId>tika-parsers</artifactId>
+            <version>1.6</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>pdfbox</artifactId>
+                    <groupId>org.apache.pdfbox</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>poi-scratchpad</artifactId>
+                    <groupId>org.apache.poi</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>poi</artifactId>
+                    <groupId>org.apache.poi</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>poi-ooxml</artifactId>
+                    <groupId>org.apache.poi</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>netcdf</artifactId>
+                    <groupId>edu.ucar</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>vorbis-java-tika</artifactId>
+                    <groupId>org.gagravarr</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>apache-mime4j-core</artifactId>
+                    <groupId>org.apache.james</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>apache-mime4j-dom</artifactId>
+                    <groupId>org.apache.james</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>bcmail-jdk15</artifactId>
+                    <groupId>org.bouncycastle</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>isoparser</artifactId>
+                    <groupId>com.googlecode.mp4parser</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>rome</artifactId>
+                    <groupId>rome</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>vorbis-java-core</artifactId>
+                    <groupId>org.gagravarr</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>juniversalchardet</artifactId>
+                    <groupId>com.googlecode.juniversalchardet</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>metadata-extractor</artifactId>
+                    <groupId>com.drewnoakes</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>bcprov-jdk15</artifactId>
+                    <groupId>org.bouncycastle</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>commons-codec</artifactId>
+                    <groupId>commons-codec</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>xz</artifactId>
+                    <groupId>org.tukaani</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>jmatio</artifactId>
+                    <groupId>net.sourceforge.jmatio</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>commons-compress</artifactId>
+                    <groupId>org.apache.commons</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>java-libpst</artifactId>
+                    <groupId>com.pff</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
     </dependencies>
 
 </project>

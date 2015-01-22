@@ -1,5 +1,6 @@
-<%rootpath="tags/"%>
-<%include "header.gsp"%>
+<%
+import popsuite.blog.util.Truncator
+rootpath="tags/"%><%include "header.gsp"%>
 
 	<%include "menu.gsp"%>
 
@@ -36,8 +37,10 @@
                           include "share.gsp"%>
 
                         <div itemprop="blogPost">
-                            ${post.body}
-                        </div><!-- end of blogPost -->
+                            <% def ellipsis = String.format("[...] <a class='read-more-post-link' itemprop='url' href='%s' >Lire la suite</a>", post.uri)
+                               def truncator = new Truncator(200).ellipsis(ellipsis).source(post.body)
+                               out << truncator.run()%>
+                         </div><!-- end of blogPost -->
                         <p><a itemprop="discussionUrl" href="${post.uri}#disqus_thread">${config.i18n_comments.capitalize()}</a></p>
 
                     </div>

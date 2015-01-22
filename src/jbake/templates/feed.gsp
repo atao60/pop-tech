@@ -1,4 +1,5 @@
 <%
+import popsuite.blog.util.Truncator
 import org.apache.commons.lang3.StringEscapeUtils
 %><?xml version="1.0" encoding="${config.site_encoding.toUpperCase()}"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
@@ -18,7 +19,7 @@ import org.apache.commons.lang3.StringEscapeUtils
           <pubDate>${new java.text.SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss Z", Locale.US).format(post.date)}</pubDate>
           <guid isPermaLink="false">${config.site_host}/${post.uri}</guid>
           <description>
-              ${StringEscapeUtils.escapeXml(post.body)}  
+              ${StringEscapeUtils.escapeXml(new Truncator(200).ellipsis("[...]").source(post.body).run())}  
           </description>
       </item>
       <%}%>

@@ -58,3 +58,16 @@ code {
 .sidebar-module-inset ol:last-child {
     margin-bottom: 0;
 }
+
+/* Custom index page CSS
+-------------------------------------------------- */
+a.read-more-post-link {
+    float: right !important;
+    font-style: italic;
+}
+/* let add an arrow before the "read more" link */
+a.read-more-post-link:before {
+    display: inline-block;
+    padding-right: 0.3em; /* Add some space between the text and the arrow */
+    content: "\25BA"; /* Unicode for right arrow */ 
+}
