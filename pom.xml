@@ -78,7 +78,7 @@
         </lib.min>
         <bootstrap.version>3.3.1</bootstrap.version>
         <jquery.version>1.11.2</jquery.version>
-        <syntaxhighlighter.version>3.0.83</syntaxhighlighter.version>
+        <syntaxhighlighter.version><!-- 3.0.83, 3.0.9 -->3.0.83</syntaxhighlighter.version>
         <html5shiv.version>3.7.2</html5shiv.version>
         <respond.version>1.4.2</respond.version>
         <fontawesome.version>4.2.0</fontawesome.version>
@@ -86,9 +86,11 @@
         <foundation.version>5.5.0</foundation.version>
         <asciidoctor-stylesheet-factory>0.0.0</asciidoctor-stylesheet-factory>
 
-        <bootswatch.style>yeti</bootswatch.style>
+        <bootswatch.style><!-- yeti -->yeti</bootswatch.style>
 
         <cdn.url>http://cdnjs.cloudflare.com/ajax/libs/</cdn.url>
+        <shl.site.url>http://alexgorbatchev.com/SyntaxHighlighter/</shl.site.url>
+        <shl.url>http://alexgorbatchev.com/pub/sh/</shl.url>
 
     </properties>
 
@@ -129,8 +131,8 @@
                             <replacements>
                                 <replacement>
                                     <token>^#Properties.*</token>
-                                    <value>#WARNING: any change would be
-                                        lost as it's a generated file.</value>
+                                    <value>#WARNING: any change would be lost as it's a generated file.
+                                    </value>
                                 </replacement>
                             </replacements>
                         </configuration>
@@ -438,13 +440,26 @@
                                 </configuration>
                             </execution>
                             <execution>
+                                <id>install-syntaxhighlighter</id>
+                                <phase>initialize</phase>
+                                <goals>
+                                    <goal>wget</goal>
+                                </goals>
+                                <configuration>
+                                    <url>${shl.site.url}download/syntaxhighlighter_${syntaxhighlighter.version}.zip</url>
+                                    <outputDirectory>${project.build.directory}/syntaxhighlighter-dist</outputDirectory>
+                                    <unpack>true</unpack>
+                                </configuration>
+                            </execution>
+<!--                             
+                            <execution>
                                 <id>install-shl-core-js></id>
                                 <phase>initialize</phase>
                                 <goals>
                                     <goal>wget</goal>
                                 </goals>
                                 <configuration>
-                                    <url>${cdn.url}SyntaxHighlighter/${syntaxhighlighter.version}/scripts/shCore${lib.min}.js</url>
+                                    <url>${shl.url}current/scripts/shCore.js</url>
                                     <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/syntaxhighlighter-${syntaxhighlighter.version}</cacheDirectory>
                                     <unpack>false</unpack>
                                     <outputDirectory>${jbake.inputDirectory}${asset.folder}/js</outputDirectory>
@@ -457,7 +472,7 @@
                                     <goal>wget</goal>
                                 </goals>
                                 <configuration>
-                                    <url>${cdn.url}SyntaxHighlighter/${syntaxhighlighter.version}/scripts/shBrushCss${lib.min}.js</url>
+                                    <url>${shl.url}current/scripts/shBrushCss.js</url>
                                     <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/syntaxhighlighter-${syntaxhighlighter.version}</cacheDirectory>
                                     <unpack>false</unpack>
                                     <outputDirectory>${jbake.inputDirectory}${asset.folder}/js</outputDirectory>
@@ -470,7 +485,7 @@
                                     <goal>wget</goal>
                                 </goals>
                                 <configuration>
-                                    <url>${cdn.url}SyntaxHighlighter/${syntaxhighlighter.version}/scripts/shBrushJava${lib.min}.js</url>
+                                    <url>${shl.url}current/scripts/shBrushJava.js</url>
                                     <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/syntaxhighlighter-${syntaxhighlighter.version}</cacheDirectory>
                                     <unpack>false</unpack>
                                     <outputDirectory>${jbake.inputDirectory}${asset.folder}/js</outputDirectory>
@@ -483,7 +498,7 @@
                                     <goal>wget</goal>
                                 </goals>
                                 <configuration>
-                                    <url>${cdn.url}SyntaxHighlighter/${syntaxhighlighter.version}/scripts/shBrushJScript${lib.min}.js</url>
+                                    <url>${shl.url}current/scripts/shBrushJScript.js</url>
                                     <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/syntaxhighlighter-${syntaxhighlighter.version}</cacheDirectory>
                                     <unpack>false</unpack>
                                     <outputDirectory>${jbake.inputDirectory}${asset.folder}/js</outputDirectory>
@@ -496,7 +511,7 @@
                                     <goal>wget</goal>
                                 </goals>
                                 <configuration>
-                                    <url>${cdn.url}SyntaxHighlighter/${syntaxhighlighter.version}/scripts/shBrushSql${lib.min}.js</url>
+                                    <url>${shl.url}current/scripts/shBrushSql.js</url>
                                     <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/syntaxhighlighter-${syntaxhighlighter.version}</cacheDirectory>
                                     <unpack>false</unpack>
                                     <outputDirectory>${jbake.inputDirectory}${asset.folder}/js</outputDirectory>
@@ -509,7 +524,7 @@
                                     <goal>wget</goal>
                                 </goals>
                                 <configuration>
-                                    <url>${cdn.url}SyntaxHighlighter/${syntaxhighlighter.version}/scripts/shBrushVb${lib.min}.js</url>
+                                    <url>${shl.url}current/scripts/shBrushVb.js</url>
                                     <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/syntaxhighlighter-${syntaxhighlighter.version}</cacheDirectory>
                                     <unpack>false</unpack>
                                     <outputDirectory>${jbake.inputDirectory}${asset.folder}/js</outputDirectory>
@@ -522,7 +537,7 @@
                                     <goal>wget</goal>
                                 </goals>
                                 <configuration>
-                                    <url>${cdn.url}SyntaxHighlighter/${syntaxhighlighter.version}/scripts/shBrushXml${lib.min}.js</url>
+                                    <url>${shl.url}current/scripts/shBrushXml.js</url>
                                     <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/syntaxhighlighter-${syntaxhighlighter.version}</cacheDirectory>
                                     <unpack>false</unpack>
                                     <outputDirectory>${jbake.inputDirectory}${asset.folder}/js</outputDirectory>
@@ -535,7 +550,7 @@
                                     <goal>wget</goal>
                                 </goals>
                                 <configuration>
-                                    <url>${cdn.url}SyntaxHighlighter/${syntaxhighlighter.version}/scripts/shBrushBash${lib.min}.js</url>
+                                    <url>${shl.url}current/scripts/shBrushBash.js</url>
                                     <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/syntaxhighlighter-${syntaxhighlighter.version}</cacheDirectory>
                                     <unpack>false</unpack>
                                     <outputDirectory>${jbake.inputDirectory}${asset.folder}/js</outputDirectory>
@@ -548,7 +563,7 @@
                                     <goal>wget</goal>
                                 </goals>
                                 <configuration>
-                                    <url>${cdn.url}SyntaxHighlighter/${syntaxhighlighter.version}/styles/shCore${lib.min}.css</url>
+                                    <url>${shl.url}current/styles/shCore.css</url>
                                     <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/syntaxhighlighter-${syntaxhighlighter.version}</cacheDirectory>
                                     <unpack>false</unpack>
                                     <outputDirectory>${jbake.inputDirectory}${asset.folder}/css</outputDirectory>
@@ -561,12 +576,13 @@
                                     <goal>wget</goal>
                                 </goals>
                                 <configuration>
-                                    <url>${cdn.url}SyntaxHighlighter/${syntaxhighlighter.version}/styles/shThemeDefault${lib.min}.css</url>
+                                    <url>${shl.url}current/styles/shThemeDefault.css</url>
                                     <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/syntaxhighlighter-${syntaxhighlighter.version}</cacheDirectory>
                                     <unpack>false</unpack>
                                     <outputDirectory>${jbake.inputDirectory}${asset.folder}/css</outputDirectory>
                                 </configuration>
                             </execution>
+ -->                            
                             <execution>
                                 <id>install-logo></id>
                                 <phase>initialize</phase>
@@ -625,6 +641,36 @@
                                                 <include>**/fonts/*</include>
                                                 <include>**/js/*${lib.min}.js</include>
                                             </includes>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>move-syntaxhighlighter-styles</id>
+                                <phase>initialize</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${jbake.inputDirectory}${asset.folder}/css</outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>${project.build.directory}/syntaxhighlighter-dist/syntaxhighlighter_${syntaxhighlighter.version}/styles</directory>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>move-syntaxhighlighter-scripts</id>
+                                <phase>initialize</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${jbake.inputDirectory}${asset.folder}/js</outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>${project.build.directory}/syntaxhighlighter-dist/syntaxhighlighter_${syntaxhighlighter.version}/scripts</directory>
                                         </resource>
                                     </resources>
                                 </configuration>
