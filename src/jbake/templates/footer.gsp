@@ -73,7 +73,7 @@
             ['delphi', 'pascal', '${contentRootPath}js/shBrushDelphi.js']
         );
         SyntaxHighlighter.config.bloggerMode = ${config.sh_blogger_mode};
-        SyntaxHighlighter.config.tagName="code";
+<% /*        SyntaxHighlighter.defaults['toolbar'] = false;  */ %>
         SyntaxHighlighter.all();
     </script>
     
