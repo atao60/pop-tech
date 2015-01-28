@@ -71,8 +71,8 @@
     <link href="${contentRootPath}css/base.css" rel="stylesheet" type="text/css">
 
     <link href="${contentRootPath}css/font-awesome${config.lib_min}.css" rel="stylesheet" type="text/css">
-    <link href="${contentRootPath}css/shCore.css" rel="stylesheet" type="text/css"/>
-    <link href="${contentRootPath}css/shThemeDefault.css" rel="stylesheet" type="text/css"/>
+    <link href="${contentRootPath}css/shCore${config.lib_min}.css" rel="stylesheet" type="text/css"/>
+    <link href="${contentRootPath}css/shThemeDefault${config.lib_min}.css" rel="stylesheet" type="text/css"/>
     <!-- name collision with Bootsrapt class "container" -->
     <style>
        .syntaxhighlighter table .container:before {

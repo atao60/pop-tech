@@ -73,9 +73,7 @@
         <template.folder>templates</template.folder>
         <content.folder>content</content.folder>
 
-        <lib.min><!--.min-->
-            .min
-        </lib.min>
+        <lib.min><!--.min-->.min</lib.min>
         <bootstrap.version>3.3.1</bootstrap.version>
         <jquery.version>1.11.2</jquery.version>
         <syntaxhighlighter.version><!-- 3.0.83, 3.0.9 -->3.0.83</syntaxhighlighter.version>
@@ -440,7 +438,7 @@
                                 </configuration>
                             </execution>
                             <execution>
-                                <id>install-syntaxhighlighter</id>
+                                <id>install-shl</id>
                                 <phase>initialize</phase>
                                 <goals>
                                     <goal>wget</goal>
@@ -451,138 +449,7 @@
                                     <unpack>true</unpack>
                                 </configuration>
                             </execution>
-<!--                             
-                            <execution>
-                                <id>install-shl-core-js></id>
-                                <phase>initialize</phase>
-                                <goals>
-                                    <goal>wget</goal>
-                                </goals>
-                                <configuration>
-                                    <url>${shl.url}current/scripts/shCore.js</url>
-                                    <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/syntaxhighlighter-${syntaxhighlighter.version}</cacheDirectory>
-                                    <unpack>false</unpack>
-                                    <outputDirectory>${jbake.inputDirectory}${asset.folder}/js</outputDirectory>
-                                </configuration>
-                            </execution>
-                            <execution>
-                                <id>install-shl-css-js></id>
-                                <phase>initialize</phase>
-                                <goals>
-                                    <goal>wget</goal>
-                                </goals>
-                                <configuration>
-                                    <url>${shl.url}current/scripts/shBrushCss.js</url>
-                                    <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/syntaxhighlighter-${syntaxhighlighter.version}</cacheDirectory>
-                                    <unpack>false</unpack>
-                                    <outputDirectory>${jbake.inputDirectory}${asset.folder}/js</outputDirectory>
-                                </configuration>
-                            </execution>
-                            <execution>
-                                <id>install-shl-java-js></id>
-                                <phase>initialize</phase>
-                                <goals>
-                                    <goal>wget</goal>
-                                </goals>
-                                <configuration>
-                                    <url>${shl.url}current/scripts/shBrushJava.js</url>
-                                    <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/syntaxhighlighter-${syntaxhighlighter.version}</cacheDirectory>
-                                    <unpack>false</unpack>
-                                    <outputDirectory>${jbake.inputDirectory}${asset.folder}/js</outputDirectory>
-                                </configuration>
-                            </execution>
-                            <execution>
-                                <id>install-shl-jscript-js></id>
-                                <phase>initialize</phase>
-                                <goals>
-                                    <goal>wget</goal>
-                                </goals>
-                                <configuration>
-                                    <url>${shl.url}current/scripts/shBrushJScript.js</url>
-                                    <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/syntaxhighlighter-${syntaxhighlighter.version}</cacheDirectory>
-                                    <unpack>false</unpack>
-                                    <outputDirectory>${jbake.inputDirectory}${asset.folder}/js</outputDirectory>
-                                </configuration>
-                            </execution>
-                            <execution>
-                                <id>install-shl-sql-js></id>
-                                <phase>initialize</phase>
-                                <goals>
-                                    <goal>wget</goal>
-                                </goals>
-                                <configuration>
-                                    <url>${shl.url}current/scripts/shBrushSql.js</url>
-                                    <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/syntaxhighlighter-${syntaxhighlighter.version}</cacheDirectory>
-                                    <unpack>false</unpack>
-                                    <outputDirectory>${jbake.inputDirectory}${asset.folder}/js</outputDirectory>
-                                </configuration>
-                            </execution>
-                            <execution>
-                                <id>install-shl-vb-js></id>
-                                <phase>initialize</phase>
-                                <goals>
-                                    <goal>wget</goal>
-                                </goals>
-                                <configuration>
-                                    <url>${shl.url}current/scripts/shBrushVb.js</url>
-                                    <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/syntaxhighlighter-${syntaxhighlighter.version}</cacheDirectory>
-                                    <unpack>false</unpack>
-                                    <outputDirectory>${jbake.inputDirectory}${asset.folder}/js</outputDirectory>
-                                </configuration>
-                            </execution>
-                            <execution>
-                                <id>install-shl-xml-js></id>
-                                <phase>initialize</phase>
-                                <goals>
-                                    <goal>wget</goal>
-                                </goals>
-                                <configuration>
-                                    <url>${shl.url}current/scripts/shBrushXml.js</url>
-                                    <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/syntaxhighlighter-${syntaxhighlighter.version}</cacheDirectory>
-                                    <unpack>false</unpack>
-                                    <outputDirectory>${jbake.inputDirectory}${asset.folder}/js</outputDirectory>
-                                </configuration>
-                            </execution>
-                            <execution>
-                                <id>install-shl-bash-js></id>
-                                <phase>initialize</phase>
-                                <goals>
-                                    <goal>wget</goal>
-                                </goals>
-                                <configuration>
-                                    <url>${shl.url}current/scripts/shBrushBash.js</url>
-                                    <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/syntaxhighlighter-${syntaxhighlighter.version}</cacheDirectory>
-                                    <unpack>false</unpack>
-                                    <outputDirectory>${jbake.inputDirectory}${asset.folder}/js</outputDirectory>
-                                </configuration>
-                            </execution>
-                            <execution>
-                                <id>install-shl-core-css></id>
-                                <phase>initialize</phase>
-                                <goals>
-                                    <goal>wget</goal>
-                                </goals>
-                                <configuration>
-                                    <url>${shl.url}current/styles/shCore.css</url>
-                                    <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/syntaxhighlighter-${syntaxhighlighter.version}</cacheDirectory>
-                                    <unpack>false</unpack>
-                                    <outputDirectory>${jbake.inputDirectory}${asset.folder}/css</outputDirectory>
-                                </configuration>
-                            </execution>
-                            <execution>
-                                <id>install-shl-td-css></id>
-                                <phase>initialize</phase>
-                                <goals>
-                                    <goal>wget</goal>
-                                </goals>
-                                <configuration>
-                                    <url>${shl.url}current/styles/shThemeDefault.css</url>
-                                    <cacheDirectory>${settings.localRepository}/.cache/maven-download-plugin/syntaxhighlighter-${syntaxhighlighter.version}</cacheDirectory>
-                                    <unpack>false</unpack>
-                                    <outputDirectory>${jbake.inputDirectory}${asset.folder}/css</outputDirectory>
-                                </configuration>
-                            </execution>
- -->                            
+                            
                             <execution>
                                 <id>install-logo></id>
                                 <phase>initialize</phase>
@@ -609,6 +476,44 @@
                                 </configuration>
                             </execution>
 
+                        </executions>
+                    </plugin>
+                    
+                    <plugin>
+                        <groupId>com.samaxes.maven</groupId>
+                        <artifactId>minify-maven-plugin</artifactId>
+                        <version>1.7.4</version>
+                        <executions>
+                            <execution>
+                                <id>minify-shl</id>
+                                <phase>initialize</phase>
+                                <goals>
+                                    <goal>minify</goal>
+                                </goals>
+                                <configuration>
+                                    <webappSourceDir>${project.build.directory}/</webappSourceDir>
+                                    <webappTargetDir>${jbake.inputDirectory}${asset.folder}/</webappTargetDir>
+                                    <cssSourceDir>syntaxhighlighter-dist/syntaxhighlighter_${syntaxhighlighter.version}/styles</cssSourceDir>
+                                    <cssSourceIncludes>
+                                        <include>*</include>
+                                    </cssSourceIncludes>
+                                    <cssSourceExcludes>
+                                        <exclude>*${lib.min}.css</exclude>
+                                    </cssSourceExcludes>
+                                    <cssTargetDir>css</cssTargetDir>
+                                    <jsSourceDir>syntaxhighlighter-dist/syntaxhighlighter_${syntaxhighlighter.version}/scripts</jsSourceDir>
+                                    <jsSourceIncludes>
+                                        <include>*</include>
+                                    </jsSourceIncludes>
+                                    <jsSourceExcludes>
+                                        <exclude>*${lib.min}.js</exclude>
+                                    </jsSourceExcludes>
+                                    <jsTargetDir>js</jsTargetDir>
+                                    <skipMerge>true</skipMerge>
+                                    <yuiNoMunge>true</yuiNoMunge>
+                                    <verbose>true</verbose>
+                                </configuration>
+                            </execution>
                         </executions>
                     </plugin>
 
@@ -645,6 +550,7 @@
                                     </resources>
                                 </configuration>
                             </execution>
+                             
                             <execution>
                                 <id>move-syntaxhighlighter-styles</id>
                                 <phase>initialize</phase>
@@ -656,6 +562,9 @@
                                     <resources>
                                         <resource>
                                             <directory>${project.build.directory}/syntaxhighlighter-dist/syntaxhighlighter_${syntaxhighlighter.version}/styles</directory>
+                                            <includes>
+                                                <include>*${lib.min}.css</include>
+                                            </includes>
                                         </resource>
                                     </resources>
                                 </configuration>
@@ -671,10 +580,14 @@
                                     <resources>
                                         <resource>
                                             <directory>${project.build.directory}/syntaxhighlighter-dist/syntaxhighlighter_${syntaxhighlighter.version}/scripts</directory>
+                                            <includes>
+                                                <include>*${lib.min}.js</include>
+                                            </includes>
                                         </resource>
                                     </resources>
                                 </configuration>
                             </execution>
+                            
                         </executions>
                     </plugin>
                 </plugins>
