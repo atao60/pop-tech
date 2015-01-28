@@ -1,10 +1,14 @@
 package popsuite.blog.util;
 
+import static popsuite.blog.util.TruncateContentHandler.SPACE_PATTERN_BASE;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.tika.metadata.Metadata;
 import org.apache.tika.parser.AutoDetectParser;
@@ -27,13 +31,14 @@ public class Truncator {
 
     private static final String  HTML_CONTENT_TYPE  = "text/html";
     private static final int     NO_LIMIT           = TruncateContentHandler.NO_LIMIT;
-    private static final String  ELLIPSIS_TAG = "@@@ellipsis***tag@@@";
+    private static final String  READ_MORE_TAG      = "@@@readmore***tag@@@";
     private static final int     DEFAULT_LIMIT      = 60;
     private static final Charset DEFAULT_CHARSET    = StandardCharsets.UTF_8;
     private static final Unit    DEFAULT_UNIT       = Unit.word;
     private static final boolean DEFAULT_COUNTING_WITH_SPACES = false;
     private static final boolean DEFAULT_SMART_TRUNCATION     = true;
     private static final String  DEFAULT_ELLIPSIS             = "...";
+    private static final String  DEFAULT_READ_MORE            = "";
     private static final TruncationStatus  DEFAULT_TRUNCATION_STATUS    = TruncationStatus.unknow;
     
     private final Unit unit;
@@ -44,6 +49,7 @@ public class Truncator {
     private boolean countingWithSpaces = DEFAULT_COUNTING_WITH_SPACES;
     private boolean smartTruncation = DEFAULT_SMART_TRUNCATION;
     private String  ellipsis = DEFAULT_ELLIPSIS;
+    private String  readmore = DEFAULT_READ_MORE;
     private TruncationStatus    truncationStatus    = DEFAULT_TRUNCATION_STATUS;
     
     public Truncator()  {
@@ -96,6 +102,14 @@ public class Truncator {
         return this;
     }
     
+    public Truncator readmore(final String readmore) {
+        if (readmore == null) 
+            throw new IllegalArgumentException("The 'Read More' message can't be null.");
+        
+        this.readmore = readmore;
+        return this;
+    }
+    
     public boolean isTroncated() {
         if (truncationStatus == TruncationStatus.unknow)
             throw new IllegalStateException("Run the truncator before asking.");
@@ -107,6 +121,7 @@ public class Truncator {
             throw new IllegalStateException("Not ready: a source is required.");
 
         byte[] buffer = null;
+        String currentElementName = "";
 
         // generate a complete and valid xml document from the fragment 
         // then truncate it
@@ -114,7 +129,7 @@ public class Truncator {
         try (InputStream is = new ByteArrayInputStream(source.getBytes(charset));
                         ByteArrayOutputStream os = new ByteArrayOutputStream()) {
 
-            ContentHandler textHandler = new ToXmlContentHandler(os, charset);
+            ToXmlContentHandler textHandler = new ToXmlContentHandler(os, charset);
 
             // ignore the spaces
             TruncateContentHandler writerhandler = new TruncateContentHandler(textHandler, limit);
@@ -133,10 +148,41 @@ public class Truncator {
                     throw e;
                 
                 writerhandler.endDocument();
-                os.write(ELLIPSIS_TAG.getBytes(charset));
                 truncationStatus = TruncationStatus.truncated;
+                if(textHandler.getCurrentElementName().matches("^(?:[^:]+:)?a$")) {
+                    currentElementName =  textHandler.getCurrentElementName();
+                }
+                
             }
             buffer = os.toByteArray();
+        }
+        
+        /*
+           Tagsoup doesn't like link with attributes inside the "read more": it removes the attributes! So we need here
+           a late substitution. Then you are solely responsible for the readmore content.
+         */
+        if (isTroncated()) {
+            String truncated = new String(buffer, charset.name());
+            if(currentElementName.isEmpty()) {
+                truncated += ellipsis;
+                truncated += READ_MORE_TAG;
+            } else {
+                String unclosedPattern = "(?s)"  + SPACE_PATTERN_BASE + "*<%s\\s.*>" + SPACE_PATTERN_BASE + "*$";
+                Pattern pattern = Pattern.compile(unclosedPattern);
+                Matcher matcher = pattern.matcher(truncated);
+                if (matcher.find()) {
+                    StringBuffer sb = new StringBuffer();
+                    matcher.appendReplacement(sb, "");
+                    truncated = sb.toString();
+                    truncated += ellipsis;
+                    truncated += READ_MORE_TAG;                    
+                } else {
+                    truncated += ellipsis;
+                    truncated += "</" + currentElementName + ">";
+                    truncated += READ_MORE_TAG;
+                }
+            }
+            buffer = truncated.getBytes(charset);
         }
 
         // close all the tags left open after the truncature to get a complete
@@ -154,16 +200,16 @@ public class Truncator {
             buffer = os.toByteArray();
         }
 
-        // keep only the truncated fragment, i.e. the content of the "body"
-        // element
-        // a regex can be used here as there is only one body element and it's a valid
-        // html document (thanks to tagsoup).
-
-        String result = new String(buffer).replaceAll("(?s)^.*<body>(.*)</body></html>$", "$1");
+        /* keep only the truncated fragment, i.e. the content of the "body" element
+           a regex can be used here as there is only one body element and it's a valid
+           html document (thanks to tagsoup).
+           */
+        String result = new String(buffer);
+        result = result.replaceFirst("(?s)^.*<body>(.*)</body></html>$", "$1");
+        
         if (isTroncated()) {
-            result = result.replace(ELLIPSIS_TAG, ellipsis);
+            result = result.replace(READ_MORE_TAG, readmore);
         }
         return result;
     }
-
 }

@@ -35,8 +35,8 @@ public class TruncateContentHandler extends ContentHandlerDecorator {
     private static final Unit   DEFAULT_UNIT        = Unit.character;
 
     private static final String EMPTY_STRING        = "";
-    // SPACE_PATTERN_BASE must be defined in accordance with the method {@link #isSpace} for Unicode Cope Point
-    private static final String SPACE_PATTERN_BASE  = "\\p{javaWhitespace}\\p{Z}";
+    /* SPACE_PATTERN_BASE must be defined in accordance with the method {@link #isSpace} for Unicode Cope Point */
+    public static final String SPACE_PATTERN_BASE  = "\\p{javaWhitespace}\\p{Z}";
     private static final String SPACE_PATTERN       = "[" + SPACE_PATTERN_BASE + "]";
     private static final String SPACES_PATTERN      = SPACE_PATTERN + "+";
     private static final String NO_SPACE_PATTERN    = "[^" + SPACE_PATTERN_BASE + "]";
@@ -45,7 +45,7 @@ public class TruncateContentHandler extends ContentHandlerDecorator {
     private static final String SPACES_TAIL         = "(?s)" + SPACES_PATTERN + "$";
 
     private boolean             withSpaces          = true;
-    // even with LF, FF, ...
+    /* even with LF, FF, ... */
     private boolean             withAllSpaces       = false;
     private boolean             withSmartTruncation = true;
     private Unit                unit                = DEFAULT_UNIT;
