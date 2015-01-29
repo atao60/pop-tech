@@ -51,7 +51,9 @@ Run
 Roadmap
 ------
 
-New posts!
+* Add license files
+
+* Apache Tika 1.7
 	  
 References
 ------	  
@@ -62,7 +64,11 @@ References
 
 * [JBake Maven Plugin Walkthrough](http://docs.ingenieux.com.br/project/jbake/walkthrough.html)	  
 	  
-Credits
+Credits, licenses, copyright
 ------
 
-* photos : [Chaval Brasil](https://www.flickr.com/photos/chavals/) ([CC BY-NC-ND 2.0](https://creativecommons.org/licenses/by-nc-nd/2.0/))
+* Pop Tech posts are published under [Creative Commons by-nc-sa 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+* Groovy templates and Java classes are under [Apache 2 license](http://www.apache.org/licenses/LICENSE-2.0).
+
+* Photos : [Chaval Brasil](https://www.flickr.com/photos/chavals/) ([CC BY-NC-ND 2.0](https://creativecommons.org/licenses/by-nc-nd/2.0/))
