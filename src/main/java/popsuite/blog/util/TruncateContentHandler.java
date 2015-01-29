@@ -36,8 +36,8 @@ public class TruncateContentHandler extends ContentHandlerDecorator {
 
     private static final String EMPTY_STRING        = "";
     /* SPACE_PATTERN_BASE must be defined in accordance with the method {@link #isSpace} for Unicode Cope Point */
-    public static final String SPACE_PATTERN_BASE  = "\\p{javaWhitespace}\\p{Z}";
-    private static final String SPACE_PATTERN       = "[" + SPACE_PATTERN_BASE + "]";
+    public static final String  SPACE_PATTERN_BASE  = "\\p{javaWhitespace}\\p{Z}";
+    public static final String  SPACE_PATTERN       = "[" + SPACE_PATTERN_BASE + "]";
     private static final String SPACES_PATTERN      = SPACE_PATTERN + "+";
     private static final String NO_SPACE_PATTERN    = "[^" + SPACE_PATTERN_BASE + "]";
     private static final String TRUNCATED_LAST_WORD = "(?s)" + SPACES_PATTERN + NO_SPACE_PATTERN + "*$";
