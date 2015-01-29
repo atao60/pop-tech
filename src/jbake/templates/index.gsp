@@ -37,8 +37,8 @@ rootpath="tags/"%><%include "header.gsp"%>
                           include "share.gsp"%>
 
                         <div itemprop="blogPost">
-                            <% def readmore = String.format("${config.summery_readmore}", post.uri)
-                               def truncator = new Truncator(config.summery_length.toInteger()).readmore(readmore).ellipsis(config.summery_ellipsis).source(post.body)
+                            <% def readmore = String.format("${config.summary_readmore}", post.uri)
+                               def truncator = new Truncator(config.summary_length.toInteger()).readmore(readmore).ellipsis(config.summary_ellipsis).source(post.body)
                                out << truncator.run()%>
                          </div><!-- end of blogPost -->
                         <p><a itemprop="discussionUrl" href="${post.uri}#disqus_thread">${config.i18n_comments.capitalize()}</a></p>

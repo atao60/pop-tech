@@ -19,7 +19,7 @@ import org.apache.commons.lang3.StringEscapeUtils
           <pubDate>${new java.text.SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss Z", Locale.US).format(post.date)}</pubDate>
           <guid isPermaLink="false">${config.site_host}/${post.uri}</guid>
           <description>
-              ${StringEscapeUtils.escapeXml(new Truncator(config.summery_length.toInteger()).ellipsis(config.summery_ellipsis).source(post.body).run())}  
+              ${StringEscapeUtils.escapeXml(new Truncator(config.summary_length.toInteger()).readmore("").ellipsis(config.summary_ellipsis).source(post.body).run())}  
           </description>
       </item>
       <%}%>
