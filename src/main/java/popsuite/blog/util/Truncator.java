@@ -51,7 +51,11 @@ public class Truncator {
     private static final String           HTML_BODY_TAG_CONTENT                      = "(?s)^.*<body>(.*)</body>\\s*</html>\\s*$";
     private static final String           KEEP_ONLY_THE_SELECTION                    = "$1";
     private static final String           CLOSING_HTML_TAG                           = "</%s>";
-    private static final String           UNCLOSED_HTML_TAG_WITH_BLANK_HEAD_AND_TAIL = "(?s)";
+    private static final String           UNCLOSED_HTML_TAG_WITH_BLANK_HEAD_AND_TAIL = "(?s)"
+                    + SPACE_PATTERN
+                    + "*<%s(?:>|\\s[^>]*[^/]>)"
+                    + SPACE_PATTERN
+                    + "*$";
 
     private final Unit                    unit;
     private final int                     limit;
@@ -135,10 +139,12 @@ public class Truncator {
         TruncatedDoc doc = createFullValidXmlDocFromFragment();
 
         byte[] buffer = removeOpenLink(doc.getBuffer(), doc.getCurrentElementName());
-
+        
         buffer = closeAllTagsLeftOpenAfterTruncature(buffer);
 
-        return keepOnlyBodyContent(buffer);
+        String result = keepOnlyBodyContent(buffer);
+
+        return result;
     }
 
     private static class TruncatedDoc {
@@ -194,7 +200,10 @@ public class Truncator {
                 }
 
             }
-            return new TruncatedDoc(os.toByteArray(), elementName);
+            
+            byte[] result = os.toByteArray();
+
+            return new TruncatedDoc(result, elementName);
         }
     }
 
@@ -242,6 +251,7 @@ public class Truncator {
         if (! isTroncated()) return buffer;
 
         String truncated = new String(buffer, charset.name());
+
         if (currentElementName.isEmpty()) {
             truncated = addEllipsis(truncated);
             truncated = addReadMore(truncated);
