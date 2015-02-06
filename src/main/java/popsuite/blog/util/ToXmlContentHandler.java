@@ -18,7 +18,7 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 
 /**
- * SAX event handler that serialisezes the XML document to a character stream.
+ * SAX event handler that serializes the XML document to a character stream.
  * The incoming SAX events are expected to be well-formed (properly nested,
  * etc.) and to explicitly include namespace declaration and corresponding
  * namespace prefixes in element and attribute names. This classe is based on

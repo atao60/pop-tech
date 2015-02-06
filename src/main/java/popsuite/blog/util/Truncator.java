@@ -56,6 +56,8 @@ public class Truncator {
                     + "*<%s(?:>|\\s[^>]*[^/]>)"
                     + SPACE_PATTERN
                     + "*$";
+    public static final String            ELISIONABLED                               ="[j|t|d|l|qu|s|m|n]";
+    public static final String            FRENCH_ELISION                             ="['|\\u2019|\\u02bc]";
 
     private final Unit                    unit;
     private final int                     limit;
@@ -216,10 +218,9 @@ public class Truncator {
         String result = new String(buffer);
         result = result.replaceFirst(HTML_BODY_TAG_CONTENT, KEEP_ONLY_THE_SELECTION);
 
-        if (isTroncated()) {
-            result = result.replace(READ_MORE_TAG, readmore);
-        }
-        return result;
+        if (! isTroncated()) return result;
+
+        return result.replace(READ_MORE_TAG, readmore);
 
     }
 
@@ -229,6 +230,8 @@ public class Truncator {
      */
     private byte[] closeAllTagsLeftOpenAfterTruncature(final byte[] buffer) throws IOException, SAXException,
                     TikaException {
+        if (! isTroncated()) return buffer;
+
         try (InputStream is = new ByteArrayInputStream(buffer); ByteArrayOutputStream os = new ByteArrayOutputStream()) {
 
             ContentHandler textHandler = new ToXmlContentHandler(os, charset);
@@ -292,7 +295,7 @@ public class Truncator {
         StringBuilder psb = new StringBuilder("(?s)" + SPACE_PATTERN + "(?:");
         psb.append("(?:\\u00ab" + SPACE_PATTERN + "?)");  //opening french quotation mark
         psb.append("|");
-        psb.append("(?:[j|t|d|l|qu|s]['|\\u2019|\\u02bc])");  //french elision apostrophe     
+        psb.append("(?:" + ELISIONABLED + FRENCH_ELISION + ")");  //french elision apostrophe     
         psb.append("|");
         psb.append("(?:[^\\p{C}" + SPACE_PATTERN_BASE + "&&[^ày\\&]])");  //a orphan character but "à", "y" and "&"    
         psb.append(")$");
