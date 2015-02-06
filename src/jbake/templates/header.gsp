@@ -68,17 +68,15 @@
 
     <link href="${contentRootPath}css/${config.bootswatch_style}<% if (config.bootswatch_style){%>/<%}else{%><%} %>bootstrap${config.lib_min}.css" rel="stylesheet" type="text/css">
     <link href="${contentRootPath}css/asciidoctor.css" rel="stylesheet" type="text/css">
+<% /*
     <link href="${contentRootPath}css/base.css" rel="stylesheet" type="text/css">
+*/ %>    
 
     <link href="${contentRootPath}css/font-awesome${config.lib_min}.css" rel="stylesheet" type="text/css">
     <link href="${contentRootPath}css/shCore${config.lib_min}.css" rel="stylesheet" type="text/css"/>
-    <link href="${contentRootPath}css/shThemeDefault${config.lib_min}.css" rel="stylesheet" type="text/css"/>
-    <!-- name collision with Bootsrapt class "container" -->
-    <style>
-       .syntaxhighlighter table .container:before {
-            display: none !important;
-       }
-    </style>
+    <link href="${contentRootPath}css/shTheme${config.sh_style}${config.lib_min}.css" rel="stylesheet" type="text/css"/>
+
+    <link href="${contentRootPath}css/base.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 shiv and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
