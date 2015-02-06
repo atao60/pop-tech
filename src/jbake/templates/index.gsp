@@ -37,8 +37,13 @@ rootpath="tags/"%><%include "header.gsp"%>
                           include "share.gsp"%>
 
                         <div itemprop="blogPost">
-                            <% def readmore = String.format("${config.summary_readmore}", post.uri)
-                               def truncator = new Truncator(config.summary_length.toInteger()).readmore(readmore).ellipsis(config.summary_ellipsis).source(post.body)
+                            <% def summary_length = config.summary_length.toInteger()
+                               if (post.summaryLength != null && !post.summaryLength.isEmpty()) {
+                                  summary_length = post.summaryLength.toInteger()
+                               }
+                               def ellipsis = config.summary_ellipsis
+                               def readmore = String.format("${config.summary_readmore}", post.uri)
+                               def truncator = new Truncator(summary_length).readmore(readmore).ellipsis(ellipsis).source(post.body)
                                out << truncator.run()%>
                          </div><!-- end of blogPost -->
                         <p><a itemprop="discussionUrl" href="${post.uri}#disqus_thread">${config.i18n_comments.capitalize()}</a></p>
