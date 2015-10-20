@@ -5,7 +5,7 @@
 
     <groupId>popsuite-blog</groupId>
     <artifactId>pop-tech</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>Pop Tech</name>
@@ -44,14 +44,21 @@
         <clean.maven.version>2.6.1</clean.maven.version>
         <download.maven.version>1.2.1</download.maven.version>
         <resources.maven.version>2.6</resources.maven.version>
+        <minify.maven.version>1.7.4</minify.maven.version>
+        <replacer.maven.version>1.5.3</replacer.maven.version>
 
         <slf4j.version>1.7.9</slf4j.version>
         <logback.version>1.1.2</logback.version>
         <groovy.version>2.3.8</groovy.version>
         <freemarker.version>2.3.21</freemarker.version>
-        <markdown.version>1.4.2</markdown.version>
+        <markdown.version>1.6.0</markdown.version>
         <asciidoc.version>1.5.2</asciidoc.version>
         <rss.version>1.5.0</rss.version>
+        <tika.version>1.7</tika.version>
+        <jbake.version>2.4.0</jbake.version>
+        <commons.lang3.version>3.3.2</commons.lang3.version>
+        <junit.version>4.12</junit.version>
+        <hamcrest.version>1.3</hamcrest.version>
 
         <repository.domain>github.com</repository.domain>
         <repository.user>atao60</repository.user>
@@ -73,10 +80,14 @@
         <template.folder>templates</template.folder>
         <content.folder>content</content.folder>
 
-        <lib.min><!--.min-->.min</lib.min>
+        <lib.min><!--.min-->
+            .min
+        </lib.min>
         <bootstrap.version>3.3.1</bootstrap.version>
         <jquery.version>1.11.2</jquery.version>
-        <syntaxhighlighter.version><!-- 3.0.83, 3.0.9 -->3.0.83</syntaxhighlighter.version>
+        <syntaxhighlighter.version><!-- 3.0.83, 3.0.9 -->
+            3.0.83
+        </syntaxhighlighter.version>
         <html5shiv.version>3.7.2</html5shiv.version>
         <respond.version>1.4.2</respond.version>
         <fontawesome.version>4.2.0</fontawesome.version>
@@ -84,7 +95,9 @@
         <foundation.version>5.5.0</foundation.version>
         <asciidoctor-stylesheet-factory>0.0.0</asciidoctor-stylesheet-factory>
 
-        <bootswatch.style><!-- yeti -->yeti</bootswatch.style>
+        <bootswatch.style><!-- yeti -->
+            yeti
+        </bootswatch.style>
 
         <cdn.url>http://cdnjs.cloudflare.com/ajax/libs/</cdn.url>
         <shl.site.url>http://alexgorbatchev.com/SyntaxHighlighter/</shl.site.url>
@@ -137,68 +150,6 @@
                     </execution>
                 </executions>
             </plugin>
-
-            <plugin>
-                <groupId>br.com.ingenieux</groupId>
-                <artifactId>jbake-maven-plugin</artifactId>
-                <version>${jbake-maven-version}</version>
-                <executions>
-                    <execution>
-                        <id>default-generate</id>
-                        <phase>generate-resources</phase>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.slf4j</groupId>
-                        <artifactId>log4j-over-slf4j</artifactId>
-                        <version>${slf4j.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.slf4j</groupId>
-                        <artifactId>slf4j-api</artifactId>
-                        <version>${slf4j.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>ch.qos.logback</groupId>
-                        <artifactId>logback-classic</artifactId>
-                        <version>${logback.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.codehaus.groovy</groupId>
-                        <artifactId>groovy-all</artifactId>
-                        <version>${groovy.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.freemarker</groupId>
-                        <artifactId>freemarker</artifactId>
-                        <version>${freemarker.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.pegdown</groupId>
-                        <artifactId>pegdown</artifactId>
-                        <version>${markdown.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.asciidoctor</groupId>
-                        <artifactId>asciidoctorj</artifactId>
-                        <version>${asciidoc.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.apache.commons</groupId>
-                        <artifactId>commons-lang3</artifactId>
-                        <version>3.3.2</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>popsuite-blog</groupId>
-                        <artifactId>pop-tech</artifactId>
-                        <version>1.0-SNAPSHOT</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-scm-publish-plugin</artifactId>
@@ -224,7 +175,7 @@
                 <plugin>
                     <groupId>com.google.code.maven-replacer-plugin</groupId>
                     <artifactId>replacer</artifactId>
-                    <version>1.5.3</version>
+                    <version>${replacer.maven.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.gmavenplus</groupId>
@@ -240,11 +191,90 @@
                         </dependency>
                     </dependencies>
                 </plugin>
+                <plugin>
+                    <groupId>br.com.ingenieux</groupId>
+                    <artifactId>jbake-maven-plugin</artifactId>
+                    <version>${jbake-maven-version}</version>
+                    <executions>
+                        <execution>
+                            <id>default-generate</id>
+                            <phase>generate-resources</phase>
+                            <goals>
+                                <goal>generate</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.jbake</groupId>
+                            <artifactId>jbake-core</artifactId>
+                            <version>${jbake.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>org.slf4j</groupId>
+                            <artifactId>log4j-over-slf4j</artifactId>
+                            <version>${slf4j.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>org.slf4j</groupId>
+                            <artifactId>slf4j-api</artifactId>
+                            <version>${slf4j.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>ch.qos.logback</groupId>
+                            <artifactId>logback-classic</artifactId>
+                            <version>${logback.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>org.codehaus.groovy</groupId>
+                            <artifactId>groovy-all</artifactId>
+                            <version>${groovy.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>org.freemarker</groupId>
+                            <artifactId>freemarker</artifactId>
+                            <version>${freemarker.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>org.pegdown</groupId>
+                            <artifactId>pegdown</artifactId>
+                            <version>${markdown.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>org.asciidoctor</groupId>
+                            <artifactId>asciidoctorj</artifactId>
+                            <version>${asciidoc.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>org.apache.commons</groupId>
+                            <artifactId>commons-lang3</artifactId>
+                            <version>${commons.lang3.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>${project.groupId}</groupId>
+                            <artifactId>${project.artifactId}</artifactId>
+                            <version>${project.version}</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
 
     <profiles>
+
+        <profile>
+            <id>generate-blog</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>br.com.ingenieux</groupId>
+                        <artifactId>jbake-maven-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
         <profile>
             <id>setup-assets</id>
             <build>
@@ -449,7 +479,7 @@
                                     <unpack>true</unpack>
                                 </configuration>
                             </execution>
-                            
+
                             <execution>
                                 <id>install-logo></id>
                                 <phase>initialize</phase>
@@ -478,11 +508,11 @@
 
                         </executions>
                     </plugin>
-                    
+
                     <plugin>
                         <groupId>com.samaxes.maven</groupId>
                         <artifactId>minify-maven-plugin</artifactId>
-                        <version>1.7.4</version>
+                        <version>${minify.maven.version}</version>
                         <executions>
                             <execution>
                                 <id>minify-shl</id>
@@ -550,7 +580,7 @@
                                     </resources>
                                 </configuration>
                             </execution>
-                             
+
                             <execution>
                                 <id>move-syntaxhighlighter-styles</id>
                                 <phase>initialize</phase>
@@ -587,15 +617,102 @@
                                     </resources>
                                 </configuration>
                             </execution>
-                            
+
                         </executions>
                     </plugin>
                 </plugins>
             </build>
         </profile>
+
+        <profile>
+            <id>only-under-eclipse</id>
+            <activation>
+                <property>
+                    <name>m2e.version</name>
+                </property>
+            </activation>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.eclipse.m2e</groupId>
+                            <artifactId>lifecycle-mapping</artifactId>
+                            <version>1.0.0</version>
+                            <configuration>
+                                <lifecycleMappingMetadata>
+                                    <pluginExecutions>
+                                        <pluginExecution>
+                                            <pluginExecutionFilter>
+                                                <groupId>com.google.code.maven-replacer-plugin</groupId>
+                                                <artifactId>replacer</artifactId>
+                                                <versionRange>${replacer.plugin.version}</versionRange>
+                                                <goals>
+                                                    <goal>replace</goal>
+                                                </goals>
+                                            </pluginExecutionFilter>
+                                            <action>
+                                                <execute>
+                                                    <runOnIncremental>false</runOnIncremental><!-- to avoid looping -->
+                                                    <runOnConfiguration>true</runOnConfiguration>
+                                                </execute>
+                                            </action>
+                                        </pluginExecution>
+                                        <pluginExecution>
+                                            <pluginExecutionFilter>
+                                                <groupId>org.codehaus.mojo</groupId>
+                                                <artifactId>properties-maven-plugin</artifactId>
+                                                <versionRange>${properties-maven-version}</versionRange>
+                                                <goals>
+                                                    <goal>write-project-properties</goal>
+                                                </goals>
+                                            </pluginExecutionFilter>
+                                            <action>
+                                                <ignore />
+                                            </action>
+                                        </pluginExecution>
+                                        <pluginExecution>
+                                            <pluginExecutionFilter>
+                                                <groupId>br.com.ingenieux</groupId>
+                                                <artifactId>jbake-maven-plugin</artifactId>
+                                                <versionRange>${jbake-maven-version}</versionRange>
+                                                <goals>
+                                                    <goal>generate</goal>
+                                                </goals>
+                                            </pluginExecutionFilter>
+                                            <action>
+                                                <ignore />
+                                            </action>
+                                        </pluginExecution>
+                                    </pluginExecutions>
+                                </lifecycleMappingMetadata>
+                            </configuration>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+            </build>
+        </profile>
+
     </profiles>
 
     <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-all</artifactId>
+            <version>${hamcrest.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons.lang3.version}</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>com.rometools</groupId>
             <artifactId>rome-fetcher</artifactId>
@@ -616,7 +733,7 @@
         <dependency>
             <groupId>org.apache.tika</groupId>
             <artifactId>tika-parsers</artifactId>
-            <version>1.6</version>
+            <version>${tika.version}</version>
             <exclusions>
                 <exclusion>
                     <artifactId>pdfbox</artifactId>
