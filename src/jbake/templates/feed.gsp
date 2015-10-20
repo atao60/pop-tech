@@ -19,14 +19,22 @@ import org.apache.commons.lang3.StringEscapeUtils
           <pubDate>${new java.text.SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss Z", Locale.US).format(post.date)}</pubDate>
           <guid isPermaLink="false">${config.site_host}/${post.uri}</guid>
           <description>
-              <% def summary_length = config.summary_length.toInteger()
-                 if (post.summaryLength != null && !post.summaryLength.isEmpty()) {
-                    summary_length = post.summaryLength.toInteger()
-                 }
+              <% 
                  def ellipsis = config.summary_ellipsis
                  def readmore = ""
-                 def truncator = new Truncator(summary_length).readmore(readmore).ellipsis(ellipsis).source(post.body)
-                 out << StringEscapeUtils.escapeXml(truncator.run()) 
+                 def summary = ""
+                 if (post.summary != null && !post.summary.trim().isEmpty()) {
+                    summary = post.summary
+                 } else {
+                    def summary_length = config.summary_length.toInteger()
+                    if (post.summaryLength != null && !post.summaryLength.isEmpty()) {
+                       summary_length = post.summaryLength.toInteger()
+                    } 
+                    def truncator = new Truncator(summary_length).readmore(readmore).ellipsis(ellipsis).source(post.body)
+                    summary = truncator.run()
+                 } 
+                 
+                 out << StringEscapeUtils.escapeXml(summary)
               %>  
           </description>
       </item>

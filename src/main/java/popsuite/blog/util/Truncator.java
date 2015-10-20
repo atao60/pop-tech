@@ -210,7 +210,7 @@ public class Truncator {
     }
 
     /*
-     * keep only the truncated fragment, i.e. the content of the "body" element
+     * Keep only the truncated fragment, i.e. the content of the "body" element
      * a regex can be used here as there is only one body element and it's a
      * valid html document (thanks to tagsoup).
      */

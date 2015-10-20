@@ -1,6 +1,7 @@
         <div class="sidebar-module sidebar-module-inset">
             <h4>${config.owner_name}</h4>
-            <p>${config.owner_presentation}</p>
+            <p><% String op = config.owner_presentation
+            out << op  %></p>
             
             <ul><%
             if (config.twitter_owner) { %>
