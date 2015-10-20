@@ -71,3 +71,28 @@ a.read-more-post-link:before {
     padding-right: 0.3em; /* Add some space between the text and the arrow */
     content: "\25BA"; /* Unicode for right arrow */ 
 }
+
+/* Custom SyntaxHighlighter
+-------------------------------------------------- */
+/* name collision with Bootstrap class "container" */
+.syntaxhighlighter table .container:before {
+    display: none !important;
+}
+
+/* Block border */
+div.syntaxhighlighter {
+	border: 1px dotted #DDF !important;
+}
+.syntaxhighlighter table caption {
+	font-weight: bold !important;
+	border-bottom: 1px solid #DDF !important;
+}
+
+/* Border between gutter and code */
+.syntaxhighlighter .gutter .line {
+	border-right-width: 1px !important;
+}
+
+/* Custom blockquote 
+-------------------------------------------------- */
+blockquote {font-size: inherit;}
