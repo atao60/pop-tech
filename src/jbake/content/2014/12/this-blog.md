@@ -4,6 +4,7 @@ type=post
 tags=blog,maven,jbake,github,eclipse
 status=published
 id=this-blog
+summaryLength=100
 ~~~~~~
 
 Faire un blog sur mes pérégrinations informatiques me trottait dans la tête depuis un certain temps. Histoire d'en conserver une trace. Et si en plus cela pouvait servir à d'autres...
