@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    
+    <title>Pop Tech - Embarquement immédiat et sans souci pour JavaEE 7 </title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pop Tech : Embarquement immédiat et sans souci pour JavaEE 7 ">
+    <meta property="og:title" content="Pop Tech - Embarquement immédiat et sans souci pour JavaEE 7 " />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="http://www.popsuite.net/img/poptech.jpg" />
+    <meta property="og:url" content="http://www.popsuite.net" />
+    <meta property="og:description" content="Pop Tech : Embarquement immédiat et sans souci pour JavaEE 7 " />
+    <meta property="og:locale" content="fr-FR" />
+    <meta property="og:site_name" content="Pop Tech" />
+
+    <!-- Styles -->
+    
+    
+    <link href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAABILAAASCwAAAAAAAAAAAAD///8C////Av///wL///8C////Av///wL///8C////Av///wL///8C////Av///wL///8C////Av///wL///8C////Ff///xX///8V////Ff///xX///8V////Ff///xX///8V////Ff///xX///8V////Ff///xX///8V////Ff///y////8v////L////y////8v////L////y////8v////L////y////8v////L////y////8v////L////y////9J////Sf///0n///9J////Sf///0n///9J////Sf///0n///9J////Sf///0n///9J////Sf///0n///9J//+5Yv//uWL//7li//+5Yv//uWL//7li//+5Yv//uWL//7li//+5Yv//uWL//7li//+5Yv//uWL//7li//+5Yv+sYXz/rGF8/6xhfP+sYXz/rGF8/61ifP+vZX7/sWiA/7FogP+wZ3//rmN9/6xhfP+sYXz/rGF8/6xhfP+sYXzDZSaWxGYnl852O6HDeEa7pWE01Z1aLeacWSzwllUo9JZUJ/WbWCvynlos659cL921bj/GznxEqsdqLJjDZSaWkz4Fq6RUHrOvcEbhczoT/JRLGP6dWCj+rF0l/eaYYP3poGv9vW0z/ZZRIv2sXib9czQK/5VbNPG1bDzElD4Gq7RQDaW1UxClwmovtq1mNdSUUibrllIk9pRQIvqjYDD8ol0t/JRPIPuZVCT4klAj8Z9cLt++bjfCu1saqbRQDaXlbhyb5W4cm+VuHJvlbhyb5nAem+d1Jp/meS2k43kvqOJ5MKjleS6m53cpoedyIZ3lbxyb5W4cm+VuHJvlbhyb/5Askf+QLJH/kCyR/5Askf+QLJH/kCyR/5Askf2HNaL9hzSi/5Askf+QLJH/kCyR/5Askf+QLJH/kCyR/5Askf+3QIb/t0CG/7dAhv+3QIb/t0CG/7dAhv+3QIb/lz6i/5c+of+3QIb/t0CG/7dAhv+3QIb/t0CG/7dAhv+3QIb/51Z7/+dWe//nVnv/51Z7/+dWe//nVnv/51Z7/9FZif/RWor/51Z7/+dWe//nVnv/51Z7/+dWe//nVnv/51Z7//9ycf//cnH//3Jx//9ycf//cnH//3Jx//9ycf//cnH//3Jx//9ycf//cnH//3Jx//9ycf//cnH//3Jx//9ycf//k2j//5No//+TaP//k2j//5No//+TaP//k2j//5No//+TaP//k2j//5No//+TaP//k2j//5No//+TaP//k2j//7oy//+6Mv//ujL//7oy//+6Mv//ujL//7oy//+6Mv//ujL//7oy//+6Mv//ujL//7oy//+6Mv//ujL//7oyAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==" rel="icon" type="image/x-icon">
+
+    
+    
+    <link href="../../vendor/bootswatch/yeti/bootstrap.min.css" rel="stylesheet" type="text/css">
+    
+    
+    <link href="../../css/asciidoctor.css" rel="stylesheet" type="text/css">
+    
+
+    <link href="../../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../../vendor/syntaxhighlighter/styles/shCore.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../../vendor/syntaxhighlighter/styles/shThemeEclipse.min.css" rel="stylesheet" type="text/css"/>
+
+    <link href="../../css/base.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 shiv and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../../vendor/html5shiv/html5shiv.min.js"></script>
+      <script src="../../vendor/respond/dest/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+  <body>
+    <div id="wrap">
+
+	
+	
+      <!-- Fixed navbar -->
+      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../../index.html">Pop Tech</a>
+          </div>
+          <div class="collapse navbar-collapse" id="navbar-menu">
+            <ul class="nav navbar-nav">
+              <li><a href="https://github.com/atao60" target="github:atao60">Github</a></li>
+              <li><a href="../../archive.html">Archives</a></li>
+              <li><a href="../../feeds/posts/default.xml">Flux RSS</a></li>
+            </ul>
+          </div><!--/.navbar-collapse -->
+        </div>
+      </div>
+      <div class="container">
+
+	
+	<div class="page-header">
+        <div class="row">
+            <div class="col-xs-4 col-md-2"><img src="../../img/poptech.jpg"></div>
+            <div class="col-xs-12 col-md-8"><h1>Embarquement immédiat et sans souci pour JavaEE 7 </h1></div>
+        </div>
+	</div>
+
+    <div class="row">
+
+        <div class="col-sm-8" itemscope itemtype="http://schema.org/Blog">
+
+        <p>
+            <em>
+                <time itemprop="datePublished"
+                      datetime="2015-10-20">
+                    20 octobre 2015
+                </time>
+            </em>
+        </p>
+
+        <meta itemprop="name" content="Embarquement immédiat et sans souci pour JavaEE 7 "/>
+
+        <div itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <meta itemprop="name" content="Atao"/>
+        </div>
+        <meta itemprop="inLanguage" content="fr-FR"/>
+        <meta itemprop="url" content="http://www.popsuite.net/2015/10/javaee7-runnable-fatjar.html"/>
+        <meta itemprop="discussionUrl" content="http://www.popsuite.net/2015/10/javaee7-runnable-fatjar.html#disqus_thread"/>
+
+        
+        <p>Mots-clefs&nbsp;:
+            <meta itemprop="keywords" content="javaee7,wildfly-swarm,payara-micro,capsule"/>
+            <a href='../../tags/javaee7.html'>javaee7</a>, <a href='../../tags/wildfly-swarm.html'>wildfly-swarm</a>, <a href='../../tags/payara-micro.html'>payara-micro</a>, <a href='../../tags/capsule.html'>capsule</a></p>
+
+<a href="https://twitter.com/share" 
+           class="twitter-share-button" 
+           data-url="http://www.popsuite.net/2015/10/javaee7-runnable-fatjar.html" 
+           data-via="blogtech2" 
+           data-text="Embarquement immédiat et sans souci pour JavaEE 7 " 
+           data-lang="fr">Tweeter</a>
+        
+        <div class="g-plusone" 
+            data-size="medium" 
+            data-href="http://www.popsuite.net/2015/10/javaee7-runnable-fatjar.html"></div>
+                        
+        
+        <div itemprop="blogPost">
+        <blockquote>
+  <span style="font-weight: bolder;">For English-speaking reader: you can get the pith and substance of this post <a href="https://github.com/atao60/javaee7-websocket-chat">here</a>.</span>
+</blockquote>
+<p>Vous venez juste de récupérer un programme de démonstration. Vite, vous voulez vérifier qu&rsquo;il fonctionne. Avant même de vous plonger dans ses arcades. Et là, quelle frustration : après un coup de make, maven ou Dieu sait quoi, la démonstration plante.</p>
+<p>Quelle que soit la raison de votre intérêt pour cette démonstration, justifiera-t-elle de consacrer du temps à trouver l&rsquo;origine du problème ? Et cela va-t-il prendre une minute ? Une heure ? Une journée ?</p>
+<p>Angoisse de l&rsquo;incertitude&hellip;</p>
+<p>Et la reconnaissance infinie à tout créateur d&rsquo;un programme qui a pris le temps de fournir une démonstration auto-exécutable !</p>
+<p>Dans l&rsquo;univers Java, lancer une application à partir d&rsquo;une archive jar n&rsquo;est pas une idée neuve. Il suffit de créer une <strong>fatjar</strong> qui embarque une classe avec une méthode <code>main</code> et de générer un manifest en conséquence. </p>
+<h3>YAPUKA !</h3>
+<p>Alors pourquoi si peu de démonstrations se donnent la peine d&rsquo;être ainsi disponibles ? Peut-être pour deux raisons toutes &laquo;&nbsp;bêtes&nbsp;&raquo; :</p>
+<ul>
+  <li>le manque d&rsquo;outils pour générer simplement et automatiquement de telles archives ;</li>
+  <li>la difficulté à embarquer un serveur WEB ou un serveur d&rsquo;application.</li>
+</ul>
+<p>Or aujourd&rsquo;hui la majorité des applications sont conçues pour tourner sur un serveur.</p>
+<p>Les serveurs WEB tels que <a href="http://www.eclipse.org/jetty/">Jetty</a> fournissent déjà depuis un certain temps des versions embarquables. Mais les serveurs d&rsquo;application pour JavaEE brillaient par leur absence sur le sujet. </p>
+<p>Portées par l&rsquo;intérêt récent pour le nuage et les micro-services, ont émergé depuis peu des réponses à cette situation avec:</p>
+<ul>
+  <li>une série d&rsquo;outils gérant tous les aspects fastidieux de la création de fatjars auto-exécutables ;</li>
+  <li>des versions embarquables pour les serveurs d&rsquo;application open source les plus connus, soit <a href="http://tomee.apache.org/">TomEE</a>, <a href="https://glassfish.java.net/">Glassfish</a> et <a href="http://wildfly.org/">Wildfly</a>.</li>
+</ul>
+<p>Nombre de ces réponses sont open source et s&rsquo;appellent <a href="http://projects.spring.io/spring-boot/">Spring-Boot</a>, <a href="https://github.com/chkal/backset">Backset</a>, <a href="http://wildfly.org/swarm/">Wildfly Swarm</a>, <a href="http://www.payara.co.uk/introducing_payara_micro">Payara-Micro</a>, <a href="http://www.capsule.io/">Capsule</a>, &hellip;</p>
+<h3>YAPUKA (bis) &hellip;</h3>
+<p>Tout cela est encore bien neuf, et quelque peu mal dégrossi : versions alpha, manque de documentation, &hellip; Les trucs habituels.</p>
+<p>Et puis comme l&rsquo;indique le titre du présent billet, ici seules des solutions JavaEE 7 ont droit de cité. Exit <em>TomEE</em>, du moins en attendant la <a href="https://twitter.com/struberg/status/608179461058625536">version 7.0</a>.</p>
+<p>Restent <em>Glassfish</em> avec <em>Payara-Micro</em> et <em>Wildfly</em> avec <em>Wildfly Swarm</em>.</p>
+<h3><a href="#un-chat-de-derrière-les-fagots" name="un-chat-de-derrière-les-fagots">Un chat de derrière les fagots</a></h3>
+<p>Ah, le petit frisson avant de se jeter à l&rsquo;eau. Même si les exemples restent rares sur le WEB, ils existent. Prenons par exemple <a href="http://www.hascode.com/2013/08/creating-a-chat-application-using-java-ee-7-websockets-and-glassfish-4/">Creating a Chat Application using Java EE 7, Websockets and GlassFish 4</a> dont le code est disponible sur <a href="https://bitbucket.org/hascode/javaee7-websocket-chat/">Bitbucket</a>. Ma reconnaissance éternelle à <a href="http://www.micha-kops.com/">Micha Kops</a>.</p>
+<p>Comme le titre du billet en question l&rsquo;indique, cet exemple crée une application de tchat en utilisant des websockets, le tout avec <em>Glassfish</em>. Il s&rsquo;agit maintenant d&rsquo;obtenir une distribution sous forme d&rsquo;une archive fatjar, tant pour <em>Glassfish</em> que pour <em>Wildfly</em>.</p>
+<p>Après le rituel usuel, soit :</p>
+<ul>
+  <li>cloner le projet sous <em>Eclipse</em>,</li>
+  <li>le déclarer comme projet <em>Maven</em> (être à la page, d&rsquo;accord, mais il y a des limites : <a href="http://gradle.org/">Gradle</a> se sera pour plus tard),</li>
+  <li>configurer les extensions <em>Maven</em> (OK, là c&rsquo;est déjà moins &ldquo;habituel&rdquo; mais je ne peux résister ; par ailleurs le projet est ainsi prêt pour passer à <em>Maven Polyglot</em>),</li>
+  <li>mettre à niveaux les versions des extensions <em>Maven</em> et des bibliothèques côté serveur (ajout du profil <code>enforce</code>), mais laisser en l&rsquo;état les ressources côté client (ici <a href="http://getbootstrap.com/">Bootstrap</a>),</li>
+  <li>faire plaisir à M2Eclipse pour qu&rsquo;il se tienne tranquille (profil <code>only-under-eclipse</code>),</li>
+  <li>gérer le port depuis le pom (mais pourquoi tous les exemples codent en dur le 8080 alors que si un port a d&rsquo;être déjà pris ce sera lui !),</li>
+</ul>
+<p>passons aux choses sérieuses. </p>
+<blockquote>
+  <p>Note. Le code finalisé est disponible depuis ce <a href="https://github.com/atao60/javaee7-websocket-chat">dépôt Github</a>. Le fichier README.md donne les instructions pour chaque scénario présenté ci-après.</p>
+</blockquote>
+<h3><a href="#ne-jouons-pas-sur-les-mots" name="ne-jouons-pas-sur-les-mots">Ne jouons pas sur les mots</a></h3>
+<p>Un clarification de vocabulaire s&rsquo;impose ici :</p>
+<table>
+  <thead>
+    <tr>
+      <th>français</th>
+      <th>anglais</th>
+      <th>commentaire</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>archive jar &laquo;&nbsp;lourde&nbsp;&raquo; </td>
+      <td><em>fatjar</em> </td>
+      <td>Une archive jar qui intègre toutes les dépendances requises. Elle peut ou non être auto-exécutable ( <em>runnable</em> ).</td>
+    </tr>
+    <tr>
+      <td>serveur embarqué </td>
+      <td><em>embedded server</em> </td>
+      <td>Un serveur qui sera installé et démarré à la demande, par ex. pour la durée d&rsquo;un test ou avec un fatjar auto-exécutable.</td>
+    </tr>
+    <tr>
+      <td>serveur autonome </td>
+      <td><em>standalone server</em> </td>
+      <td>Un serveur embarqué avec ou sans une application pré-installée, sous la forme d&rsquo;un fatjar auto-exécutable. Aucun serveur n&rsquo;a besoin d&rsquo;être disponible par ailleurs. Seule une JVM est requise.</td>
+    </tr>
+  </tbody>
+</table>
+<p>La définition ci-dessus de <code>standalone</code> diffère de celle souvent utilisée pour désigner un serveur qui fonctionne à demeure et est donc disponible pour déployer à tout moment une archive war.</p>
+<h3>Le cas <em>Glassfish</em></h3>
+<p><em>Oracle</em> ne fournit pour <em>Glassfish</em> aucune facilité pour créer une archive fatjar auto-exécutable. En particulier <em>maven-embedded-glassfish-plugin</em> ne le permet pas : son seul objet est de lancer une instance du serveur pendant une construction de projet afin de procéder par ex. à des tests d&rsquo;intégration.</p>
+<p><a href="http://www.payara.co.uk/home">Payara</a> prend le relais en fournissant <em>Payara Micro</em>. Ce dernier permet de déployer à la volée une archive war avec un serveur <em>Glassfish</em>. Il n&rsquo;assure pas l&rsquo;intégration du tout dans une archive fatjar.</p>
+<p>C&rsquo;est <em>Capsule</em> qui prend le relais final : il suffit de lui fournir une simple classe de bootstrapping pour <em>Payara</em>, et le tour est joué. L&rsquo;archive fatjar auto-exécutable est disponible.</p>
+<p>À noter que pour le moment, l&rsquo;intégration de tout cela fait appel à <em>maven-assembly-plugin</em>. Or cette extension <em>Mavin</em>, à partir de sa version 2.6, refuse de finir le build avec <em>Capsule</em> : en rester à la version 2.5.5. Voir <a href="https://github.com/puniverse/capsule/issues/93">capsule and maven-assembly-plugin 4.5+ #93</a>.</p>
+<h3><a href="#chacun-chez-soi" name="chacun-chez-soi">Chacun chez soi</a></h3>
+<p>Petit souci : impossible de garder tout ce beau monde dans un unique projet <em>Maven</em>. Le fautif en est &hellip; la classe de bootstrapping pour <em>Payara</em> dont il est question ci-dessus. <em>Payara Micro</em> marche sur les plates bandes de Wildfly.</p>
+<p><em>Payara</em> met à disposition 3 bibliothèques : <code>payara-embedded-all</code>, <code>payara-embedded-web</code> et <code>payara-micro</code>. Seule cette dernière fournit les classes de bootstrapping requises. Mais aussi tout un paquet de bibliothèques.</p>
+<p>L&rsquo;utilisation de profils <em>Maven</em> ne suffit pas pour séparer tout ce petit monde. Il faut créer un module spécifique pour la classe de bootstrapping ! </p>
+<p>Et histoire que chacun ait son chez soi, pour chaque serveur, un profil distinct gère chaque mode, embarqué ou autonome.</p>
+<h3><em>Wildfly</em> &laquo;&nbsp;embarqué&nbsp;&raquo;</h3>
+<p>Dans le profil <code>wildfly-embedded</code>, <em>wildfly-swarm-plugin</em> s&rsquo;occupe de tout, soit :</p>
+<ul>
+  <li>créer une archive war standard et une archive fatjar auto-exécutable ;</li>
+  <li>lancer l&rsquo;archive fatjar : l&rsquo;archive war embarquée est automatiquement exécutée.</li>
+</ul>
+<p>À noter que ce profil ne peut pas être utilisé sous <em>M2Eclipse</em>. Avec l&rsquo;extension <em>wildfly-swarm-plugin</em>, <em>M2Eclipse</em> ne sait pas arrêter le serveur : il faut alors le faire en ligne de commande depuis une console. </p>
+<h3><em>Wildfly</em> &laquo;&nbsp;autonome&nbsp;&raquo;</h3>
+<p>Dans le profil <code>wildfly-standalone</code>, là aussi <em>wildfly-swarm-plugin</em> crée l&rsquo;archive fatjar auto-exécutable. Mais c&rsquo;est <em>maven-antrun-plugin</em> qui la lance.</p>
+<p>À noter que <em>maven-antrun-plugin</em> a été utilisée et non <em>exec-maven-plugin</em>, afin de permettre à <em>M2Eclipse</em> de démarrer mais aussi d&rsquo;arrêter le serveur.</p>
+<h3><em>Glassfish</em> &laquo;&nbsp;embarqué&nbsp;&raquo;</h3>
+<p>C&rsquo;est la cas traité par l&rsquo;exemple d&rsquo;origine. Il est repris dans le profil <code>glassfish-embedded</code>. L&rsquo;extension <em>maven-embedded-glassfish-plugin</em> s&rsquo;occupe de tout, soit :</p>
+<ul>
+  <li>créer une archive war standard ;</li>
+  <li>lancer une instance du serveur et y déployer l&rsquo;archive war précédante.</li>
+</ul>
+<p>Aucune archive fatjar n&rsquo;est créée.</p>
+<p>À noter que <em>maven-embedded-glassfish-plugin</em> en ligne de commande doit être lancée depuis le module contenant le source des classes. </p>
+<h3><em>Glassfish</em> &laquo;&nbsp;autonome&nbsp;&raquo;</h3>
+<p>Avec le profil <code>glassfish-standalone</code> :</p>
+<ul>
+  <li>une archive war standard est créée : il faut explicitement en exclure tout ce qui concerne le bootstrapping de l&rsquo;application, soit <em>Payara Micro</em>, <em>Capsule</em> et la classe de bootstrapping créée pour la circonstance ;</li>
+  <li><em>maven-assembly-plugin</em> crée une archive fatjar qui embarque :
+    <ul>
+      <li>le manifest,</li>
+      <li>l&rsquo;archive war précédante,</li>
+      <li>les dépendances,</li>
+      <li>l&rsquo;archive jar de <em>Payara Micro</em>,</li>
+      <li>les classes de bootstrapping de <em>Payara Micro</em> et <em>Capsule</em>.</li>
+    </ul>
+  </li>
+</ul>
+<p>Il faut donc fournir à <em>maven-assembly-plugin</em> un fichier d&rsquo;assemblage adéquate.</p>
+<h3><a href="#une-première-conclusion" name="une-première-conclusion">Une première conclusion</a></h3>
+<p>À ce jour <em>Wildfly</em> gagne haut la main vis-à-vis :</p>
+<ul>
+  <li>de la simplicité d&rsquo;utilisation,</li>
+  <li>de la taille de l&rsquo;archive fatjar générée,</li>
+  <li>du temps de lancement.</li>
+</ul>
+<p>Sur le 2<sup>e</sup> point : pour une simple application avec websockets, un serveur tel que <em>Undertow</em> suffit. Cela permet de réduire de moitié la taille de l&rsquo;archive fatjar ! Pour une application requérant un serveur <em>Glassfish</em> proprement dit, cet avantage devrait se réduire notablement, mais rester significatif. Et cela tant que <em>Payara</em> ne proposera pas des configurations plus modulaires.</p>
+<p>Pour ce qui est de la simplicité, il existe une extension <em>Maven</em> qui permet de créer directement un fatjar auto-exécutable avec <em>Capsule</em> : <a href="https://github.com/chrischristo/capsule-maven-plugin">capsule-maven-plugin</a>. Pour le moment j&rsquo;ai conservé <em>maven-assembly-plugin</em> qui permet les adaptations requises pour <em>Payara Micro</em>. Il s&rsquo;agirait donc de vérifier si cette extension permet de prendre en compte ces adaptations.</p>
+<h3><a href="#pour-aller-plus-loin" name="pour-aller-plus-loin">Pour aller plus loin</a></h3>
+<ul>
+  <li>
+  <p><a href="https://blogs.oracle.com/theaquarium/entry/migrating_a_jsf_application_from">Migrating a JSF Application from Spring to Java EE 7/CDI</a><br/>Reza Rahman on Mar 16, 2015</p></li>
+  <li>
+  <p><a href="https://blogs.oracle.com/reza/entry/the_ghosts_of_java_ee">The Ghosts of Java EE 7 in Production: Past, Present and Future</a><br/>Reza Rahman on Jun 08, 2015 </p></li>
+  <li>
+  <p><a href="http://spring.io/blog/2015/06/04/happy-second-birthday-java-ee-7-how-is-it-going-in-production">Happy second birthday, Java EE 7! How is it going in production?</a><br/>Juergen Hoeller, June 04, 2015 </p></li>
+</ul>
+        </div><!-- end of blogPost -->
+
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            var disqus_shortname = 'poptech';
+            var disqus_identifier = 'javaee7-runnable-fatjar';
+            var disqus_config = function(){this.language="fr"};
+            (function() {
+                var dsq = document.createElement('script'); 
+                dsq.type = 'text/javascript'; 
+                dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+    </div>
+
+    <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+        <div class="sidebar-module sidebar-module-inset">
+            <h4>Atao</h4>
+            <p>Amateur de Java, Maven, Eclipse, etc.</p>
+            
+            <ul>
+                <li><a href="https://twitter.com/blogtech2">@blogtech2</a></li>
+            </ul>
+            
+        </div>
+
+     
+
+
+            <div class="sidebar-module">
+                <h4>Mots-clefs</h4>
+                <ol class="list-unstyled" style="margin-left: 0px">
+                        <li><a href="../../tags/blog.html">blog</a> (2)</li>
+                        <li><a href="../../tags/capsule.html">capsule</a> (1)</li>
+                        <li><a href="../../tags/divers.html">divers</a> (1)</li>
+                        <li><a href="../../tags/eclipse.html">eclipse</a> (1)</li>
+                        <li><a href="../../tags/github.html">github</a> (1)</li>
+                        <li><a href="../../tags/javaee7.html">javaee7</a> (1)</li>
+                        <li><a href="../../tags/jbake.html">jbake</a> (1)</li>
+                        <li><a href="../../tags/maven.html">maven</a> (1)</li>
+                        <li><a href="../../tags/payara-micro.html">payara-micro</a> (1)</li>
+                        <li><a href="../../tags/wildfly-swarm.html">wildfly-swarm</a> (1)</li>
+                 </ol>
+            </div>
+            
+
+    </div>
+	
+        <script>!function(d,s,id){
+            var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+            if(!d.getElementById(id)){
+                js=d.createElement(s);
+                js.id=id;
+                js.src=p+'://platform.twitter.com/widgets.js';
+                fjs.parentNode.insertBefore(js,fjs);
+            }}(document, 'script', 'twitter-wjs');
+        </script>
+        
+
+		</div>
+		<div id="push"></div>
+    </div>
+    
+    <div id="footer">
+      <div class="container">
+        <p class="text-muted credit">Les billets de ce blog sont publiés sous licence <a rel='license' href='http://creativecommons.org/licenses/by-nc-sa/4.0/'>
+                <img alt='CC BY-NC-SA 4.0' style='border-width:0' 
+                     src='http://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png'/></a>. Crédit photo : <a href='https://www.flickr.com/photos/chavals/'>Chaval Brasil</a>
+                <a rel='license' href='http://creativecommons.org/licenses/by-nc-nd/2.0/'>
+                <img alt='CC BY-NC-ND 2.0' style='border-width:0' 
+                     src='http://i.creativecommons.org/l/by-nc-nd/2.0/88x31.png'/></a>.
+        </p>
+        <p class="text-muted credit">&copy; 2014-2015  | Malaxé avec <a href='http://twitter.github.com/bootstrap/'>Bootstrap v3.3.1</a>  | Cuisiné avec <a href='http://jbake.org'>JBake v2.4.0</a>
+        </p>
+      </div>
+    </div>
+    
+    <!-- Bootstrap core JavaScript
+    ===================================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    
+    <!-- script src="/js/jquery-1.11.2.min.js"></script -->
+    <!-- script src="/js/bootstrap.min.js"></script -->
+    <!-- script src="../../js/run_prettify.min.js"></script -->
+
+    <script src='../../vendor/syntaxhighlighter/scripts/shCore.min.js' type='text/javascript'></script>
+    <script src='../../vendor/syntaxhighlighter/scripts/shAutoloader.min.js' type='text/javascript'></script>
+    <script type='text/javascript'>
+        SyntaxHighlighter.autoloader(
+            ['bash','shell','../../vendor/syntaxhighlighter/scripts/shBrushBash.min.js'],
+            ['java','../../vendor/syntaxhighlighter/scripts/shBrushJava.min.js'],
+            ['js', 'jscript', 'javascript', '../../vendor/syntaxhighlighter/scripts/shBrushJScript.min.js'],
+            ['cpp', 'c', '../../vendor/syntaxhighlighter/scripts/shBrushCpp.min.js'],
+            ['css', '../../vendor/syntaxhighlighter/scripts/shBrushCss.min.js'],
+            ['groovy', '../../vendor/syntaxhighlighter/scripts/shBrushGroovy.min.js'],
+            ['jfx', 'javafx', '../../vendor/syntaxhighlighter/scripts/shBrushJavaFX.min.js'],
+            ['php', '../../vendor/syntaxhighlighter/scripts/shBrushPhp.min.js'],
+            ['plain', 'text', '../../vendor/syntaxhighlighter/scripts/shBrushPlain.min.js'],
+            ['py', 'python', '../../vendor/syntaxhighlighter/scripts/shBrushPython.min.js'],
+            ['ruby', 'rails', 'ror', 'rb', '../../vendor/syntaxhighlighter/scripts/shBrushRuby.min.js'],
+            ['sass', 'scss', '../../vendor/syntaxhighlighter/scripts/shBrushSass.min.js'],
+            ['scala', '../../vendor/syntaxhighlighter/scripts/shBrushScala.min.js'],
+            ['sql', '../../vendor/syntaxhighlighter/scripts/shBrushSql.min.js'],
+            ['xml', 'xhtml', 'xslt', 'html', '../../vendor/syntaxhighlighter/scripts/shBrushXml.min.js'],
+            ['diff', 'patch', 'pas', '../../vendor/syntaxhighlighter/scripts/shBrushDiff.min.js'],
+            ['perl', 'pl', '../../vendor/syntaxhighlighter/scripts/shBrushPerl.min.js'],
+            ['erl', 'erlang', '../../vendor/syntaxhighlighter/scripts/shBrushErlang.min.js'],
+            ['c# c-sharp', 'csharp', '../../vendor/syntaxhighlighter/scripts/shBrushCSharp.min.js'],
+            ['applescript', '../../vendor/syntaxhighlighter/scripts/shBrushAppleScript.min.js'],
+            ['vb', 'vbnet', '../../vendor/syntaxhighlighter/scripts/shBrushVb.min.js'],
+            ['delphi', 'pascal', '../../vendor/syntaxhighlighter/scripts/shBrushDelphi.min.js']
+        );
+        SyntaxHighlighter.config.bloggerMode = false;
+        SyntaxHighlighter.defaults['toolbar'] = false;  
+        SyntaxHighlighter.all();
+    </script>
+    
+    <!-- Asynchronous loading of Google API -->
+    <!-- Placed after the last Google+ button -->
+    <script type="text/javascript">
+        window.___gcfg = {lang: 'fr-FR'};
+
+        (function() {
+            var po = document.createElement('script'); 
+            po.type = 'text/javascript'; 
+            po.async = true;
+            po.src = 'https://apis.google.com/js/platform.js';
+            var s = document.getElementsByTagName('script')[0]; 
+            s.parentNode.insertBefore(po, s);
+        })();
+    </script>
+    
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID and change domain name  -->
+    <script>
+        (function(i,s,o,g,r,a,m){
+            i['GoogleAnalyticsObject']=r;
+            i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();
+            a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];
+            a.async=1;
+            a.src=g;
+            m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-58188175-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+   
+  </body>
+</html>

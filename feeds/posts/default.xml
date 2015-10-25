@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pop Tech</title>
+    <link>http://www.popsuite.net</link>
+    <atom:link href="http://www.popsuite.net/feeds/posts/default.xml" rel="self" type="application/rss+xml" />
+    <description>Pop Tech - Un blog personnel sur la programmation informatique</description>
+    <language>fr-FR</language>
+      <pubDate>Sun, 25 Oct 2015 19:27:46 +0100</pubDate>
+      <lastBuildDate>Sun, 25 Oct 2015 19:27:46 +0100</lastBuildDate>
+
+      
+      <item>
+          <title>Embarquement immédiat et sans souci pour JavaEE 7 </title>
+          <link>http://www.popsuite.net/2015/10/javaee7-runnable-fatjar.html</link>
+          <pubDate>Tue, 20 Oct 2015 00:00:00 +0200</pubDate>
+          <guid isPermaLink="false">http://www.popsuite.net/2015/10/javaee7-runnable-fatjar.html</guid>
+          <description>
+              Un tchat embarqué avec soit &lt;span style=&quot;font-style: italic;&quot;&gt;Wildfly&lt;/span&gt; soit &lt;span style=&quot;font-style: italic;&quot;&gt;Glassfish&lt;/span&gt; grâce à &lt;a href=&apos;http://wildfly.org/swarm/&apos;&gt;Wildfly Swarm&lt;/a&gt;, &lt;a href=&apos;http://www.payara.co.uk/introducing_payara_micro&apos;&gt;Payara-Micro&lt;/a&gt; et &lt;a href=&apos;http://www.capsule.io/&apos;&gt;Capsule&lt;/a&gt;. &lt;span style=&quot;font-weight: bold;&quot;&gt;English version available.&lt;/span&gt;  
+          </description>
+      </item>
+      
+      <item>
+          <title>Bonne année 2015</title>
+          <link>http://www.popsuite.net/2015/01/happy-new-year.html</link>
+          <pubDate>Thu, 1 Jan 2015 00:00:00 +0100</pubDate>
+          <guid isPermaLink="false">http://www.popsuite.net/2015/01/happy-new-year.html</guid>
+          <description>
+              &lt;p&gt;Bonne année 2015 !&lt;/p&gt;
+  
+          </description>
+      </item>
+      
+      <item>
+          <title>Pourquoi ce blog ?</title>
+          <link>http://www.popsuite.net/2014/12/this-blog.html</link>
+          <pubDate>Wed, 24 Dec 2014 00:00:00 +0100</pubDate>
+          <guid isPermaLink="false">http://www.popsuite.net/2014/12/this-blog.html</guid>
+          <description>
+              &lt;p&gt;Faire un blog sur mes pérégrinations informatiques me trottait dans la tête depuis un certain temps. Histoire d’en conserver une trace. Et si en plus cela pouvait servir à d’autres…&lt;/p&gt;
+
+
+&lt;p&gt;Après avoir installé un &lt;a shape=&quot;rect&quot; href=&quot;http://atao60.github.io/maven-site-demo/&quot;&gt;site javadoc&lt;/a&gt; de démonstration sur &lt;a shape=&quot;rect&quot; href=&quot;https://github.com/&quot;&gt;Github&lt;/a&gt; à l’aide de &lt;a shape=&quot;rect&quot; href=&quot;http://maven.apache.org/&quot;&gt;Maven&lt;/a&gt;, la possibilité de créer un blog sur le même principe est devenue incontournable. Le temps de faire le lien avec &lt;a shape=&quot;rect&quot; href=&quot;http://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt; puis &lt;a shape=&quot;rect&quot; href=&quot;http://jbake.org/&quot;&gt;JBake&lt;/a&gt; !&lt;/p&gt;
+
+
+&lt;p&gt;Le choix de &lt;a shape=&quot;rect&quot; href=&quot;http://jbake.org/&quot;&gt;JBake&lt;/a&gt; permet de rester dans un cadre 100% JVM.&lt;/p&gt;
+
+
+&lt;p&gt;Trois articles ont fourni les bases :&lt;/p&gt;
+
+
+&lt;ul&gt;	&lt;li&gt;
+  &lt;p&gt;&lt;a shape=&quot;rect&quot; href=&quot;http://melix.github.io/blog/2014/02/hosting-jbake-github.html&quot;&gt;Authoring your blog on GitHub with JBake and[...]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+  
+          </description>
+      </item>
+      
+      <item>
+          <title>Il en faut bien un premier...</title>
+          <link>http://www.popsuite.net/2014/12/the-first-one.html</link>
+          <pubDate>Tue, 23 Dec 2014 00:00:00 +0100</pubDate>
+          <guid isPermaLink="false">http://www.popsuite.net/2014/12/the-first-one.html</guid>
+          <description>
+              &lt;p&gt;Il y a toujours un début à tout.&lt;/p&gt;
+
+&lt;p&gt;Premier blog, premier billet, juste pour dire Hello.&lt;/p&gt;
+  
+          </description>
+      </item>
+      
+
+  </channel> 
+</rss>
