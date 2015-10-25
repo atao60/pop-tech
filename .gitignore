@@ -1,7 +1,7 @@
 ### Maven ###
 target/
 src/jbake/assets/vendor
-src/jbake/jbake.properties
+src/jbake/custom.properties
 release.properties
 pom.xml.versionsBackup
 pom.xml.next
