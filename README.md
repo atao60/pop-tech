@@ -36,7 +36,7 @@ Run
 &nbsp;            
 With *M2Eclipse*, see launcher `pop-tech_setup_webjars`.          
       
-* *popsuite-blog:pop-tech* itself must have been installed in the local m2 repository:  
+* *popsuite-blog:pop-tech* itself must have been installed in the local m2 repository, otherwise:  
           `mvn clean install`        
 &nbsp;            
 With *M2Eclipse*, see launcher `pop-tech_clean_install`.          
