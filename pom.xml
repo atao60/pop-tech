@@ -210,6 +210,7 @@
                             to deal with multi module staging -->
                         <pubScmUrl>${scm.publish.pubScmUrl}</pubScmUrl>
                         <scmBranch>${scm.publish.scmBranch}</scmBranch>
+                        <addUniqueDirectory>true</addUniqueDirectory>
                     </configuration>
                 </plugin>
                 <plugin>
