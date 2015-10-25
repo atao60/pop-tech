@@ -8,10 +8,10 @@ The howto is inspired by the blog of [Y. Bonnel blog](http://www.ybonnel.fr/), h
 Changes
 ----
 
-* Doesn't use [Github Site Plugin](http://github.com/github/maven-plugins) but [maven-scm-publish-plugin](http://maven.apache.org/plugins/maven-scm-publish-plugin/).
+* Use [maven-scm-publish-plugin](http://maven.apache.org/plugins/maven-scm-publish-plugin/) in place of [Github Site Plugin](http://github.com/github/maven-plugins).
 * Generate excerpts for the index and feed pages. 
 * Share parameters between maven and jbake-maven-plugin.
-* Libraries for css and js can be upgraded with maven.
+* Use [webjars](http://www.webjars.org/) for client assets.
 * Misc. (i18n, tag counters, escaped rss titles, ...)
 
 Display
@@ -31,23 +31,29 @@ The *jbake* documentation is available [here](http://jbake.org/docs/).
 Run
 ------
 
-* To update the frameworks (bootstrap, SyntaxHighlighter, ...):     
-        mvn clean initialize -Dsetup-assets   
+* To update the frameworks (bootstrap, SyntaxHighlighter, ...):  
+          `mvn clean process-resources -Dwebjars`  
+&nbsp;            
+With *M2Eclipse*, see launcher `pop-tech_setup_webjars`.          
       
-* *popsuite-blog:pop-tech* itself must be installed in the local m2 repository:  
-        mvn install        
+* *popsuite-blog:pop-tech* itself must have been installed in the local m2 repository:  
+          `mvn clean install`        
+&nbsp;            
+With *M2Eclipse*, see launcher `pop-tech_clean_install`.          
 
 * To preview the changes:  
-        mvn clean initialize jbake:inline  
-and go to [http://localhost:8083](http://localhost:8083)  
-    
->    The port is defined by "jbake.port" in the pom file.
+        `mvn clean process-resources jbake:inline`  
+and go to [http://localhost:8083](http://localhost:8083).  
+&nbsp;            
+With *M2Eclipse*, see launcher `pop-tech_clean_generate_inline`.  
+The port is defined by "jbake.port" in the pom file.
       
 * Before publishing, save the changes on Github.   
 
 * To publish the changes:  
-        mvn clean jbake:generate scm-publish:publish-scm -Pgenerate-blog
-	  
+        `mvn clean jbake:generate scm-publish:publish-scm`
+&nbsp;            
+With *M2Eclipse*, see launcher `pop-tech_clean_generate_publish`.
 	  
 References
 ------	  
@@ -56,7 +62,9 @@ References
   
 * [Migration de blogger à jbake](http://www.ybonnel.fr/2014/07/migrate-blogger-to-jbake.html), Yan Bonnel, 02/07/2014
 
-* [JBake Maven Plugin Walkthrough](http://docs.ingenieux.com.br/project/jbake/walkthrough.html)	  
+* [JBake Maven Plugin Walkthrough](http://docs.ingenieux.com.br/project/jbake/walkthrough.html)	 
+
+* [Extract Webjars static resources with Gradle for jBake (or anything really...)](http://aruizca.com/extract-webjars-static-resources-with-gradle/), Angel Ruiz, 31/08/2015
 	  
 Credits, licenses, copyright
 ------
