@@ -4,8 +4,10 @@ type=post
 tags=javaee7, wildfly-swarm, payara-micro, capsule
 status=published
 id=javaee7-runnable-fatjar
-summary=Un tchat embarqué avec soit Wildfly soit Glassfish à l'aide de <a href='http://wildfly.org/swarm/'>Wildfly Swarm</a>, <a href='http://www.payara.co.uk/introducing_payara_micro'>Payara-Micro</a> et <a href='http://www.capsule.io/'>Capsule</a>.
+summary=Un tchat embarqué avec soit <span style="font-style: italic;">Wildfly</span> soit <span style="font-style: italic;">Glassfish</span> grâce à <a href='http://wildfly.org/swarm/'>Wildfly Swarm</a>, <a href='http://www.payara.co.uk/introducing_payara_micro'>Payara-Micro</a> et <a href='http://www.capsule.io/'>Capsule</a>. <span style="font-weight: bold;">English version available.</span>
 ~~~~~~
+
+> <span style="font-weight: bolder;">For English-speaking reader: you can get the pith and substance of this post <a href="https://github.com/atao60/javaee7-websocket-chat">here</a>.</span>
 
 Vous venez juste de récupérer un programme de démonstration. Vite, vous voulez vérifier qu'il fonctionne. Avant même de vous plonger dans ses arcades. Et là, quelle frustration : après un coup de make, maven ou Dieu sait quoi, la démonstration plante.
 
