@@ -1,5 +1,7 @@
 ### Maven ###
 target/
+src/jbake/assets/vendor
+src/jbake/jbake.properties
 release.properties
 pom.xml.versionsBackup
 pom.xml.next
@@ -21,5 +23,4 @@ archive/
 bin/
 Copy of*
 
-/pop-tech_clean.launch
 /ROADMAP.txt
