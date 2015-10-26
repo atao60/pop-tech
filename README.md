@@ -12,13 +12,16 @@ The main changes from Y. Bonnel's blog are:
 
 * Use [maven-scm-publish-plugin](http://maven.apache.org/plugins/maven-scm-publish-plugin/) in place of [Github Site Plugin](http://github.com/github/maven-plugins).
 * Generate excerpts for the index and feed pages. 
-* Share parameters between *Maven* and `jbake-maven-plugin`.
+* Share parameters between *Maven* and `jbake-maven-plugin` (°).
 * Use [webjars](http://www.webjars.org/) for client assets.
+* Use the more recent releases available for libraries and plugin.
 * Misc. (i18n, tag counters, escaped rss titles, ...)
 
 It requires *Maven* 3.3.1 or above as it uses [maven-profiledep-extension](https://github.com/sviperll/ozymandias/tree/master/maven-profiledep-extension) to manage the profiles.
 
-To provide the *Maven* parameters to `jbake-maven-plugin`, a little trick is used. With `properties-maven-plugin`, the file `custom.properties` (which usage is deprecated) is filled with these properties.
+When used with *Maven* 3.3 or below, all the chained profiles must be specified on the command line, e.g. "`-Pbootswatch-pathes -Pminify -Pwebjars`" in place of "`-Pwebjars`".
+
+>(°) To provide the *Maven* parameters to `jbake-maven-plugin`, a little trick is used. With `properties-maven-plugin`, the file `custom.properties` (which usage is deprecated by jbake) is filled with these properties.
 
 Display
 ----
@@ -34,15 +37,15 @@ They can be written with any of these formats: Markdown, AsciiDoc and HTML.
 
 The *jbake* documentation is available [here](http://jbake.org/docs/). 
 
-Run
+Build and running
 ------
 
 * To update the frameworks (bootstrap, SyntaxHighlighter, ...):  
-          `mvn clean process-resources -Dwebjars`  
+          `mvn clean process-resources -Pwebjars`  
 &nbsp;            
 With *M2Eclipse*, see launcher `pop-tech_setup_webjars`.          
       
-* *popsuite-blog:pop-tech* itself must have been installed in the local m2 repository, otherwise:  
+* *popsuite-blog:pop-tech* itself must have been installed in the local m2 repository, otherwise do it now:  
           `mvn clean install`        
 &nbsp;            
 With *M2Eclipse*, see launcher `pop-tech_clean_install`.          
@@ -52,7 +55,8 @@ With *M2Eclipse*, see launcher `pop-tech_clean_install`.
 and go to [http://localhost:8083](http://localhost:8083).  
 &nbsp;            
 With *M2Eclipse*, see launcher `pop-tech_clean_generate_inline`.  
-The port is defined by "jbake.port" in the pom file.
+
+>The port is defined by "jbake.port" in the pom file.
       
 * Before publishing, save the changes on Github.   
 

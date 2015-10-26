@@ -41,33 +41,55 @@
 
         <!-- Maven Management -->
 
-        <maven.min.version>3.3.1</maven.min.version>
+        <maven.minimal.version>3.3.1</maven.minimal.version>
 
         <sviperll.extension.version>0.16</sviperll.extension.version>
 
         <jbake.maven.plugin.version>0.0.9</jbake.maven.plugin.version>
         <properties.maven.plugin.version>1.0-alpha-2</properties.maven.plugin.version>
         <maven.scm.publish.plugin.version>1.1</maven.scm.publish.plugin.version>
-        <gmavenplus.plugin.version>1.2</gmavenplus.plugin.version>
-        <maven.clean.plugin.version>2.6.1</maven.clean.plugin.version>
+        <gmavenplus.plugin.version>1.5</gmavenplus.plugin.version><!-- 1.2 -->
+        <maven.clean.plugin.version>3.0.0</maven.clean.plugin.version><!-- 2.6.1 -->
         <download.maven.plugin.version>1.2.1</download.maven.plugin.version>
-        <maven.resources.plugin.version>2.6</maven.resources.plugin.version>
+        <maven.resources.plugin.version>2.7</maven.resources.plugin.version>
         <minify.maven.plugin.version>1.7.4</minify.maven.plugin.version>
         <replacer.plugin.version>1.5.3</replacer.plugin.version>
         <coreext.maven.plugin.version>${sviperll.extension.version}</coreext.maven.plugin.version>
 
+        <replacer.plugin.version>1.5.3</replacer.plugin.version>
+        <maven.antrun.plugin.version>1.8</maven.antrun.plugin.version>
+
+        <build.helper.maven.plugin.version>1.9.1</build.helper.maven.plugin.version>
+        <maven.enforcer.plugin.version>1.4.1</maven.enforcer.plugin.version>
+        <versions.maven.plugin.version>2.2</versions.maven.plugin.version>
+        <coreext.maven.plugin.version>${sviperll.extension.version}</coreext.maven.plugin.version>
+        <maven.dependency.plugin.version>2.10</maven.dependency.plugin.version>
+
+        <maven.compiler.plugin.version>3.3</maven.compiler.plugin.version>
+        <maven.surefire.plugin.version>2.19</maven.surefire.plugin.version><!-- 2.18.1 -->
+        <maven.failsafe.plugin.version>2.19</maven.failsafe.plugin.version><!-- 2.18.1 -->
+        <maven.jar.plugin.version>2.6</maven.jar.plugin.version>
+        <maven.war.plugin.version>2.6</maven.war.plugin.version>
+        <maven.shade.plugin.version>2.4.1</maven.shade.plugin.version>
+        <maven.assembly.plugin.version>2.5.5</maven.assembly.plugin.version>
+
+        <maven.install.plugin.version>2.5.2</maven.install.plugin.version>
+        <maven.deploy.plugin.version>2.8.2</maven.deploy.plugin.version>
+        <maven.site.plugin.version>3.4</maven.site.plugin.version>
+
+
         <!-- Dependency Management -->
 
-        <slf4j.version>1.7.9</slf4j.version>
-        <logback.version>1.1.2</logback.version>
-        <groovy.version>2.3.8</groovy.version><!-- 2.3.11 and 2.4.5 are available -->
-        <freemarker.version>2.3.21</freemarker.version>
+        <slf4j.version>1.7.12</slf4j.version><!-- 1.7.9 -->
+        <logback.version>1.1.3</logback.version><!-- 1.1.2 -->
+        <groovy.version>2.4.5</groovy.version><!-- 2.3.8, available: 2.3.11 and 2.4.5 -->
+        <freemarker.version>2.3.23</freemarker.version><!-- 2.3.21 -->
         <markdown.version>1.6.0</markdown.version>
         <asciidoc.version>1.5.2</asciidoc.version>
-        <rss.version>1.5.0</rss.version>
-        <tika.version>1.7</tika.version>
+        <rss.version>1.5.1</rss.version><!-- 1.5.0 -->
+        <tika.version>1.11</tika.version><!-- 1.7 -->
         <jbake.version>2.4.0</jbake.version>
-        <commons.lang3.version>3.3.2</commons.lang3.version>
+        <commons.lang3.version>3.4</commons.lang3.version><!-- 3.3.2 -->
         <junit.version>4.12</junit.version>
         <hamcrest.version>1.3</hamcrest.version>
         
@@ -76,14 +98,14 @@
         <lib.min><!--'.min' or void-->
             .min
         </lib.min>
-        <bootstrap.version>3.3.1</bootstrap.version><!-- 3.3.1, available 3.3.4 -->
-        <jquery.version>1.11.2</jquery.version><!-- 1.11.2, available: 1.11.3, 2.1.4 -->
+        <bootstrap.version>3.3.5</bootstrap.version><!-- 3.3.1, available 3.3.4, 3.3.5 -->
+        <jquery.version>1.11.3</jquery.version><!-- 1.11.2, available: 1.11.3; no need for 2.1.x -->
         <syntaxhighlighter.version><!-- 3.0.83, 3.0.9 exists but unavailable as webjars-->
             3.0.83
         </syntaxhighlighter.version>
-        <html5shiv.version>3.7.2</html5shiv.version>
+        <html5shiv.version>3.7.3</html5shiv.version><!-- 3.7.2 -->
         <respond.version>1.4.2</respond.version><!-- 1.4.2 -->
-        <fontawesome.version>4.2.0</fontawesome.version>
+        <fontawesome.version>4.4.0</fontawesome.version><!-- 4.2.0 -->
         <prettify.version>r298</prettify.version><!-- 3.7.2, available 3.7.3; To be removed? See syntaxhighlighter -->
         <foundation.version>5.5.0</foundation.version><!-- 5.5.0, available 5.5.2; To be removed? See Bootstrap/Bootswatch-->
         <bootswatch.version>3.3.5</bootswatch.version>
@@ -123,7 +145,7 @@
 
     <prerequisites>
         <!-- Setup to make versions plugin happy even if it's not a maven plugin project -->
-        <maven>${maven.min.version}</maven>
+        <maven>${maven.minimal.version}</maven>
     </prerequisites>
 
     <build>
@@ -185,7 +207,8 @@
                                 <replacements>
                                     <replacement>
                                         <token>^#Properties.*</token>
-                                        <value>#WARNING: any change would be lost as it's a generated file. See jbake.properties
+                                        <value>#WARNING: any change would be lost as it's a generated file. See
+                                            jbake.properties
                                         </value>
                                     </replacement>
                                 </replacements>
@@ -319,6 +342,46 @@
                     <artifactId>minify-maven-plugin</artifactId>
                     <version>${minify.maven.plugin.version}</version>
                 </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven.compiler.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>${maven.dependency.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>${maven.resources.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven.surefire.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>${maven.jar.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <version>${maven.install.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>${maven.deploy.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>${maven.site.plugin.version}</version>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
@@ -434,7 +497,7 @@
             <properties>
                 <profile.depends>bootswatch-pathes</profile.depends>
                 <profile.depends>minify</profile.depends>
-                
+
                 <assets.final.dir>${jbake.inputDirectory}${asset.folder}/vendor</assets.final.dir>
                 <assets.tmp.dir>${project.build.directory}/webjars-content</assets.tmp.dir>
                 <webjar.groupId>org.webjars</webjar.groupId>
@@ -486,7 +549,6 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-dependency-plugin</artifactId>
-                        <version>2.10</version>
                         <executions>
                             <execution>
                                 <id>download-and-unpack-assets</id>
@@ -551,6 +613,117 @@
                         </executions>
                     </plugin>
                 </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>enforce</id>
+            <activation>
+                <property>
+                    <name>enforce</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>build-helper-maven-plugin</artifactId>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-enforcer-plugin</artifactId>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>versions-maven-plugin</artifactId>
+                    </plugin>
+                </plugins>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.codehaus.mojo</groupId>
+                            <artifactId>build-helper-maven-plugin</artifactId>
+                            <version>${build.helper.maven.plugin.version}</version>
+                            <executions>
+                                <execution>
+                                    <id>get-maven-version</id>
+                                    <goals>
+                                        <goal>maven-version</goal>
+                                    </goals>
+                                </execution>
+                            </executions>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-enforcer-plugin</artifactId>
+                            <version>${maven.enforcer.plugin.version}</version>
+                            <executions>
+                                <execution>
+                                    <id>enforce-versions</id>
+                                    <goals>
+                                        <goal>enforce</goal>
+                                    </goals>
+                                    <configuration>
+                                        <fail>true</fail>
+                                        <rules>
+                                            <requireMavenVersion>
+                                                <version>${maven.minimal.version}</version>
+                                                <message><![CDATA[[ERROR] OLD MAVEN [${maven.version}] in use. 
+                                                Maven ${maven.minimal.version} or newer is required.]]>
+                                                </message>
+                                            </requireMavenVersion>
+                                            <requireJavaVersion>
+                                                <version>${jdk.version}</version>
+                                                <message><![CDATA[[ERROR] OLD JDK [${java.version}] in use. 
+                                                JDK ${jdk.version} or newer is required.]]>
+                                                </message>
+                                            </requireJavaVersion>
+                                            <requirePluginVersions>
+                                                <banLatest>true</banLatest>
+                                                <banRelease>true</banRelease>
+                                                <banSnapshots>true</banSnapshots>
+<!--                                                 <unCheckedPluginList> -->
+<!--                                                     org.apache.maven.plugins:maven-site-plugin -->
+<!--                                                 </unCheckedPluginList> -->
+                                            </requirePluginVersions>
+                                            <bannedDependencies>
+                                                <searchTransitive>true</searchTransitive>
+                                                <excludes>
+                                                    <exclude>commons-logging</exclude>
+                                                    <exclude>log4j</exclude>
+                                                    <exclude>org.apache.logging.log4j</exclude>
+
+                                                    <exclude>org.slf4j:slf4j-log4j12</exclude>
+                                                    <exclude>org.slf4j:slf4j-jdk14</exclude>
+                                                </excludes>
+                                            </bannedDependencies>
+                                        </rules>
+                                    </configuration>
+                                </execution>
+                            </executions>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.codehaus.mojo</groupId>
+                            <artifactId>versions-maven-plugin</artifactId>
+                            <version>${versions.maven.plugin.version}</version>
+                            <configuration>
+                                <!-- required to avoid warning with new alpha, beta, ... versions -->
+                                <rulesUri>file://${project.basedir}/src/conf/versionrules.xml</rulesUri>
+                            </configuration>
+                            <executions>
+                                <execution>
+                                    <id>check-versions</id>
+                                    <phase>validate</phase><!-- no default phase -->
+                                    <goals>
+                                        <goal>display-dependency-updates</goal>
+                                        <goal>display-plugin-updates</goal>
+                                        <goal>display-property-updates</goal>
+                                    </goals>
+                                </execution>
+                            </executions>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
             </build>
         </profile>
 
@@ -655,6 +828,18 @@
             <artifactId>rome-fetcher</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+        </dependency>
+<!--         <dependency> -->
+<!--             <groupId>org.codehaus.groovy</groupId> -->
+<!--             <artifactId>groovy-all</artifactId> -->
+<!--         </dependency> -->
+        <dependency>
             <groupId>org.apache.tika</groupId>
             <artifactId>tika-parsers</artifactId>
         </dependency>
@@ -699,6 +884,22 @@
             </dependency>
 
             <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>jcl-over-slf4j</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.codehaus.groovy</groupId>
+                <artifactId>groovy-all</artifactId>
+                <version>${groovy.version}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <version>${junit.version}</version>
@@ -710,6 +911,7 @@
                 <version>${hamcrest.version}</version>
                 <scope>test</scope>
             </dependency>
+
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
@@ -720,12 +922,26 @@
                 <groupId>com.rometools</groupId>
                 <artifactId>rome-fetcher</artifactId>
                 <version>${rss.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>org.apache.tika</groupId>
                 <artifactId>tika-parsers</artifactId>
                 <version>${tika.version}</version>
                 <exclusions>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>com.github.junrar</groupId>
+                        <artifactId>junrar</artifactId>
+                    </exclusion>
                     <exclusion>
                         <artifactId>pdfbox</artifactId>
                         <groupId>org.apache.pdfbox</groupId>
