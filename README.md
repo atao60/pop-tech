@@ -10,18 +10,23 @@ Implementation - requirements
 
 The main changes from Y. Bonnel's blog are:
 
-* Use [maven-scm-publish-plugin](http://maven.apache.org/plugins/maven-scm-publish-plugin/) in place of [Github Site Plugin](http://github.com/github/maven-plugins).
-* Generate excerpts for the index and feed pages. 
-* Share parameters between *Maven* and `jbake-maven-plugin` (°).
-* Use [webjars](http://www.webjars.org/) for client assets.
-* Use the more recent releases available for libraries and plugin.
+* Use [maven-scm-publish-plugin](http://maven.apache.org/plugins/maven-scm-publish-plugin/) in place of [Github Site Plugin](http://github.com/github/maven-plugins): it works even if the *Github* user profile is not fully filled.
+
+* Generate excerpts for the index and feed pages: it requires a helper class in Java and some scripts in the templates.
+
+* Share parameters between *Maven* and `jbake-maven-plugin` (°), with a little trick: use `properties-maven-plugin` to generate a file `custom.properties` (which usage is deprecated by *jbake*) filled with all the *Maven* properties.
+
+* Use [webjars](http://www.webjars.org/) for client assets: the *Maven* profile `webjars` will upgrade the libraries.
+
+* Use the more recent releases available for libraries and plugin: the *Maven* profile `enforce` will do all the checking.
+
 * Misc. (i18n, tag counters, escaped rss titles, ...)
 
 It requires *Maven* 3.3.1 or above as it uses [maven-profiledep-extension](https://github.com/sviperll/ozymandias/tree/master/maven-profiledep-extension) to manage the profiles.
 
 When used with *Maven* 3.3 or below, all the chained profiles must be specified on the command line, e.g. "`-Pbootswatch-pathes -Pminify -Pwebjars`" in place of "`-Pwebjars`".
 
->(°) To provide the *Maven* parameters to `jbake-maven-plugin`, a little trick is used. With `properties-maven-plugin`, the file `custom.properties` (which usage is deprecated by jbake) is filled with these properties.
+(°) There is a open request on this topic: [adding system and pom properties to config object in templates #9 ](https://github.com/ingenieux/jbake-maven-plugin/pull/9).
 
 Display
 ----
@@ -40,7 +45,7 @@ The *jbake* documentation is available [here](http://jbake.org/docs/).
 Build and running
 ------
 
-* To update the frameworks (bootstrap, SyntaxHighlighter, ...):  
+* To update the assets (Bootswatch, SyntaxHighlighter, ...):  
           `mvn clean process-resources -Pwebjars`  
 &nbsp;            
 With *M2Eclipse*, see launcher `pop-tech_setup_webjars`.          
@@ -68,6 +73,8 @@ With *M2Eclipse*, see launcher `pop-tech_clean_generate_publish`.
 References
 ------	  
 
+* [Blogguer sous GitHub avec JBake](http://blog.ackx.net/blogguer-sous-github-avec-jbake.html), Youri Ackx, 29/01/2014
+  
 * [Authoring your blog on GitHub with JBake and Gradle](http://melix.github.io/blog/2014/02/hosting-jbake-github.html), Cédric Champeau, 03/02/2014 
   
 * [Migration de blogger à jbake](http://www.ybonnel.fr/2014/07/migrate-blogger-to-jbake.html), Yan Bonnel, 02/07/2014
