@@ -6,8 +6,8 @@
     <atom:link href="http://www.popsuite.net/feeds/posts/default.xml" rel="self" type="application/rss+xml" />
     <description>Pop Tech - Un blog personnel sur la programmation informatique</description>
     <language>fr-FR</language>
-      <pubDate>Tue, 27 Oct 2015 02:51:36 +0100</pubDate>
-      <lastBuildDate>Tue, 27 Oct 2015 02:51:36 +0100</lastBuildDate>
+      <pubDate>Tue, 27 Oct 2015 14:33:02 +0100</pubDate>
+      <lastBuildDate>Tue, 27 Oct 2015 14:33:02 +0100</lastBuildDate>
 
       
       <item>
@@ -17,17 +17,6 @@
           <guid isPermaLink="false">http://www.popsuite.net/2015/10/javaee7-runnable-fatjar.html</guid>
           <description>
               Un tchat embarqué avec soit &lt;span style=&quot;font-style: italic;&quot;&gt;Wildfly&lt;/span&gt; soit &lt;span style=&quot;font-style: italic;&quot;&gt;Glassfish&lt;/span&gt; grâce à &lt;a href=&apos;http://wildfly.org/swarm/&apos;&gt;Wildfly Swarm&lt;/a&gt;, &lt;a href=&apos;http://www.payara.co.uk/introducing_payara_micro&apos;&gt;Payara-Micro&lt;/a&gt; et &lt;a href=&apos;http://www.capsule.io/&apos;&gt;Capsule&lt;/a&gt;. &lt;span style=&quot;font-weight: bold;&quot;&gt;English version available.&lt;/span&gt;  
-          </description>
-      </item>
-      
-      <item>
-          <title>Bonne année 2015</title>
-          <link>http://www.popsuite.net/2015/01/happy-new-year_en.html</link>
-          <pubDate>Thu, 1 Jan 2015 00:00:00 +0100</pubDate>
-          <guid isPermaLink="false">http://www.popsuite.net/2015/01/happy-new-year_en.html</guid>
-          <description>
-              &lt;p&gt;Happy New Year 2015 !&lt;/p&gt;
-  
           </description>
       </item>
       
