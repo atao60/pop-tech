@@ -4,5 +4,6 @@ type=post
 tags=divers
 status=published
 id=happy-new-year-2015
+language=fr(en)
 ~~~~~~
 Bonne année 2015 !
