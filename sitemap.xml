@@ -2,19 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     <url>
         <loc>http://www.popsuite.net/index.html</loc>
-        <lastmod>2015-10-26</lastmod>
+        <lastmod>2015-10-27</lastmod>
     </url>
     <url>
         <loc>http://www.popsuite.net/archive.html</loc>
-        <lastmod>2015-10-26</lastmod>
+        <lastmod>2015-10-27</lastmod>
     </url>
     <url>
         <loc>http://www.popsuite.net/tags/jbake.html</loc>
-        <lastmod>2015-01-04</lastmod>
+        <lastmod>2015-10-26</lastmod>
     </url>
     <url>
         <loc>http://www.popsuite.net/tags/github.html</loc>
-        <lastmod>2015-01-04</lastmod>
+        <lastmod>2015-10-26</lastmod>
     </url>
     <url>
         <loc>http://www.popsuite.net/tags/javaee7.html</loc>
@@ -26,7 +26,7 @@
     </url>
     <url>
         <loc>http://www.popsuite.net/tags/maven.html</loc>
-        <lastmod>2015-01-04</lastmod>
+        <lastmod>2015-10-26</lastmod>
     </url>
     <url>
         <loc>http://www.popsuite.net/tags/divers.html</loc>
@@ -34,7 +34,7 @@
     </url>
     <url>
         <loc>http://www.popsuite.net/tags/blog.html</loc>
-        <lastmod>2015-01-04</lastmod>
+        <lastmod>2015-10-26</lastmod>
     </url>
     <url>
         <loc>http://www.popsuite.net/tags/payara-micro.html</loc>
@@ -53,7 +53,11 @@
         <lastmod>2015-10-20</lastmod>
     </url>
     <url>
-        <loc>http://www.popsuite.net/2015/01/happy-new-year.html</loc>
+        <loc>http://www.popsuite.net/2015/01/happy-new-year_en.html</loc>
+        <lastmod>2015-01-01</lastmod>
+    </url>
+    <url>
+        <loc>http://www.popsuite.net/2015/01/happy-new-year_fr.html</loc>
         <lastmod>2015-01-01</lastmod>
     </url>
     <url>

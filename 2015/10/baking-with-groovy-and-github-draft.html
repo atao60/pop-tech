@@ -3,15 +3,15 @@
   <head>
     <meta charset="utf-8">
     
-    <title>Pop Tech - Un blog dans le nuage</title>
+    <title>Pop Tech - Baking Your Blog with JBake, Groovy, Maven and GitHub</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Pop Tech : Un blog dans le nuage">
-    <meta property="og:title" content="Pop Tech - Un blog dans le nuage" />
+    <meta name="description" content="Pop Tech : Baking Your Blog with JBake, Groovy, Maven and GitHub">
+    <meta property="og:title" content="Pop Tech - Baking Your Blog with JBake, Groovy, Maven and GitHub" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="http://www.popsuite.net/img/poptech.jpg" />
     <meta property="og:url" content="http://www.popsuite.net" />
-    <meta property="og:description" content="Pop Tech : Un blog dans le nuage" />
+    <meta property="og:description" content="Pop Tech : Baking Your Blog with JBake, Groovy, Maven and GitHub" />
     <meta property="og:locale" content="fr-FR" />
     <meta property="og:site_name" content="Pop Tech" />
 
@@ -73,7 +73,7 @@
 	<div class="page-header">
         <div class="row">
             <div class="col-xs-4 col-md-2"><img src="../../img/poptech.jpg"></div>
-            <div class="col-xs-12 col-md-8"><h1>Un blog dans le nuage</h1></div>
+            <div class="col-xs-12 col-md-8"><h1>Baking Your Blog with JBake, Groovy, Maven and GitHub</h1></div>
         </div>
 	</div>
 
@@ -84,93 +84,58 @@
         <p>
             <em>
                 <time itemprop="datePublished"
-                      datetime="2015-01-04">
-                    04 janvier 2015
+                      datetime="2015-10-26">
+                    26 octobre 2015
                 </time>
             </em>
         </p>
 
-        <meta itemprop="name" content="Un blog dans le nuage"/>
+        <meta itemprop="name" content="Baking Your Blog with JBake, Groovy, Maven and GitHub"/>
 
         <div itemprop="author" itemscope itemtype="http://schema.org/Person">
             <meta itemprop="name" content="Atao"/>
         </div>
         <meta itemprop="inLanguage" content="fr-FR"/>
-        <meta itemprop="url" content="http://www.popsuite.net/2015/01/poptech-howto.html"/>
-        <meta itemprop="discussionUrl" content="http://www.popsuite.net/2015/01/poptech-howto.html#disqus_thread"/>
+        <meta itemprop="url" content="http://www.popsuite.net/2015/10/baking-with-groovy-and-github.html"/>
+        <meta itemprop="discussionUrl" content="http://www.popsuite.net/2015/10/baking-with-groovy-and-github.html#disqus_thread"/>
 
         
         <p>Mots-clefs&nbsp;:
-            <meta itemprop="keywords" content="blog,maven,jbake,git,github,cloud9"/>
-            <a href='../../tags/blog.html'>blog</a>, <a href='../../tags/maven.html'>maven</a>, <a href='../../tags/jbake.html'>jbake</a>, <a href='../../tags/git.html'>git</a>, <a href='../../tags/github.html'>github</a>, <a href='../../tags/cloud9.html'>cloud9</a></p>
+            <meta itemprop="keywords" content="blog,maven,polyglot,xtend,groovy,jbake,git,github"/>
+            <a href='../../tags/blog.html'>blog</a>, <a href='../../tags/maven.html'>maven</a>, <a href='../../tags/polyglot.html'>polyglot</a>, <a href='../../tags/xtend.html'>xtend</a>, <a href='../../tags/groovy.html'>groovy</a>, <a href='../../tags/jbake.html'>jbake</a>, <a href='../../tags/git.html'>git</a>, <a href='../../tags/github.html'>github</a></p>
 
 <a href="https://twitter.com/share" 
            class="twitter-share-button" 
-           data-url="http://www.popsuite.net/2015/01/poptech-howto.html" 
+           data-url="http://www.popsuite.net/2015/10/baking-with-groovy-and-github.html" 
            data-via="blogtech2" 
-           data-text="Un blog dans le nuage" 
+           data-text="Baking Your Blog with JBake, Groovy, Maven and GitHub" 
            data-lang="fr">Tweeter</a>
         
         <div class="g-plusone" 
             data-size="medium" 
-            data-href="http://www.popsuite.net/2015/01/poptech-howto.html"></div>
+            data-href="http://www.popsuite.net/2015/10/baking-with-groovy-and-github.html"></div>
                         
         
         <div itemprop="blogPost">
-        <p>Le défi ici est <toto> de créer un blog en n&rsquo;utilisant que des moyens disponibles dans le nuage. Sans débourser un centime.</p>
-<p>Ce petit manuel passe en revue les principales étapes pour créer un blog avec <a href="http://jbake.org/">JBake</a> et le publier grâce à <a href="https://github.com/">Github</a>. Le tout en utilisant <a href="https://c9.io">Cloud9</a> comme EDI afin de pouvoir gérer le blog depuis n&rsquo;importe quel ordinateur.</p>
-<h2><a href="#prérequis" name="prérequis">Prérequis</a></h2>
-<p>Pour suivre ce manuel, vous aurez besoin d&rsquo;un compte pour chacun des services suivants&nbsp;: </p>
+        <p>C&rsquo;est la reprise d&rsquo;une 1ère tentative avec &ldquo;poptech-howto.md&rdquo;</p>
+<p>Pour le moment en md, mais quid de asciidoctor ?</p>
+<p>En anglais ?</p>
+<p>Abandonner la perspective &ldquo;tout sur le cloud&rdquo;<br/>=&gt; axer plutôt sur :<br/>- comment faire avec Eclipse et Maven (plutôt qu&rsquo;avec IntelJ et Gradle)<br/>- mais faire brancher avec Maven Polyglot + Groovy et Xtend</p>
+<p>Rappels<br/> - logback est maintenant configurable en Groovy<br/> - conserver les templates en gsp</p>
+<p>Le principal &ldquo;contre&rdquo; : les éditeurs sous Eclipse :</p>
 <ul>
-  <li><a href="https://c9.io">Cloud9</a>,</li>
-  <li><a href="https://github.com/">Github</a>,</li>
-  <li><a href="https://disqus.com">Disqus</a>,</li>
-  <li><a href="http://www.google.fr/intl/fr/analytics">Google Analytics</a>.</li>
+  <li>Xtend</li>
+  <li>Polyglot Maven avec Groovy : pas d&rsquo;autocompletion et pas d&rsquo;affichage des valeurs des paramètres</li>
 </ul>
-<p>L&rsquo;environnement de travail doit disposer de&nbsp;:</p>
-<ul>
-  <li><a href="http://www.webupd8.org/2012/09/install-oracle-java-8-in-ubuntu-via-ppa.html">Java</a>,</li>
-  <li><a href="http://maven.apache.org/">Maven</a>,</li>
-  <li><a href="http://git-scm.com">Git</a>.</li>
-</ul>
-<p>Le tout sous <a href="www.ubuntu.com">Ubuntu</a>. Et oui, c&rsquo;est possible grâce à <a href="https://c9.io">Cloud9</a>.</p>
-<h2>Configurer un compte <a href="https://c9.io">Cloud9</a></h2>
-<p>Créer un compte depuis la page d&rsquo;accueil.</p>
-<p>Depuis le tableau de bord de ce compte, créer un espace de travail, par ex. &hellip; poptech !<br/>Conserver le type Custom. et en mode Hosted</p>
-<p>Sélectionner le nouveau projet et ouvrir une scession&nbsp;: cliquer sur &ldquo;Start Editing&rdquo;.</p>
-<p>Vérifier la version de java installée&nbsp;:</p>
-<pre class="brush: shell; title: 'Java installation'">
-$ java -version
-java version "1.7.0_65"
-OpenJDK Runtime Environment (IcedTea 2.5.3) (7u71-2.5.3-0ubuntu0.14.04.1)
-OpenJDK 64-Bit Server VM (build 24.65-b04, mixed mode)
-</pre>
-<p>Vérifier la version de maven installée&nbsp;:</p>
-<pre class="brush: shell;  highlight: [1, 3]; title: " title="Maven installation">
-$ mvn -version
-Apache Maven 2.2.1 (rdebian-14)
-Java version: 1.7.0_65 
-Java home: /usr/lib/jvm/java-7-openjdk-amd64/jre
-Default locale: en, platform encoding: UTF-8
-OS name: "linux" version: "3.14.13-c9" arch: "amd64" Family: "unix"
-</pre>
-<h2>Configurer un dépôt <a href="https://github.com/">Github</a></h2>
-<h2><a href="#créer-un-nouveau-blog" name="créer-un-nouveau-blog">Créer un nouveau blog</a></h2>
-<p>Il est toujours possible de forker le présent <a href="https://github.com/atao60/pop-tech">blog</a> ou celui de <a href="http://github.com/ybonnel/blog">Yan bonnel</a>. Ou même de partir de <a href="http://github.com/ingenieux/jbake-sample">jbake-sample</a>.</p>
-<p>Pour les besoins de la démonstration, le nouveau blog sera construit à partir d&rsquo;un projet Maven vide.</p>
-<h2><a href="#la-suite" name="la-suite">La suite</a></h2>
-<ul>
-  <li>les templates</li>
-  <li>importation sous Eclipse</li>
-  <li>une adresse IP propre, www.popsuite.net =&gt; un compte chez un mandataire, ici BookMyname (payant)</li>
-  <li>un compte twitter</li>
-</ul>
+<p>=&gt;<br/>- passer à Eclipse Mars pour voir si les choses se sont améliorées.<br/>- dupliquer Pop-Tech en Pop-Tech-Groovy<br/> conserver Pop-Tech pour avoir une trace de la version Maven classique + Java<br/> Faire toutes les transformations avec Pop-Tech-Groovy</p>
+<p>Réf. :<br/> Baking Your Blog with JBake, Groovy and GitHub<br/> <a href="http://coffeaelectronica.com/blog/2015/baking-with-groovy-and-github.html">http://coffeaelectronica.com/blog/2015/baking-with-groovy-and-github.html</a></p>
+<hr/>
         </div><!-- end of blogPost -->
 
         <div id="disqus_thread"></div>
         <script type="text/javascript">
             var disqus_shortname = 'poptech';
-            var disqus_identifier = 'poptech-howto';
+            var disqus_identifier = 'poptech-with-jbake';
             var disqus_config = function(){this.language="fr"};
             (function() {
                 var dsq = document.createElement('script'); 

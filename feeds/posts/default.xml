@@ -6,8 +6,8 @@
     <atom:link href="http://www.popsuite.net/feeds/posts/default.xml" rel="self" type="application/rss+xml" />
     <description>Pop Tech - Un blog personnel sur la programmation informatique</description>
     <language>fr-FR</language>
-      <pubDate>Mon, 26 Oct 2015 09:54:06 +0100</pubDate>
-      <lastBuildDate>Mon, 26 Oct 2015 09:54:06 +0100</lastBuildDate>
+      <pubDate>Tue, 27 Oct 2015 02:51:36 +0100</pubDate>
+      <lastBuildDate>Tue, 27 Oct 2015 02:51:36 +0100</lastBuildDate>
 
       
       <item>
@@ -22,9 +22,20 @@
       
       <item>
           <title>Bonne année 2015</title>
-          <link>http://www.popsuite.net/2015/01/happy-new-year.html</link>
+          <link>http://www.popsuite.net/2015/01/happy-new-year_en.html</link>
           <pubDate>Thu, 1 Jan 2015 00:00:00 +0100</pubDate>
-          <guid isPermaLink="false">http://www.popsuite.net/2015/01/happy-new-year.html</guid>
+          <guid isPermaLink="false">http://www.popsuite.net/2015/01/happy-new-year_en.html</guid>
+          <description>
+              &lt;p&gt;Happy New Year 2015 !&lt;/p&gt;
+  
+          </description>
+      </item>
+      
+      <item>
+          <title>Bonne année 2015</title>
+          <link>http://www.popsuite.net/2015/01/happy-new-year_fr.html</link>
+          <pubDate>Thu, 1 Jan 2015 00:00:00 +0100</pubDate>
+          <guid isPermaLink="false">http://www.popsuite.net/2015/01/happy-new-year_fr.html</guid>
           <description>
               &lt;p&gt;Bonne année 2015 !&lt;/p&gt;
   
